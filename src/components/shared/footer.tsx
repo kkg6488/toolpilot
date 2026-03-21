@@ -12,6 +12,8 @@ const calculatorLinks = [
   { label: "Compound Interest", href: "/calculators/compound-interest-calculator" },
   { label: "Tip Calculator", href: "/calculators/tip-calculator" },
   { label: "Salary Calculator", href: "/calculators/salary-calculator" },
+  { label: "Age Calculator", href: "/calculators/age-calculator" },
+  { label: "Percentage Calculator", href: "/calculators/percentage-calculator" },
 ];
 
 const toolLinks = [
@@ -20,6 +22,9 @@ const toolLinks = [
   { label: "Regex Tester", href: "/tools/regex-tester" },
   { label: "Privacy Policy Generator", href: "/tools/privacy-policy-generator" },
   { label: "Cron Expression Builder", href: "/tools/cron-expression-builder" },
+  { label: "Word Counter", href: "/tools/word-counter" },
+  { label: "Password Generator", href: "/tools/password-generator" },
+  { label: "QR Code Generator", href: "/tools/qr-code-generator" },
 ];
 
 export function Footer() {

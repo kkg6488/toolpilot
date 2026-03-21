@@ -15,11 +15,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/calculators/compound-interest-calculator",
     "/calculators/tip-calculator",
     "/calculators/salary-calculator",
+    "/calculators/age-calculator",
+    "/calculators/percentage-calculator",
     "/tools/json-formatter",
     "/tools/color-palette-generator",
     "/tools/regex-tester",
     "/tools/privacy-policy-generator",
     "/tools/cron-expression-builder",
+    "/tools/word-counter",
+    "/tools/password-generator",
+    "/tools/qr-code-generator",
   ];
   return [
     {

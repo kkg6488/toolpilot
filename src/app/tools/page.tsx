@@ -4,7 +4,10 @@ import {
   Braces,
   Clock3,
   FileText,
+  KeyRound,
+  LetterText,
   Palette,
+  QrCode,
   Regex,
 } from "lucide-react";
 
@@ -56,6 +59,27 @@ const tools = [
     description:
       "Compose and decode cron schedules with human-readable explanations.",
     Icon: Clock3,
+  },
+  {
+    href: "/tools/word-counter",
+    name: "Word Counter",
+    description:
+      "Count words, characters, sentences, and paragraphs with reading time estimates.",
+    Icon: LetterText,
+  },
+  {
+    href: "/tools/password-generator",
+    name: "Password Generator",
+    description:
+      "Generate strong, random passwords with customizable length and character options.",
+    Icon: KeyRound,
+  },
+  {
+    href: "/tools/qr-code-generator",
+    name: "QR Code Generator",
+    description:
+      "Create QR codes for URLs, text, email, phone, and Wi-Fi. Download as PNG.",
+    Icon: QrCode,
   },
 ];
 

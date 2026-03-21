@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "ToolPilot — Free Online Calculators & Developer Tools",
   description:
-    "ToolPilot offers 15+ free online calculators and developer tools: EMI, SIP, GST, JSON formatter, regex tester, and more. No sign-up, mobile-friendly, runs in your browser.",
+    "ToolPilot offers 20+ free online calculators and developer tools: EMI, SIP, GST, age calculator, percentage calculator, JSON formatter, password generator, QR code generator, and more. No sign-up, mobile-friendly, runs in your browser.",
   alternates: { canonical: "https://tool-pilot.in" },
   openGraph: {
     title: "ToolPilot — Free Online Calculators & Developer Tools",
@@ -110,7 +110,7 @@ const featured = [
 ];
 
 const stats = [
-  { label: "15+ Free Tools", Icon: Sparkles, detail: "And growing weekly" },
+  { label: "20+ Free Tools", Icon: Sparkles, detail: "And growing weekly" },
   { label: "No Sign-up", Icon: Lock, detail: "Use instantly, no account needed" },
   { label: "Lightning Fast", Icon: Zap, detail: "Runs 100% in your browser" },
   { label: "Mobile Friendly", Icon: Smartphone, detail: "Works on any device" },
@@ -127,6 +127,8 @@ const allCalculators = [
   { name: "Compound Interest", href: "/calculators/compound-interest-calculator" },
   { name: "Tip", href: "/calculators/tip-calculator" },
   { name: "Salary", href: "/calculators/salary-calculator" },
+  { name: "Age", href: "/calculators/age-calculator" },
+  { name: "Percentage", href: "/calculators/percentage-calculator" },
 ];
 
 const allTools = [
@@ -135,6 +137,9 @@ const allTools = [
   { name: "Regex Tester", href: "/tools/regex-tester" },
   { name: "Privacy Policy", href: "/tools/privacy-policy-generator" },
   { name: "Cron Builder", href: "/tools/cron-expression-builder" },
+  { name: "Word Counter", href: "/tools/word-counter" },
+  { name: "Password Generator", href: "/tools/password-generator" },
+  { name: "QR Code Generator", href: "/tools/qr-code-generator" },
 ];
 
 export default function Home() {
@@ -158,7 +163,7 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
               <Sparkles className="h-3.5 w-3.5" />
-              15+ free tools — no sign-up required
+              20+ free tools — no sign-up required
             </div>
 
             <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">

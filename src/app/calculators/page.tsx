@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   Activity,
   Building2,
+  Calendar,
   Coins,
   Home,
   IndianRupee,
@@ -100,6 +101,20 @@ const globalCalculators = [
     description:
       "Split bills, add gratuity, and share totals fairly in seconds.",
     Icon: Coins,
+  },
+  {
+    href: "/calculators/age-calculator",
+    name: "Age Calculator",
+    description:
+      "Calculate exact age in years, months, and days from any date of birth.",
+    Icon: Calendar,
+  },
+  {
+    href: "/calculators/percentage-calculator",
+    name: "Percentage Calculator",
+    description:
+      "Calculate percentages, percentage increase/decrease, and ratios instantly.",
+    Icon: Percent,
   },
 ];
 
