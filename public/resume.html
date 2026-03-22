@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kunal Kumar — Resume</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      font-size: 10.2pt;
+      line-height: 1.42;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 24px 32px;
+      max-width: 794px;
+      margin: 0 auto;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .header {
+      text-align: center;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #1a1a1a;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-size: 21pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .header-subtitle {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    .header-contact {
+      font-size: 9.2pt;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3px 14px;
+    }
+    .header-contact a { color: #1a1a1a; text-decoration: none; }
+    .header-contact span { white-space: nowrap; }
+
+    .section { margin-bottom: 8px; }
+    .section-title {
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1.5px solid #1a1a1a;
+      padding-bottom: 2px;
+      margin-bottom: 6px;
+      color: #1a1a1a;
+    }
+
+    .summary { font-size: 10.2pt; color: #222; line-height: 1.48; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 2px 10px;
+      font-size: 9.8pt;
+    }
+    .skill-label { font-weight: 600; color: #1a1a1a; padding: 2px 0; }
+    .skill-value { color: #222; padding: 2px 0; }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 1px;
+    }
+    .exp-title { font-size: 10.5pt; font-weight: 700; }
+    .exp-date { font-size: 9.8pt; font-weight: 600; color: #333; }
+    .exp-company { font-size: 10pt; font-weight: 600; color: #333; margin-bottom: 5px; }
+    .exp-company span { font-weight: 400; color: #555; }
+
+    ul { padding-left: 16px; margin-bottom: 0; }
+    li { margin-bottom: 4px; font-size: 9.8pt; line-height: 1.42; color: #222; }
+    li strong { font-weight: 600; }
+
+    .project-item { margin-bottom: 8px; }
+    .project-item:last-child { margin-bottom: 0; }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .project-name { font-size: 10.2pt; font-weight: 700; }
+    .project-meta { font-size: 9pt; color: #555; }
+    .project-tech { font-size: 9.2pt; color: #444; font-style: italic; margin-bottom: 2px; }
+    .project-desc { font-size: 9.8pt; color: #222; }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .edu-degree { font-size: 10.2pt; font-weight: 700; }
+    .edu-date { font-size: 9.8pt; font-weight: 600; color: #333; }
+    .edu-school { font-size: 10pt; color: #333; }
+    .edu-score { font-size: 9.8pt; color: #444; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
+
+    @media print {
+      body { padding: 22px 28px; }
+      a { color: #1a1a1a !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======== HEADER ======== -->
+  <div class="header">
+    <h1>Kunal Kumar</h1>
+    <div class="header-subtitle">Full Stack Mobile Developer | React Native | Node.js | Express | MongoDB | MySQL</div>
+    <div class="header-contact">
+      <span>+91 9801023903</span>
+      <span>kunalkumar942001@gmail.com</span>
+      <span>Noida, India</span>
+      <span><a href="https://in.linkedin.com/in/kunal-kumar-79b354225">LinkedIn: kunal-kumar</a></span>
+      <span><a href="https://github.com/kkg6488">GitHub: kkg6488</a></span>
+      <span><a href="https://kkg6488.github.io">Portfolio: kkg6488.github.io</a></span>
+    </div>
+  </div>
+
+  <!-- ======== SUMMARY ======== -->
+  <div class="section">
+    <div class="section-title">Professional Summary</div>
+    <p class="summary">
+      Mobile-first Full Stack Developer with <strong>2.5+ years</strong> shipping production React Native apps and Node.js backends
+      for international clients (USA, Netherlands). Owning <strong>8+ live applications</strong> across healthcare
+      (<strong>MyCHN</strong> — 1K+ downloads), corporate training (<strong>RSystems DLS</strong> — 1K+ downloads), and reverse logistics
+      (<strong>EARL</strong> — serving Philips, MMD, IKEA). Not a "build and forget" developer — I ship, maintain, and iterate
+      every app based on real user feedback. Independently built <strong>Tenors</strong> — a full-stack property management
+      platform from scratch (live on both stores), handling system architecture, backend, frontend, and deployment solo.
+    </p>
+  </div>
+
+  <!-- ======== SKILLS ======== -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-label">Mobile</div>
+      <div class="skill-value">React Native, Expo, iOS, Android, Push Notifications, EAS Updates, Deep Linking</div>
+      <div class="skill-label">Frontend</div>
+      <div class="skill-value">React.js, JavaScript (ES6+), TypeScript, HTML5, CSS3, Redux, Zustand, Context API</div>
+      <div class="skill-label">Backend</div>
+      <div class="skill-value">Node.js, Express.js, REST APIs, JWT Authentication, Socket.io, Laravel</div>
+      <div class="skill-label">Database</div>
+      <div class="skill-value">MongoDB, Mongoose ODM, MySQL, Firebase, SQLite, Database Schema Design</div>
+      <div class="skill-label">Testing</div>
+      <div class="skill-value">Jest, React Native Testing Library, Supertest, API Testing</div>
+      <div class="skill-label">Tools</div>
+      <div class="skill-value">Git, GitHub, VS Code, Xcode, Android Studio, Postman, Jira, Figma, Docker</div>
+      <div class="skill-label">Other</div>
+      <div class="skill-value">Face ID / Biometrics, App Store &amp; Play Store Deployment, CI/CD, Agile / Scrum, Code Review</div>
+    </div>
+  </div>
+
+  <!-- ======== EXPERIENCE ======== -->
+  <div class="section">
+    <div class="section-title">Professional Experience</div>
+
+    <div class="exp-header">
+      <div class="exp-title">Software Developer</div>
+      <div class="exp-date">Jul 2024 — Present</div>
+    </div>
+    <div class="exp-company">RSystems International Limited, Noida <span>| Full-time</span></div>
+    <ul>
+      <li>Ship and actively maintain <strong>8+ production mobile applications</strong> using React Native (iOS &amp; Android) for international clients (USA, Netherlands), serving <strong>2,000+ users</strong></li>
+      <li>Design and build backend services using <strong>Node.js, Express.js, MongoDB &amp; MySQL</strong> — RESTful APIs, database schemas, JWT auth, Socket.io real-time features</li>
+      <li>Built <strong>MyCHN</strong> (USA, 1K+ downloads) — healthcare app with medical device integration, Face ID auth, and insurance card scanning</li>
+      <li>Built <strong>RSystems DLS</strong> (1K+ downloads) — training platform serving 1K+ employees across 3 roles with automated assessments and certifications</li>
+      <li>Built <strong>EARL</strong> (Netherlands) — reverse logistics platform for <strong>Philips, MMD, and IKEA</strong>, managing warranty lifecycle and RMA workflows</li>
+      <li>Contributed to <strong>RepoReport</strong> (USA) — auto repossession platform with assignment grading, dispatching, and biometric security</li>
+      <li>Developed <strong>Elevation</strong> (USA) — referral management system (Laravel web app + React Native mobile prototype for client demo)</li>
+      <li>Built internal enterprise apps — <strong>CICO</strong> (attendance tracking) and <strong>CAMS</strong> (asset management)</li>
+      <li>Own full delivery lifecycle for 4+ apps — from system architecture and database design to App Store &amp; Play Store deployment</li>
+    </ul>
+  </div>
+
+  <!-- ======== INTERNSHIP ======== -->
+  <div class="section">
+    <div class="exp-header">
+      <div class="exp-title">Software Developer Intern</div>
+      <div class="exp-date">Oct 2023 — Mar 2024</div>
+    </div>
+    <div class="exp-company">Parallel Team Technology <span>| Paid Internship</span></div>
+    <ul>
+      <li>Built <strong>RecoPad</strong> — a SaaS platform connecting gym operators, members, and repair suppliers for equipment upholstery reporting and maintenance, using <strong>React.js</strong> for the frontend and <strong>Node.js</strong> for backend API development</li>
+      <li>Developed role-based workflows for 3 user types (gym operators, gym members, suppliers) with personalised repair history tracking, social reporting, and direct supplier-gym matching</li>
+    </ul>
+  </div>
+
+  <!-- ======== PERSONAL PROJECT ======== -->
+  <div class="section">
+    <div class="exp-header">
+      <div class="exp-title">Independent Full Stack Developer</div>
+      <div class="exp-date">Personal Project</div>
+    </div>
+    <div class="exp-company">Tenors — Property &amp; Tenant Management Platform</div>
+    <ul>
+      <li>Single-handedly built <strong>Tenors</strong> from scratch — full-stack property management platform: <strong>Node.js/Express</strong> backend with MongoDB, <strong>React Native</strong> frontend (iOS &amp; Android), deployed to both App Store and Play Store</li>
+      <li>Engineered RESTful APIs for tenant onboarding, property registration, automated rent reminders with <strong>WhatsApp integration</strong>, payment tracking &amp; analytics, maintenance workflows, and lease/document management</li>
+      <li>Wrote unit and integration tests using <strong>Jest, React Native Testing Library, and Supertest</strong> — covering component rendering, API endpoints, and business logic</li>
+      <li>Containerized backend with <strong>Docker</strong> (Node.js + MongoDB via docker-compose); managed system architecture, store publishing, and post-launch updates independently</li>
+    </ul>
+  </div>
+
+  <!-- ======== KEY PROJECTS ======== -->
+  <div class="section">
+    <div class="section-title">Key Projects</div>
+    <ul>
+      <li><strong>MyCHN</strong> — Healthcare patient portal (USA, 1K+ downloads) | React Native, Node.js, MongoDB</li>
+      <li><strong>RSystems DLS</strong> — Corporate training platform (1K+ downloads) | React Native, Node.js, MySQL</li>
+      <li><strong>EARL</strong> — Reverse logistics for Philips, MMD, IKEA (Netherlands) | React Native, Node.js</li>
+      <li><strong>RepoReport</strong> — Auto repossession automation (USA) | React Native, Node.js</li>
+      <li><strong>Elevation</strong> — Referral &amp; resource management (USA) | Laravel, React Native (mobile prototype)</li>
+      <li><strong>Tenors</strong> — Property &amp; tenant management — built from scratch (Personal) | React Native, Node.js, Express, MongoDB</li>
+      <li><strong>RecoPad</strong> — Gym equipment repair SaaS (Internship) | React.js, Node.js</li>
+    </ul>
+  </div>
+
+  <!-- ======== EDUCATION ======== -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="edu-header">
+      <div class="edu-degree">Bachelor of Technology (B.Tech) — Computer Science &amp; Information Technology</div>
+      <div class="edu-date">2019 — 2023</div>
+    </div>
+    <div class="edu-school">C.V. Raman Global University, Bhubaneswar</div>
+    <div class="edu-score">Percentage: 80.13% | <strong>4-star HackerRank</strong> | 200+ DSA problems (CodeChef &amp; HackerRank, C++)</div>
+  </div>
+
+  <!-- ======== CERTIFICATIONS (uncomment when you have MongoDB University + Udemy certs) ========
+  <div class="section">
+    <div class="section-title">Certifications</div>
+    <ul>
+      <li><strong>MongoDB for Node.js Developers</strong> — MongoDB University (Month 2026)</li>
+      <li><strong>The Complete Web Development Bootcamp</strong> — Udemy, Dr. Angela Yu (Jul 2022 | 65.5 hours)</li>
+    </ul>
+  </div>
+  -->
+
+
+</body>
+</html>

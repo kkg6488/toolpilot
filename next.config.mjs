@@ -6,6 +6,14 @@ const nextConfig = {
         source: "/kunal",
         destination: "/kunal.html",
       },
+      {
+        source: "/kunal-resume",
+        destination: "/resume.html",
+      },
+      {
+        source: "/kunal-portfolio",
+        destination: "/portfolio.html",
+      },
     ];
   },
 };
