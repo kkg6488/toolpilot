@@ -110,7 +110,7 @@ const featured = [
 ];
 
 const stats = [
-  { label: "20+ Free Tools", Icon: Sparkles, detail: "And growing weekly" },
+  { label: "600+ Free Pages", Icon: Sparkles, detail: "Calculators, converters & more" },
   { label: "No Sign-up", Icon: Lock, detail: "Use instantly, no account needed" },
   { label: "Lightning Fast", Icon: Zap, detail: "Runs 100% in your browser" },
   { label: "Mobile Friendly", Icon: Smartphone, detail: "Works on any device" },
@@ -140,6 +140,8 @@ const allTools = [
   { name: "Word Counter", href: "/tools/word-counter" },
   { name: "Password Generator", href: "/tools/password-generator" },
   { name: "QR Code Generator", href: "/tools/qr-code-generator" },
+  { name: "Unit Converter", href: "/convert" },
+  { name: "Percentage Calc", href: "/percentage" },
 ];
 
 export default function Home() {
@@ -163,7 +165,7 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
               <Sparkles className="h-3.5 w-3.5" />
-              20+ free tools — no sign-up required
+              600+ free tools & converters — no sign-up required
             </div>
 
             <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">

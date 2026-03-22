@@ -1,10 +1,15 @@
 import { MetadataRoute } from "next";
+import { generateAllConversionSlugs } from "@/lib/unit-conversions";
+import { generateAllPercentageSlugs } from "@/lib/percentage-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://tool-pilot.in";
-  const tools = [
+
+  const staticPages = [
     "/calculators",
     "/tools",
+    "/convert",
+    "/percentage",
     "/calculators/emi-calculator",
     "/calculators/sip-calculator",
     "/calculators/gst-calculator",
@@ -26,6 +31,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/tools/password-generator",
     "/tools/qr-code-generator",
   ];
+
+  const conversionSlugs = generateAllConversionSlugs();
+  const percentageSlugs = generateAllPercentageSlugs();
+
   return [
     {
       url: baseUrl,
@@ -33,11 +42,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
-    ...tools.map((path) => ({
+    ...staticPages.map((path) => ({
       url: `${baseUrl}${path}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
-      priority: path === "/calculators" || path === "/tools" ? 0.9 : 0.8,
+      priority:
+        path === "/calculators" || path === "/tools" || path === "/convert" || path === "/percentage"
+          ? 0.9
+          : 0.8,
+    })),
+    ...conversionSlugs.map((slug) => ({
+      url: `${baseUrl}/convert/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+    })),
+    ...percentageSlugs.map((slug) => ({
+      url: `${baseUrl}/percentage/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
     })),
     {
       url: `${baseUrl}/privacy`,

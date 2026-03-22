@@ -25,6 +25,8 @@ const toolLinks = [
   { label: "Word Counter", href: "/tools/word-counter" },
   { label: "Password Generator", href: "/tools/password-generator" },
   { label: "QR Code Generator", href: "/tools/qr-code-generator" },
+  { label: "Unit Converter", href: "/convert" },
+  { label: "Percentage Calculator", href: "/percentage" },
 ];
 
 export function Footer() {
