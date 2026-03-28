@@ -14,6 +14,10 @@ const nextConfig = {
         source: "/kunal-portfolio",
         destination: "/portfolio.html",
       },
+      {
+        source: "/workout",
+        destination: "/kunal-aggressive-cut.html",
+      },
     ];
   },
 };

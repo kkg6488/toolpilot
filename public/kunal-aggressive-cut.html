@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kunal Kumar — Aggressive Cut Protocol</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #1f1f35;
+            --accent: #e63946;
+            --accent-light: #ff6b6b;
+            --accent-glow: rgba(230, 57, 70, 0.3);
+            --gold: #f4a261;
+            --green: #2ec4b6;
+            --green-dark: #1a9e93;
+            --blue: #4895ef;
+            --purple: #7b2cbf;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6b6b80;
+            --border: #2a2a3e;
+            --border-light: #3a3a50;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            -webkit-text-size-adjust: 100%;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+        .hero {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 50%, var(--accent-glow) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
+
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+        .hero .version-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 12px;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            min-width: 0;
+            flex: 1 1 70px;
+        }
+        .stat-item .value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .stat-item .label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 2px;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 16px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+        .nav::-webkit-scrollbar { height: 0; }
+        .nav::after {
+            content: '';
+            position: absolute;
+            right: 0; top: 0; bottom: 0;
+            width: 40px;
+            background: linear-gradient(90deg, transparent, rgba(10,10,15,0.95));
+            pointer-events: none;
+            z-index: 1;
+        }
+        @media (min-width: 900px) { .nav::after { display: none; } }
+        .nav-inner {
+            display: flex;
+            gap: 4px;
+            padding: 8px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+        .nav a:hover { background: var(--bg-card); color: var(--accent); }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px 16px; }
+        .section { margin-bottom: 32px; }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+        }
+        .section-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--accent);
+            background: rgba(230, 57, 70, 0.1);
+            border: 1px solid rgba(230, 57, 70, 0.3);
+            padding: 4px 10px;
+            border-radius: 6px;
+            letter-spacing: 1px;
+        }
+        .section-title {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: border-color 0.3s;
+        }
+        .card:hover { border-color: var(--border-light); }
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card-accent { border-left: 3px solid var(--accent); }
+        .card-green { border-left: 3px solid var(--green); }
+        .card-gold { border-left: 3px solid var(--gold); }
+        .card-blue { border-left: 3px solid var(--blue); }
+        .card-purple { border-left: 3px solid var(--purple); }
+
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 12px 0;
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        th {
+            background: rgba(230, 57, 70, 0.1);
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 2px solid var(--border);
+            white-space: nowrap;
+        }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
+        tr:hover td { background: rgba(255,255,255,0.02); }
+        td:first-child { color: var(--text-primary); font-weight: 500; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .tag-red { background: rgba(230,57,70,0.15); color: var(--accent-light); }
+        .tag-green { background: rgba(46,196,182,0.15); color: var(--green); }
+        .tag-gold { background: rgba(244,162,97,0.15); color: var(--gold); }
+        .tag-blue { background: rgba(72,149,239,0.15); color: var(--blue); }
+        .tag-purple { background: rgba(123,44,191,0.15); color: var(--purple); }
+
+        .info-list { list-style: none; padding: 0; }
+        .info-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            gap: 10px;
+        }
+        .info-list li::before { content: '\2192'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+        .info-list li:last-child { border-bottom: none; }
+
+        .meal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        .meal-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .meal-header {
+            background: linear-gradient(135deg, rgba(230,57,70,0.1), rgba(244,162,97,0.1));
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .meal-name { font-weight: 700; font-size: 0.95rem; }
+        .meal-time {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--gold);
+            background: rgba(244,162,97,0.1);
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+        .meal-body { padding: 14px 16px; }
+        .meal-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        .meal-item:last-child { border-bottom: none; }
+        .meal-item-name { color: var(--text-primary); font-weight: 500; }
+        .meal-item-qty { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+        .meal-macros {
+            display: flex;
+            gap: 12px;
+            padding: 10px 16px;
+            background: rgba(255,255,255,0.02);
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .meal-macro { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600; }
+        .macro-p { color: var(--accent-light); }
+        .macro-c { color: var(--gold); }
+        .macro-f { color: var(--blue); }
+        .macro-cal { color: var(--green); }
+        .macro-fiber { color: var(--purple); }
+
+        .workout-day {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        .workout-day-header {
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-bottom: 1px solid var(--border);
+        }
+        .workout-day-header:hover { background: rgba(255,255,255,0.02); }
+        .day-label { font-weight: 800; font-size: 1rem; }
+        .day-focus { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .workout-body { padding: 0 16px 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+        .quick-ref {
+            background: linear-gradient(135deg, rgba(230,57,70,0.05), rgba(244,162,97,0.05));
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .quick-ref h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .macro-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .macro-box {
+            text-align: center;
+            padding: 16px 8px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .macro-box .num { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 800; }
+        .macro-box .unit { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+
+        .day-tabs { display: flex; gap: 6px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 4px; }
+        .day-tab {
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .day-tab:hover, .day-tab.active { background: var(--accent); color: white; border-color: var(--accent); }
+        .day-tab.veg { border-color: var(--green); }
+        .day-tab.veg:hover, .day-tab.veg.active { background: var(--green); border-color: var(--green); }
+        .diet-day { display: none; }
+        .diet-day.active { display: block; }
+
+        .warning {
+            background: rgba(230, 57, 70, 0.08);
+            border: 1px solid rgba(230, 57, 70, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+        .warning-title { color: var(--accent); font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .warning p { color: var(--text-secondary); font-size: 0.85rem; }
+
+        .tip {
+            background: rgba(46, 196, 182, 0.08);
+            border: 1px solid rgba(46, 196, 182, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+        .tip-title { color: var(--green); font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .phase-timeline { position: relative; padding-left: 24px; }
+        .phase-timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px; top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--green));
+        }
+        .phase-item { position: relative; padding: 16px 0; }
+        .phase-item::before {
+            content: '';
+            position: absolute;
+            left: -22px; top: 22px;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--bg-primary);
+        }
+        .phase-item .phase-label { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+        .phase-item .phase-detail { font-size: 0.82rem; color: var(--text-secondary); }
+
+        .analysis-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+
+        .daily-total { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; text-align: center; }
+        .daily-total > div { flex: 1 1 80px; min-width: 60px; }
+
+        .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 16px 0; }
+        .compare-cell {
+            padding: 14px;
+            background: rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .compare-cell:nth-child(odd) { border-radius: 8px 0 0 8px; }
+        .compare-cell:nth-child(even) { border-radius: 0 8px 8px 0; }
+        .compare-cell .cl { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .compare-cell .cv { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.1rem; }
+
+        .checklist { list-style: none; }
+        .checklist li {
+            padding: 6px 0;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .checklist li .check {
+            width: 24px; height: 24px; min-width: 24px; min-height: 24px;
+            border: 2px solid var(--border-light);
+            border-radius: 6px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            cursor: pointer;
+            transition: all 0.2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .checklist li .check:hover { border-color: var(--green); }
+        .checklist li .check.done { background: var(--green); border-color: var(--green); }
+
+        @media (max-width: 374px) {
+            .hero { padding: 24px 12px; }
+            .hero h1 { font-size: 1.4rem; }
+            .container { padding: 12px 10px; }
+            .card { padding: 14px 12px; border-radius: 12px; }
+            .quick-ref { padding: 14px 12px; }
+            .section-title { font-size: 1rem; }
+            .info-list li { font-size: 0.8rem; padding: 6px 0; }
+            table { font-size: 0.72rem; }
+            th { padding: 7px 6px; font-size: 0.6rem; }
+            td { padding: 7px 6px; }
+            .macro-box .num { font-size: 1.2rem; }
+            .nav a { padding: 6px 10px; font-size: 0.65rem; }
+            .compare-cell .cv { font-size: 0.9rem; }
+            .compare-cell { padding: 10px; }
+        }
+        @media (max-width: 479px) and (min-width: 375px) {
+            .hero { padding: 28px 14px; }
+            .container { padding: 14px 12px; }
+            .card { padding: 16px 14px; }
+            table { font-size: 0.78rem; }
+            .macro-box .num { font-size: 1.3rem; }
+        }
+        @media (max-width: 639px) {
+            .workout-day-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .meal-item { flex-direction: column; gap: 2px; align-items: flex-start; }
+            .section-header { gap: 8px; margin-bottom: 14px; }
+            .macro-display { grid-template-columns: repeat(3, 1fr); }
+            .compare-grid { grid-template-columns: 1fr; gap: 4px; }
+            .compare-cell:nth-child(odd), .compare-cell:nth-child(even) { border-radius: 8px; }
+        }
+        @media (min-width: 640px) { .analysis-grid { grid-template-columns: 1fr 1fr; } }
+        @media (min-width: 768px) {
+            .meal-grid { grid-template-columns: 1fr 1fr; }
+            .container { padding: 32px 24px; }
+            .macro-display { grid-template-columns: repeat(5, 1fr); }
+        }
+        @media (min-width: 1024px) { .container { padding: 40px 32px; } }
+
+        @media (max-width: 599px) {
+            .workout-body table thead { display: none; }
+            .workout-body table, .workout-body table tbody, .workout-body table tr, .workout-body table td { display: block; width: 100%; }
+            .workout-body table tr { padding: 12px 0; border-bottom: 1px solid var(--border); }
+            .workout-body table tr:last-child { border-bottom: none; }
+            .workout-body table td { padding: 3px 0; border-bottom: none; white-space: normal; }
+            .workout-body table td:first-child { font-size: 0.88rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+            .workout-body table td:nth-child(2)::before { content: 'Sets: '; color: var(--accent); font-weight: 600; font-size: 0.75rem; }
+            .workout-body table td:nth-child(3)::before { content: 'Reps: '; color: var(--gold); font-weight: 600; font-size: 0.75rem; }
+            .workout-body table td:nth-child(4)::before { content: 'Rest: '; color: var(--blue); font-weight: 600; font-size: 0.75rem; }
+            .workout-body table td:nth-child(2), .workout-body table td:nth-child(3), .workout-body table td:nth-child(4) {
+                display: inline-block; width: auto; margin-right: 14px;
+                font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+            }
+            .workout-body table td:nth-child(5) { display: block; margin-top: 4px; font-size: 0.78rem; color: var(--text-muted); font-style: italic; }
+        }
+
+        @media (max-width: 479px) {
+            .daily-total { gap: 8px; justify-content: center; }
+            .daily-total > div { flex: 1 1 55px; }
+            .daily-total .dt-value { font-size: 1rem !important; }
+            .daily-total .dt-label { font-size: 0.6rem !important; }
+            .checklist li .check { min-width: 28px; min-height: 28px; width: 28px; height: 28px; }
+        }
+
+        @media print {
+            body { background: white; color: black; }
+            .nav { display: none; }
+            .card { border: 1px solid #ccc; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-content">
+        <h1>KUNAL KUMAR</h1>
+        <p class="subtitle">Aggressive Cut Protocol &mdash; Maximum Fat Loss, Muscle Preservation</p>
+        <span class="version-tag">V2 &mdash; Accelerated Timeline</span>
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="value">77kg</div>
+                <div class="label">Start</div>
+            </div>
+            <div class="stat-item">
+                <div class="value">65kg</div>
+                <div class="label">Target</div>
+            </div>
+            <div class="stat-item">
+                <div class="value">~1kg</div>
+                <div class="label">Per Week</div>
+            </div>
+            <div class="stat-item">
+                <div class="value">16wk</div>
+                <div class="label">Timeline</div>
+            </div>
+            <div class="stat-item">
+                <div class="value">1,636</div>
+                <div class="label">Avg kcal</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#science">Science</a>
+        <a href="#protocol">Protocol</a>
+        <a href="#diet">Diet</a>
+        <a href="#training">Training</a>
+        <a href="#cardio">Cardio</a>
+        <a href="#refeed">Refeeds</a>
+        <a href="#supplements">Supps</a>
+        <a href="#warnings">Warnings</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#tracking">Tracking</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- ===================== SECTION 1: THE SCIENCE ===================== -->
+    <section class="section" id="science">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Why 0.8&ndash;1 kg/Week Is Possible (and Safe) For You</h2>
+        </div>
+
+        <div class="card card-accent">
+            <div class="card-title">The Fat Oxidation Math</div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 16px;">
+                Research (Alpert, 2005) established the maximum rate your body can pull energy from fat stores: approximately <strong style="color: var(--text-primary);">31 kcal per pound of body fat per day</strong>. Beyond this, your body cannibalizes muscle. Let's calculate YOUR limits:
+            </p>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Your Weight</th><th>Est. Body Fat %</th><th>Fat Mass</th><th>Max Daily Fat Deficit</th><th>Max Weekly Fat Loss</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>77 kg (Start)</strong></td><td>25%</td><td>19.25 kg (42.4 lbs)</td><td>1,314 kcal/day</td><td><strong style="color: var(--green);">1.19 kg/week</strong></td></tr>
+                        <tr><td><strong>73 kg</strong></td><td>22%</td><td>16.1 kg (35.4 lbs)</td><td>1,098 kcal/day</td><td><strong style="color: var(--green);">1.0 kg/week</strong></td></tr>
+                        <tr><td><strong>70 kg</strong></td><td>20%</td><td>14.0 kg (30.8 lbs)</td><td>955 kcal/day</td><td><strong style="color: var(--gold);">0.87 kg/week</strong></td></tr>
+                        <tr><td><strong>67 kg</strong></td><td>17%</td><td>11.4 kg (25.1 lbs)</td><td>778 kcal/day</td><td><strong style="color: var(--gold);">0.71 kg/week</strong></td></tr>
+                        <tr><td><strong>65 kg (Goal)</strong></td><td>15%</td><td>9.75 kg (21.5 lbs)</td><td>666 kcal/day</td><td><strong style="color: var(--accent-light);">0.60 kg/week</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tip" style="margin-top: 12px;">
+                <div class="tip-title">What This Means</div>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;">At 25% body fat, your body can physiologically sustain 1+ kg/week of pure fat loss without muscle breakdown. As you get leaner, this capacity shrinks. The protocol below accounts for this by auto-adjusting across phases.</p>
+            </div>
+        </div>
+
+        <div class="card card-green">
+            <div class="card-title">Original Plan vs. Aggressive Protocol</div>
+            <div class="compare-grid">
+                <div class="compare-cell"><div class="cl">Original Deficit</div><div class="cv" style="color: var(--text-muted);">~500 kcal/day</div></div>
+                <div class="compare-cell"><div class="cl">New Deficit</div><div class="cv" style="color: var(--accent);">~960 kcal/day</div></div>
+                <div class="compare-cell"><div class="cl">Original Rate</div><div class="cv" style="color: var(--text-muted);">0.43 kg/wk</div></div>
+                <div class="compare-cell"><div class="cl">New Rate</div><div class="cv" style="color: var(--accent);">0.85&ndash;1 kg/wk</div></div>
+                <div class="compare-cell"><div class="cl">Original Calories</div><div class="cv" style="color: var(--text-muted);">2,000/day flat</div></div>
+                <div class="compare-cell"><div class="cl">New Calories</div><div class="cv" style="color: var(--accent);">1,400&ndash;1,750 cycled</div></div>
+                <div class="compare-cell"><div class="cl">Original Protein</div><div class="cv" style="color: var(--text-muted);">160g/day</div></div>
+                <div class="compare-cell"><div class="cl">New Protein</div><div class="cv" style="color: var(--accent);">185g/day avg</div></div>
+                <div class="compare-cell"><div class="cl">Original Timeline</div><div class="cv" style="color: var(--text-muted);">28 weeks</div></div>
+                <div class="compare-cell"><div class="cl">New Timeline</div><div class="cv" style="color: var(--accent);">16&ndash;18 weeks</div></div>
+                <div class="compare-cell"><div class="cl">Original Cardio</div><div class="cv" style="color: var(--text-muted);">10k steps</div></div>
+                <div class="compare-cell"><div class="cl">New Cardio</div><div class="cv" style="color: var(--accent);">12&ndash;15k steps</div></div>
+            </div>
+        </div>
+
+        <div class="card card-gold">
+            <div class="card-title">Non-Negotiable Conditions For This To Work</div>
+            <ul class="info-list">
+                <li><strong>Protein MUST be 2.3&ndash;2.5g/kg bodyweight (185g+)</strong> &mdash; at higher deficits, the margin for error on protein is ZERO. Miss protein = lose muscle. Period.</li>
+                <li><strong>Strength in the gym MUST be maintained</strong> &mdash; the moment your big lifts drop more than 10%, you're losing muscle and need to ease up</li>
+                <li><strong>Sleep 7&ndash;8 hours non-negotiable</strong> &mdash; sleep debt at a 960 kcal deficit will catabolize muscle faster than anything else</li>
+                <li><strong>Creatine 5g every single day</strong> &mdash; maintains intramuscular creatine stores; even more critical at aggressive deficits</li>
+                <li><strong>Refeeds every 10&ndash;14 days</strong> &mdash; full glycogen replenishment day to reset leptin, thyroid downregulation, and cortisol</li>
+                <li><strong>Training volume drops but intensity stays</strong> &mdash; you cannot recover from high volume at this deficit. Fewer sets, same heavy weights.</li>
+                <li><strong>Zero alcohol. Zero fried food. Zero exceptions.</strong> &mdash; at this deficit, every calorie must be functional. There is no room for garbage.</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <div class="warning-title">Who Should NOT Do This</div>
+            <p>If you have any metabolic disorders, thyroid issues, diabetes, eating disorder history, or are under medical supervision for any condition &mdash; stick to the original 0.43 kg/week plan. This protocol is for healthy individuals with adequate body fat reserves who can handle the psychological and physiological stress of an aggressive deficit. Consult a doctor before starting.</p>
+        </div>
+    </section>
+
+    <!-- ===================== SECTION 2: CALORIE CYCLING PROTOCOL ===================== -->
+    <section class="section" id="protocol">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Calorie Cycling Protocol</h2>
+        </div>
+
+        <div class="card card-accent">
+            <div class="card-title">Why Cycling Beats Flat Calories</div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 12px;">
+                Eating 1,636 kcal every day leads to faster metabolic adaptation &mdash; your body downregulates thyroid hormone (T3), reduces NEAT unconsciously, and tanks training performance. Cycling solves this:
+            </p>
+            <ul class="info-list">
+                <li><strong>HIGH days (Mon/Wed/Fri):</strong> More carbs fuel your heaviest sessions. Glycogen stays topped up. Strength preserved.</li>
+                <li><strong>LOW days (Tue/Thu/Sat):</strong> Deeper deficit on lighter training days. Your body is already recovering, not performing &mdash; it doesn't need the fuel.</li>
+                <li><strong>REST day (Sunday):</strong> Deepest deficit. Minimal carbs. High protein + fat to support hormones. Your body uses fat stores most efficiently at rest.</li>
+                <li><strong>REFEED day (every 10&ndash;14 days):</strong> Spike carbs to maintenance. Resets leptin, refills glycogen, prevents metabolic slowdown.</li>
+            </ul>
+        </div>
+
+        <!-- Quick Macro Reference -->
+        <div class="quick-ref">
+            <h3>Calorie Cycling Targets &mdash; Pin This</h3>
+
+            <div style="margin-bottom: 20px;">
+                <p style="font-size: 0.82rem; color: var(--gold); font-weight: 700; margin-bottom: 12px;">HIGH DAYS &mdash; Mon / Wed / Fri (Heavy Compound Days)</p>
+                <div class="macro-display">
+                    <div class="macro-box"><div class="num" style="color: var(--green);">1,750</div><div class="unit">Calories</div></div>
+                    <div class="macro-box"><div class="num" style="color: var(--accent-light);">190g</div><div class="unit">Protein</div></div>
+                    <div class="macro-box"><div class="num" style="color: var(--gold);">145g</div><div class="unit">Carbs</div></div>
+                    <div class="macro-box"><div class="num" style="color: var(--blue);">42g</div><div class="unit">Fat</div></div>
+                    <div class="macro-box"><div class="num" style="color: var(--purple);">25g+</div><div class="unit">Fiber</div></div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <p style="font-size: 0.82rem; color: var(--blue); font-weight: 700; margin-bottom: 12px;">LOW DAYS &mdash; Tue / Thu / Sat (Lighter Training Days)</p>
+                <div class="macro-display">
+                    <div class="macro-box"><div class="num" style="color: var(--green);">1,600</div><div class="unit">Calories</div></div>
+                    <div class="macro-box"><div class="num" style="color: var(--accent-light);">185g</div><div class="unit">Protein</div></div>
+                    <div class="macro-box"><div class="num" style="color: var(--gold);">105g</div><div class="unit">Carbs</div></div>
+                    <div class="macro-box"><div class="num" style="color: var(--blue);">45g</div><div class="unit">Fat</div></div>
+                    <div class="macro-box"><div class="num" style="color: var(--purple);">25g+</div><div class="unit">Fiber</div></div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 8px;">
+                <p style="font-size: 0.82rem; color: var(--purple); font-weight: 700; margin-bottom: 12px;">REST DAY &mdash; Sunday</p>
+                <div class="macro-display">
+                    <div class="macro-box"><div class="num" style="color: var(--green);">1,400</div><div class="unit">Calories</div></div>
+                    <div class="macro-box"><div class="num" style="color: var(--accent-light);">185g</div><div class="unit">Protein</div></div>
+                    <div class="macro-box"><div class="num" style="color: var(--gold);">65g</div><div class="unit">Carbs</div></div>
+                    <div class="macro-box"><div class="num" style="color: var(--blue);">48g</div><div class="unit">Fat</div></div>
+                    <div class="macro-box"><div class="num" style="color: var(--purple);">20g+</div><div class="unit">Fiber</div></div>
+                </div>
+            </div>
+
+            <div style="background: rgba(0,0,0,0.3); border-radius: 10px; padding: 12px 16px; margin-top: 16px;">
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-secondary);">
+                    Weekly Average: (1,750&times;3 + 1,600&times;3 + 1,400) &divide; 7 = <strong style="color: var(--accent);">1,636 kcal/day</strong><br>
+                    Est. TDEE (with increased cardio): ~2,600 kcal/day<br>
+                    Weekly Deficit: ~6,750 kcal &asymp; <strong style="color: var(--green);">0.88 kg/week</strong> fat loss
+                </p>
+            </div>
+        </div>
+
+        <div class="card card-green">
+            <div class="card-title">The 3-Phase Structure</div>
+            <div class="phase-timeline">
+                <div class="phase-item">
+                    <div class="phase-label" style="color: var(--accent);">Phase 1: BLITZ (Weeks 1&ndash;8) &mdash; March 28 to May 22</div>
+                    <div class="phase-detail">
+                        Hardest deficit. You have the most fat to fuel this phase. Target: 0.85&ndash;1 kg/week.<br>
+                        <strong>77 kg &rarr; 69&ndash;70 kg</strong> (includes ~2 kg initial water/glycogen drop in Week 1&ndash;2).<br>
+                        Calories: HIGH 1,750 / LOW 1,600 / REST 1,400. Refeed every 12&ndash;14 days.
+                    </div>
+                </div>
+                <div class="phase-item">
+                    <div class="phase-label" style="color: var(--gold);">Phase 2: GRIND (Weeks 9&ndash;14) &mdash; May 23 to July 3</div>
+                    <div class="phase-detail">
+                        Fat stores are lower &mdash; max fat oxidation capacity drops. Target: 0.6&ndash;0.7 kg/week.<br>
+                        <strong>69&ndash;70 kg &rarr; 65&ndash;66 kg</strong>. This is where discipline is tested hardest.<br>
+                        Calories: HIGH 1,700 / LOW 1,550 / REST 1,400. Refeed every 10 days. Add 10 min walking.
+                    </div>
+                </div>
+                <div class="phase-item">
+                    <div class="phase-label" style="color: var(--green);">Phase 3: LOCK (Weeks 15&ndash;18) &mdash; July 4 to August 1</div>
+                    <div class="phase-detail">
+                        Reverse diet. Increase calories by 100 kcal/week toward maintenance (~2,200&ndash;2,400 kcal).<br>
+                        <strong>Maintain 65 kg</strong>. Muscles fill out. Strength rebounds. New bodyweight set point locked in.<br>
+                        Keep protein at 185g. Slowly reintroduce carbs. Do NOT binge &mdash; this phase prevents rebound.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SECTION 3: DIET ===================== -->
+    <section class="section" id="diet">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Precise Meal Plans</h2>
+        </div>
+
+        <div class="warning" style="margin-bottom: 16px;">
+            <div class="warning-title">Mandatory: Buy a Kitchen Scale (&#8377;500)</div>
+            <p>At this deficit, eyeballing portions will sabotage you. A 20g error on rice = 25 kcal. A 30g error on chicken = 40 kcal. Over a week, sloppy measuring can eliminate 700&ndash;1,000 kcal of your deficit. <strong>Weigh everything for at least the first 4 weeks</strong> until you can eyeball accurately. Track in MyFitnessPal or HealthifyMe.</p>
+        </div>
+
+        <!-- Day Selector Tabs -->
+        <div class="day-tabs">
+            <div class="day-tab active" onclick="showDiet('high')">High Days (Mon/Wed/Fri)</div>
+            <div class="day-tab veg" onclick="showDiet('lowveg')">Low Veg (Tue/Thu)</div>
+            <div class="day-tab" onclick="showDiet('lowsat')" style="border-color: var(--blue);">Low Sat</div>
+            <div class="day-tab" onclick="showDiet('rest')" style="border-color: var(--purple);">Rest (Sun)</div>
+        </div>
+
+        <!-- ===== HIGH DAYS (Mon/Wed/Fri) ===== -->
+        <div class="diet-day active" id="diet-high">
+            <div class="card card-accent" style="padding: 14px 16px;">
+                <strong style="color: var(--accent);">HIGH DAYS:</strong> Monday (Push), Wednesday (Legs), Friday (Back+Chest) &nbsp;|&nbsp;
+                <span style="color: var(--text-muted); font-size: 0.85rem;">1,750 kcal | Non-Veg | Heavy Compound Days</span>
+            </div>
+
+            <div class="meal-grid">
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 1 &mdash; Breakfast</span>
+                        <span class="meal-time">7:30 AM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Whole Eggs</span><span class="meal-item-qty">2 eggs (110g)</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Egg Whites</span><span class="meal-item-qty">4 whites (132g)</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Oats (dry measure)</span><span class="meal-item-qty">40g</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Half Banana</span><span class="meal-item-qty">60g</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Black Coffee</span><span class="meal-item-qty">1 cup</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 30g</span>
+                        <span class="meal-macro macro-c">C: 38g</span>
+                        <span class="meal-macro macro-f">F: 13g</span>
+                        <span class="meal-macro macro-cal">390 kcal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 2 &mdash; Lunch</span>
+                        <span class="meal-time">1:00 PM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Chicken Breast (grilled/light curry, 1 tsp oil)</span><span class="meal-item-qty">200g cooked</span></div>
+                        <div class="meal-item"><span class="meal-item-name">White Rice (cooked)</span><span class="meal-item-qty">140g (~65g dry)</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Mixed Vegetable Sabzi</span><span class="meal-item-qty">150g</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Curd (low fat)</span><span class="meal-item-qty">80g</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 58g</span>
+                        <span class="meal-macro macro-c">C: 48g</span>
+                        <span class="meal-macro macro-f">F: 10g</span>
+                        <span class="meal-macro macro-cal">520 kcal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 3 &mdash; Pre-Workout</span>
+                        <span class="meal-time">5:00 PM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Whey Protein in water</span><span class="meal-item-qty">1 scoop (30g)</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Apple (small)</span><span class="meal-item-qty">120g</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Peanut Butter (natural)</span><span class="meal-item-qty">10g</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 27g</span>
+                        <span class="meal-macro macro-c">C: 22g</span>
+                        <span class="meal-macro macro-f">F: 6g</span>
+                        <span class="meal-macro macro-cal">250 kcal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 4 &mdash; Post-Workout Dinner</span>
+                        <span class="meal-time">8:30 PM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Chicken (light curry, 1 tsp oil max)</span><span class="meal-item-qty">150g cooked</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Whole Wheat Roti</span><span class="meal-item-qty">1 medium (35g atta)</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Dal &mdash; Moong/Masoor (thick)</span><span class="meal-item-qty">1 bowl (150ml)</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Green Salad + Cucumber</span><span class="meal-item-qty">100g</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 52g</span>
+                        <span class="meal-macro macro-c">C: 34g</span>
+                        <span class="meal-macro macro-f">F: 12g</span>
+                        <span class="meal-macro macro-cal">460 kcal</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meal-card" style="margin-top: 16px;">
+                <div class="meal-header">
+                    <span class="meal-name">Meal 5 &mdash; Before Bed</span>
+                    <span class="meal-time">10:00 PM</span>
+                </div>
+                <div class="meal-body">
+                    <div class="meal-item"><span class="meal-item-name">Whey Protein in water</span><span class="meal-item-qty">1 scoop (30g)</span></div>
+                </div>
+                <div class="meal-macros">
+                    <span class="meal-macro macro-p">P: 24g</span>
+                    <span class="meal-macro macro-c">C: 3g</span>
+                    <span class="meal-macro macro-f">F: 1g</span>
+                    <span class="meal-macro macro-cal">120 kcal</span>
+                </div>
+            </div>
+
+            <div class="card" style="background: linear-gradient(135deg, rgba(230,57,70,0.08), rgba(0,0,0,0)); border: 2px solid var(--accent); margin-top: 16px;">
+                <div class="daily-total">
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--green);">1,740</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">KCAL TOTAL</span></div>
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--accent-light);">191g</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">PROTEIN</span></div>
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--gold);">145g</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">CARBS</span></div>
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--blue);">42g</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">FAT</span></div>
+                </div>
+            </div>
+
+            <div class="tip">
+                <div class="tip-title">Key Differences From Original Plan</div>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;">
+                    Reduced from 3 eggs &rarr; 2 eggs (saved ~70 kcal). Rice down from 180g &rarr; 140g cooked (saved ~50 kcal). 2 rotis &rarr; 1 roti (saved ~110 kcal). Added second whey scoop before bed for protein insurance (+120 kcal but +24g protein). Net: ~210 kcal lower with 25g MORE protein.
+                </p>
+            </div>
+        </div>
+
+        <!-- ===== LOW VEG DAYS (Tue/Thu) ===== -->
+        <div class="diet-day" id="diet-lowveg">
+            <div class="card card-green" style="padding: 14px 16px;">
+                <strong style="color: var(--green);">LOW VEG DAYS:</strong> Tuesday (Pull), Thursday (Shoulders+Arms) &nbsp;|&nbsp;
+                <span style="color: var(--text-muted); font-size: 0.85rem;">1,600 kcal | Vegetarian | Office 9 AM&ndash;8:30 PM</span>
+            </div>
+
+            <div class="meal-grid">
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 1 &mdash; Breakfast</span>
+                        <span class="meal-time">6:45 AM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Whey Protein (mixed into oats)</span><span class="meal-item-qty">1 scoop (30g)</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Oats (dry)</span><span class="meal-item-qty">40g</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Toned Milk (for oats)</span><span class="meal-item-qty">150ml</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Paneer (low fat, crumbled on top)</span><span class="meal-item-qty">50g</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 38g</span>
+                        <span class="meal-macro macro-c">C: 38g</span>
+                        <span class="meal-macro macro-f">F: 12g</span>
+                        <span class="meal-macro macro-cal">415 kcal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 2 &mdash; Lunch (Pack for Office)</span>
+                        <span class="meal-time">1:00 PM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Soy Chunks Curry (dry weight)</span><span class="meal-item-qty">50g dry (~150g soaked)</span></div>
+                        <div class="meal-item"><span class="meal-item-name">White Rice (cooked)</span><span class="meal-item-qty">120g (~55g dry)</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Dal &mdash; Moong (thick)</span><span class="meal-item-qty">1 bowl (150ml)</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Mixed Sabzi</span><span class="meal-item-qty">100g</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 38g</span>
+                        <span class="meal-macro macro-c">C: 50g</span>
+                        <span class="meal-macro macro-f">F: 4g</span>
+                        <span class="meal-macro macro-cal">390 kcal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 3 &mdash; Office Snack / Pre-Workout</span>
+                        <span class="meal-time">5:30 PM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Roasted Chana</span><span class="meal-item-qty">40g</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Whey Protein in water</span><span class="meal-item-qty">1 scoop (30g)</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 32g</span>
+                        <span class="meal-macro macro-c">C: 18g</span>
+                        <span class="meal-macro macro-f">F: 3g</span>
+                        <span class="meal-macro macro-cal">230 kcal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 4 &mdash; Dinner (Post-Workout)</span>
+                        <span class="meal-time">9:00 PM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Paneer Bhurji (1 tsp oil)</span><span class="meal-item-qty">100g paneer</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Whole Wheat Roti</span><span class="meal-item-qty">1 medium</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Green Salad + Cucumber</span><span class="meal-item-qty">120g</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 24g</span>
+                        <span class="meal-macro macro-c">C: 26g</span>
+                        <span class="meal-macro macro-f">F: 16g</span>
+                        <span class="meal-macro macro-cal">345 kcal</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meal-card" style="margin-top: 16px;">
+                <div class="meal-header">
+                    <span class="meal-name">Meal 5 &mdash; Before Bed</span>
+                    <span class="meal-time">10:30 PM</span>
+                </div>
+                <div class="meal-body">
+                    <div class="meal-item"><span class="meal-item-name">Whey Protein in water</span><span class="meal-item-qty">1 scoop (30g)</span></div>
+                    <div class="meal-item"><span class="meal-item-name">Mixed Nuts (almonds + walnuts)</span><span class="meal-item-qty">10g</span></div>
+                </div>
+                <div class="meal-macros">
+                    <span class="meal-macro macro-p">P: 26g</span>
+                    <span class="meal-macro macro-c">C: 4g</span>
+                    <span class="meal-macro macro-f">F: 7g</span>
+                    <span class="meal-macro macro-cal">185 kcal</span>
+                </div>
+            </div>
+
+            <div class="card" style="background: linear-gradient(135deg, rgba(46,196,182,0.08), rgba(0,0,0,0)); border: 2px solid var(--green); margin-top: 16px;">
+                <div class="daily-total">
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--green);">1,565</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">KCAL TOTAL</span></div>
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--accent-light);">158g</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">PROTEIN</span></div>
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--gold);">136g</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">CARBS</span></div>
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--blue);">42g</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">FAT</span></div>
+                </div>
+            </div>
+
+            <div class="warning">
+                <div class="warning-title">Veg Day Protein Reality</div>
+                <p>158g is achievable with 3 scoops whey + soy chunks + paneer + dal. The soy chunks are your SECRET WEAPON on veg days &mdash; 50g dry soy chunks has ~26g protein at only ~170 kcal. That's better protein-per-calorie than paneer. If you hate soy chunks, replace with 100g tofu + extra dal, but you'll drop to ~145g protein. The non-veg HIGH days at 190g+ compensate &mdash; weekly average stays above 180g.</p>
+            </div>
+        </div>
+
+        <!-- ===== LOW SAT ===== -->
+        <div class="diet-day" id="diet-lowsat">
+            <div class="card card-blue" style="padding: 14px 16px;">
+                <strong style="color: var(--blue);">SATURDAY (Low Day):</strong> Core + Cardio Day &nbsp;|&nbsp;
+                <span style="color: var(--text-muted); font-size: 0.85rem;">1,600 kcal | Non-Veg | Light Training</span>
+            </div>
+
+            <div class="meal-grid">
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 1 &mdash; Breakfast</span>
+                        <span class="meal-time">7:30 AM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Whole Eggs</span><span class="meal-item-qty">2 eggs</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Egg Whites</span><span class="meal-item-qty">4 whites</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Multigrain Bread (toasted)</span><span class="meal-item-qty">1 slice (30g)</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Black Coffee</span><span class="meal-item-qty">1 cup</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 28g</span>
+                        <span class="meal-macro macro-c">C: 16g</span>
+                        <span class="meal-macro macro-f">F: 12g</span>
+                        <span class="meal-macro macro-cal">285 kcal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 2 &mdash; Lunch</span>
+                        <span class="meal-time">1:00 PM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Chicken Breast (grilled)</span><span class="meal-item-qty">200g cooked</span></div>
+                        <div class="meal-item"><span class="meal-item-name">White Rice (cooked)</span><span class="meal-item-qty">120g</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Dal + Sabzi</span><span class="meal-item-qty">1 bowl each</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 60g</span>
+                        <span class="meal-macro macro-c">C: 45g</span>
+                        <span class="meal-macro macro-f">F: 8g</span>
+                        <span class="meal-macro macro-cal">500 kcal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 3 &mdash; Pre-Training Snack</span>
+                        <span class="meal-time">4:30 PM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Whey Protein in water</span><span class="meal-item-qty">1 scoop</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Roasted Chana</span><span class="meal-item-qty">25g</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 29g</span>
+                        <span class="meal-macro macro-c">C: 12g</span>
+                        <span class="meal-macro macro-f">F: 2g</span>
+                        <span class="meal-macro macro-cal">185 kcal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 4 &mdash; Dinner</span>
+                        <span class="meal-time">8:00 PM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Chicken Curry (light, 1 tsp oil)</span><span class="meal-item-qty">150g chicken</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Large Green Salad</span><span class="meal-item-qty">150g</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Curd (low fat)</span><span class="meal-item-qty">100g</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 48g</span>
+                        <span class="meal-macro macro-c">C: 8g</span>
+                        <span class="meal-macro macro-f">F: 12g</span>
+                        <span class="meal-macro macro-cal">335 kcal</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meal-card" style="margin-top: 16px;">
+                <div class="meal-header">
+                    <span class="meal-name">Meal 5 &mdash; Before Bed</span>
+                    <span class="meal-time">10:00 PM</span>
+                </div>
+                <div class="meal-body">
+                    <div class="meal-item"><span class="meal-item-name">Whey Protein in water</span><span class="meal-item-qty">1 scoop</span></div>
+                    <div class="meal-item"><span class="meal-item-name">Peanut Butter</span><span class="meal-item-qty">10g</span></div>
+                </div>
+                <div class="meal-macros">
+                    <span class="meal-macro macro-p">P: 26g</span>
+                    <span class="meal-macro macro-c">C: 5g</span>
+                    <span class="meal-macro macro-f">F: 7g</span>
+                    <span class="meal-macro macro-cal">185 kcal</span>
+                </div>
+            </div>
+
+            <div class="card" style="background: linear-gradient(135deg, rgba(72,149,239,0.08), rgba(0,0,0,0)); border: 2px solid var(--blue); margin-top: 16px;">
+                <div class="daily-total">
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--green);">1,490</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">KCAL TOTAL</span></div>
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--accent-light);">191g</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">PROTEIN</span></div>
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--gold);">86g</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">CARBS</span></div>
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--blue);">41g</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">FAT</span></div>
+                </div>
+            </div>
+
+            <div class="tip">
+                <div class="tip-title">Saturday Strategy</div>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;">Saturday is core + cardio &mdash; the least demanding session. No roti at dinner, no rice at dinner. Just protein + veggies. This is your deepest non-veg training day deficit. The incline walk post-workout on this day burns an extra ~150&ndash;200 kcal.</p>
+            </div>
+        </div>
+
+        <!-- ===== REST DAY (Sun) ===== -->
+        <div class="diet-day" id="diet-rest">
+            <div class="card card-purple" style="padding: 14px 16px;">
+                <strong style="color: var(--purple);">REST DAY:</strong> Sunday &nbsp;|&nbsp;
+                <span style="color: var(--text-muted); font-size: 0.85rem;">1,400 kcal | Non-Veg | Deepest Deficit | Walk Only</span>
+            </div>
+
+            <div class="meal-grid">
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 1 &mdash; Late Breakfast</span>
+                        <span class="meal-time">9:00 AM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Whole Eggs</span><span class="meal-item-qty">3 eggs</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Egg Whites</span><span class="meal-item-qty">2 whites</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Multigrain Bread (toasted)</span><span class="meal-item-qty">1 slice (30g)</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Black Coffee</span><span class="meal-item-qty">1 cup</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 28g</span>
+                        <span class="meal-macro macro-c">C: 16g</span>
+                        <span class="meal-macro macro-f">F: 17g</span>
+                        <span class="meal-macro macro-cal">335 kcal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 2 &mdash; Lunch</span>
+                        <span class="meal-time">1:30 PM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Chicken Breast (grilled)</span><span class="meal-item-qty">200g cooked</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Dal (any, thick)</span><span class="meal-item-qty">1 bowl</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Mixed Vegetable Sabzi</span><span class="meal-item-qty">150g</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Curd</span><span class="meal-item-qty">80g</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 62g</span>
+                        <span class="meal-macro macro-c">C: 20g</span>
+                        <span class="meal-macro macro-f">F: 9g</span>
+                        <span class="meal-macro macro-cal">415 kcal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 3 &mdash; Afternoon Snack</span>
+                        <span class="meal-time">5:00 PM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Whey Protein in water</span><span class="meal-item-qty">1 scoop</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Cucumber + Lemon</span><span class="meal-item-qty">150g</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 25g</span>
+                        <span class="meal-macro macro-c">C: 7g</span>
+                        <span class="meal-macro macro-f">F: 1g</span>
+                        <span class="meal-macro macro-cal">140 kcal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <span class="meal-name">Meal 4 &mdash; Dinner</span>
+                        <span class="meal-time">8:00 PM</span>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-item"><span class="meal-item-name">Chicken Curry (light, 1 tsp oil)</span><span class="meal-item-qty">150g chicken</span></div>
+                        <div class="meal-item"><span class="meal-item-name">Large Green Salad</span><span class="meal-item-qty">150g</span></div>
+                    </div>
+                    <div class="meal-macros">
+                        <span class="meal-macro macro-p">P: 45g</span>
+                        <span class="meal-macro macro-c">C: 5g</span>
+                        <span class="meal-macro macro-f">F: 12g</span>
+                        <span class="meal-macro macro-cal">310 kcal</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meal-card" style="margin-top: 16px;">
+                <div class="meal-header">
+                    <span class="meal-name">Meal 5 &mdash; Before Bed</span>
+                    <span class="meal-time">10:00 PM</span>
+                </div>
+                <div class="meal-body">
+                    <div class="meal-item"><span class="meal-item-name">Whey Protein in water</span><span class="meal-item-qty">1 scoop</span></div>
+                    <div class="meal-item"><span class="meal-item-name">Mixed Nuts</span><span class="meal-item-qty">10g</span></div>
+                </div>
+                <div class="meal-macros">
+                    <span class="meal-macro macro-p">P: 26g</span>
+                    <span class="meal-macro macro-c">C: 3g</span>
+                    <span class="meal-macro macro-f">F: 7g</span>
+                    <span class="meal-macro macro-cal">180 kcal</span>
+                </div>
+            </div>
+
+            <div class="card" style="background: linear-gradient(135deg, rgba(123,44,191,0.08), rgba(0,0,0,0)); border: 2px solid var(--purple); margin-top: 16px;">
+                <div class="daily-total">
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--green);">1,380</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">KCAL TOTAL</span></div>
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--accent-light);">186g</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">PROTEIN</span></div>
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--gold);">51g</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">CARBS</span></div>
+                    <div><span class="dt-value" style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.3rem; color: var(--blue);">46g</span><br><span class="dt-label" style="font-size: 0.7rem; color: var(--text-muted);">FAT</span></div>
+                </div>
+            </div>
+
+            <div class="tip">
+                <div class="tip-title">Rest Day Logic</div>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;">
+                    No training = no need for glycogen = minimal carbs. Zero rice. Zero roti. Protein stays maximal to prevent muscle breakdown. Fat is slightly higher to support hormone production (testosterone, cortisol balance). This day has the deepest deficit but you won't feel it as much because you're resting and walking, not lifting heavy.
+                </p>
+            </div>
+        </div>
+
+        <!-- Water + Daily Rules -->
+        <div class="card card-blue" style="margin-top: 16px;">
+            <div class="card-title">Daily Non-Negotiables (Every Single Day)</div>
+            <ul class="info-list">
+                <li><strong>Water:</strong> 4+ liters/day. At a 960 kcal deficit, dehydration tanks performance and increases perceived hunger. Sip constantly.</li>
+                <li><strong>Zero cooking oil beyond 2 tsp/day total (10ml)</strong> &mdash; at these calories, every gram of hidden oil is budget-destroying</li>
+                <li><strong>No sugar in anything.</strong> No chai with sugar. No biscuits. No "just one" mithai. Zero.</li>
+                <li><strong>Black coffee before training</strong> &mdash; caffeine is a free performance enhancer + appetite suppressant. 200mg caffeine = ~2 cups black coffee.</li>
+                <li><strong>Lemon on every salad</strong> &mdash; Vitamin C aids iron absorption from dal and greens</li>
+                <li><strong>Weigh food for first 4 weeks minimum.</strong> After that you can estimate, but verify weekly.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ===================== SECTION 4: TRAINING ===================== -->
+    <section class="section" id="training">
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Modified Training (Muscle Retention Focus)</h2>
+        </div>
+
+        <div class="card card-accent" style="margin-bottom: 20px;">
+            <div class="card-title">Photo-Based Training Priority (Updated From Your Actual Photos)</div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 12px;">
+                Your photos reveal a <strong style="color: var(--accent);">clear priority order</strong> that the original plan didn't address aggressively enough:
+            </p>
+            <ul class="info-list">
+                <li><strong style="color: var(--accent);">PRIORITY #1: Lateral Delts (14 sets/week)</strong> &mdash; Your shoulder-to-waist ratio is inverted. Waist looks wider than shoulders from the front. Lateral raises 3x/week is the single most impactful change for your physique.</li>
+                <li><strong style="color: var(--accent);">PRIORITY #2: Fix Anterior Pelvic Tilt</strong> &mdash; Clearly visible in side photo. Your pelvis tilts forward, pushing belly out 2&ndash;3 inches extra. Cause: weak glutes + tight hip flexors. Fix: heavy hip thrusts added to leg day + dead bugs on Saturday + daily hip flexor stretching.</li>
+                <li><strong style="color: var(--gold);">PRIORITY #3: Rear Delts + Upper Back (8 sets isolation + 6 sets face pulls)</strong> &mdash; Back photo shows zero rear delt development. Flat from behind. Rounded shoulders confirmed. Rear delt flyes added to Tue + Thu + Fri.</li>
+                <li><strong style="color: var(--gold);">PRIORITY #4: Upper Chest</strong> &mdash; Chest has mass but sags from fat. Building upper chest creates better shape as fat comes off. Incline pressing on Mon + Fri.</li>
+                <li><strong style="color: var(--green);">REDUCED: Bicep Volume (4 sets/week)</strong> &mdash; Your biceps are your best body part. Genuinely good peak and size. They need MAINTENANCE only. Those sets go to delts and rear delts instead.</li>
+            </ul>
+        </div>
+
+        <div class="card card-green" style="margin-bottom: 20px;">
+            <div class="card-title">Training Rules For This Deficit</div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 12px;">
+                At a ~960 kcal deficit, recovery drops ~30&ndash;40%. Compounds stay heavy (muscle-retention signal). Volume is strategic: HIGH on weak points (delts, rear delts, glutes), LOW on strong points (biceps, quads). Sessions: <strong style="color: var(--text-primary);">45&ndash;55 min max</strong>.
+            </p>
+            <div class="warning" style="margin: 12px 0;">
+                <div class="warning-title">The Single Most Important Rule</div>
+                <p>If your bench press, squat, or row drops by more than 10% from your starting numbers AND stays down for 2+ weeks &mdash; you are losing muscle. Immediately move to Phase 2 calories regardless of what week you're in.</p>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.82rem;">
+                <strong style="color: var(--gold);">Warm-Up (every upper body day):</strong> 2&times;15 band pull-aparts before starting. Takes 90 seconds, zero recovery cost, massive posture benefit. Activates rear delts + mid traps + external rotators. Do this on Mon, Tue, Thu, Fri.
+            </p>
+        </div>
+
+        <div class="card card-blue" style="margin-bottom: 20px;">
+            <div class="card-title">Weekly Volume Breakdown (Photo-Optimized)</div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Muscle</th><th>Sets/Week</th><th>Rationale</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Lateral Delts</strong></td><td style="color: var(--accent); font-weight: 700;">14</td><td>CRITICAL weak point. 3 sessions/week. Recovery-cheap &mdash; small muscle, light load.</td></tr>
+                        <tr><td><strong>Rear Delts (isolation)</strong></td><td style="color: var(--accent); font-weight: 700;">8</td><td>CRITICAL for posture + back aesthetics. Plus 6 sets face pulls = 14 total rear delt.</td></tr>
+                        <tr><td><strong>Face Pulls</strong></td><td style="color: var(--gold); font-weight: 700;">6</td><td>Posture maintenance. 2x/week.</td></tr>
+                        <tr><td><strong>Chest (pressing)</strong></td><td>9</td><td>3 flat + 3 incline Mon + 3 incline Fri. Adequate for retention + upper chest priority.</td></tr>
+                        <tr><td><strong>Back (pulling)</strong></td><td>10</td><td>4 rows + 3 pulldowns + 3 pull-ups. Heavy enough to preserve mass.</td></tr>
+                        <tr><td><strong>Glutes (APT fix)</strong></td><td style="color: var(--gold); font-weight: 700;">5</td><td>3 heavy hip thrusts Wed + 2 glute bridges Sat. Fixes anterior pelvic tilt.</td></tr>
+                        <tr><td><strong>Quads</strong></td><td>7</td><td>4 squats + 3 leg press. Legs have a natural base &mdash; maintenance volume.</td></tr>
+                        <tr><td><strong>Hamstrings</strong></td><td>5</td><td>3 RDL + 2 leg curls.</td></tr>
+                        <tr><td><strong>Triceps</strong></td><td>7</td><td>3+2 Mon + 2 Thu. Adequate for arm density.</td></tr>
+                        <tr><td><strong>Biceps</strong></td><td style="color: var(--green); font-weight: 700;">4</td><td>Already your strongest body part. Maintenance only. Freed sets go to delts.</td></tr>
+                        <tr><td><strong>Core</strong></td><td>11</td><td>Saturday focused. Includes APT-corrective dead bugs.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- MONDAY -->
+        <div class="workout-day">
+            <div class="workout-day-header" onclick="toggleWorkout(this)">
+                <div>
+                    <span class="day-label">MONDAY &mdash; PUSH</span>
+                    <span class="day-focus">Chest + Delts + Triceps | HIGH DAY</span>
+                </div>
+                <span class="tag tag-red">~50 min</span>
+            </div>
+            <div class="workout-body">
+                <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 8px; font-style: italic;">Warm-up: 2&times;15 band pull-aparts (90 sec)</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Notes</th></tr></thead>
+                        <tbody>
+                            <tr><td>Flat Barbell Bench Press</td><td>3</td><td>5&ndash;7</td><td>3 min</td><td>HEAVY anchor. 3 sets is enough for retention &mdash; freed 1 set for laterals.</td></tr>
+                            <tr><td>Incline Dumbbell Press (30&deg;)</td><td>3</td><td>8&ndash;10</td><td>2 min</td><td>Upper chest priority &mdash; fixes the sagging chest shape as fat comes off.</td></tr>
+                            <tr><td>Dumbbell Lateral Raises</td><td>4</td><td>12&ndash;15</td><td>60s</td><td>3-sec slow lowering. Your #1 aesthetic exercise. Feel the side delt burn.</td></tr>
+                            <tr><td>Overhead Tricep Extension (rope)</td><td>3</td><td>10&ndash;12</td><td>60s</td><td>Long head &mdash; makes arms look bigger from side.</td></tr>
+                            <tr><td>Tricep Pushdowns</td><td>2</td><td>12&ndash;15</td><td>45s</td><td>Squeeze 1 sec at bottom. Quick finisher.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 8px;">15 working sets. Bench reduced to 3 sets (3&rarr;4 gives diminishing returns on a cut). Extra set moved to lateral raises (4 instead of 3).</p>
+            </div>
+        </div>
+
+        <!-- TUESDAY -->
+        <div class="workout-day">
+            <div class="workout-day-header" onclick="toggleWorkout(this)">
+                <div>
+                    <span class="day-label">TUESDAY &mdash; PULL</span>
+                    <span class="day-focus">Back + Rear Delts | LOW DAY | Office | Veg</span>
+                </div>
+                <span class="tag tag-green">~50 min</span>
+            </div>
+            <div class="workout-body">
+                <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 8px; font-style: italic;">Warm-up: 2&times;15 band pull-aparts (90 sec)</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Notes</th></tr></thead>
+                        <tbody>
+                            <tr><td>Barbell Rows (Overhand)</td><td>4</td><td>5&ndash;7</td><td>3 min</td><td>HEAVY anchor. Back thickness builder. Strict &mdash; no body english.</td></tr>
+                            <tr><td>Lat Pulldowns (Wide Grip)</td><td>3</td><td>8&ndash;10</td><td>2 min</td><td>Full stretch at top, squeeze lats at bottom. Width builder.</td></tr>
+                            <tr><td>Face Pulls (Rope)</td><td>3</td><td>15&ndash;20</td><td>45s</td><td>Pull to forehead, hold 2 sec. Posture + external rotation.</td></tr>
+                            <tr><td>Reverse Dumbbell Fly (bent-over)</td><td>3</td><td>15&ndash;20</td><td>45s</td><td>TRUE rear delt isolation. Your back photo shows ZERO rear delt. This fixes it.</td></tr>
+                            <tr><td>Barbell Curls</td><td>2</td><td>8&ndash;10</td><td>60s</td><td>Maintenance only. Your biceps are already strong &mdash; 2 sets is enough.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 8px;">15 sets. Dropped incline curls (biceps don't need 5 sets/week when they're your best body part). Replaced with 3 sets reverse fly for rear delts.</p>
+            </div>
+        </div>
+
+        <!-- WEDNESDAY -->
+        <div class="workout-day">
+            <div class="workout-day-header" onclick="toggleWorkout(this)">
+                <div>
+                    <span class="day-label">WEDNESDAY &mdash; LEGS + GLUTES</span>
+                    <span class="day-focus">Quads + Hams + Glutes (APT Fix) | HIGH DAY | Office</span>
+                </div>
+                <span class="tag tag-gold">~55 min</span>
+            </div>
+            <div class="workout-body">
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Notes</th></tr></thead>
+                        <tbody>
+                            <tr><td>Barbell Back Squats</td><td>4</td><td>5&ndash;7</td><td>3 min</td><td>THE anchor. Full depth. Track this number weekly.</td></tr>
+                            <tr><td>Romanian Deadlifts</td><td>3</td><td>8&ndash;10</td><td>2 min</td><td>Hamstring + glute. Slow 3-sec eccentric.</td></tr>
+                            <tr><td>Leg Press</td><td>3</td><td>10&ndash;12</td><td>2 min</td><td>Feet high &amp; wide for glute engagement.</td></tr>
+                            <tr><td>Barbell Hip Thrusts</td><td>3</td><td>10&ndash;12</td><td>90s</td><td style="color: var(--accent);">NEW: APT CORRECTION. Your glutes are weak &mdash; this is WHY your belly pushes forward. Squeeze glutes HARD at top for 2 sec.</td></tr>
+                            <tr><td>Leg Curls</td><td>2</td><td>12&ndash;15</td><td>60s</td><td>Squeeze hamstrings at top.</td></tr>
+                            <tr><td>Standing Calf Raises</td><td>2</td><td>15&ndash;20</td><td>45s</td><td>Full ROM. 2-sec pause at top.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 8px;">17 sets. Added hip thrusts &mdash; weak glutes cause your anterior pelvic tilt which makes your belly look 2&ndash;3 inches bigger than it actually is. This single exercise will change your side profile within 4 weeks.</p>
+            </div>
+        </div>
+
+        <!-- THURSDAY -->
+        <div class="workout-day">
+            <div class="workout-day-header" onclick="toggleWorkout(this)">
+                <div>
+                    <span class="day-label">THURSDAY &mdash; V-TAPER (Priority Day)</span>
+                    <span class="day-focus">Delts + Rear Delts + Arms | LOW DAY | Office | Veg</span>
+                </div>
+                <span class="tag tag-purple">~50 min</span>
+            </div>
+            <div class="workout-body">
+                <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 8px; font-style: italic;">Warm-up: 2&times;15 band pull-aparts (90 sec)</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Notes</th></tr></thead>
+                        <tbody>
+                            <tr><td>Overhead Press (Barbell or DB)</td><td>3</td><td>6&ndash;8</td><td>2.5 min</td><td>Strict press. Anchor. Reduced to 3 sets (LOW calorie day &mdash; less fuel for heavy pressing).</td></tr>
+                            <tr><td>Dumbbell Lateral Raises</td><td>4</td><td>12&ndash;15</td><td>60s</td><td>Width builder. 3-sec negatives. Feel every rep in the side delt, NOT the traps.</td></tr>
+                            <tr><td>Cable Lateral Raises (single arm)</td><td>3</td><td>15&ndash;20</td><td>45s</td><td>Constant tension. Different resistance curve than DBs. Behind-the-back variant if possible.</td></tr>
+                            <tr><td>Reverse Pec Deck</td><td>3</td><td>15&ndash;20</td><td>45s</td><td>Rear delt isolation. Squeeze 2 sec at peak contraction.</td></tr>
+                            <tr><td>Superset: EZ-Bar Curls</td><td>2</td><td>10&ndash;12</td><td rowspan="2">60s</td><td>Bicep maintenance. Superset with triceps to save time.</td></tr>
+                            <tr><td>Superset: Overhead Tricep Extension</td><td>2</td><td>10&ndash;12</td><td>Long head tricep. Arms done fast via superset.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 8px;">17 sets. This is your MOST IMPORTANT aesthetic day. 7 sets of lateral raises + 3 sets rear delt + OHP. Your shoulder-to-waist ratio changes here. Arms are supersetted to save time &mdash; they only need maintenance.</p>
+            </div>
+        </div>
+
+        <!-- FRIDAY -->
+        <div class="workout-day">
+            <div class="workout-day-header" onclick="toggleWorkout(this)">
+                <div>
+                    <span class="day-label">FRIDAY &mdash; WEAK POINTS</span>
+                    <span class="day-focus">Back Width + Upper Chest + Delts + Posture | HIGH DAY</span>
+                </div>
+                <span class="tag tag-blue">~50 min</span>
+            </div>
+            <div class="workout-body">
+                <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 8px; font-style: italic;">Warm-up: 2&times;15 band pull-aparts (90 sec)</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Notes</th></tr></thead>
+                        <tbody>
+                            <tr><td>Pull-ups / Assisted Pull-ups</td><td>3</td><td>5&ndash;10</td><td>2 min</td><td>Wide grip. Best lat width exercise. Work toward bodyweight reps.</td></tr>
+                            <tr><td>Incline Barbell Bench Press</td><td>3</td><td>8&ndash;10</td><td>2 min</td><td>Upper chest &mdash; 2nd session this week. Fixes chest shape.</td></tr>
+                            <tr><td>Cable Lateral Raises</td><td>3</td><td>12&ndash;15</td><td>60s</td><td>3rd lateral session this week. This is how you build wide shoulders FAST.</td></tr>
+                            <tr><td>Face Pulls (Rope)</td><td>3</td><td>15&ndash;20</td><td>45s</td><td>2nd face pull session. Posture correction. Hold 2 sec.</td></tr>
+                            <tr><td>Rear Delt Cable Fly (single arm)</td><td>2</td><td>15&ndash;20</td><td>45s</td><td>Rear delt from a different angle. Constant tension finish.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 8px;">14 sets. Renamed from &ldquo;Back + Chest&rdquo; to &ldquo;Weak Points.&rdquo; Every exercise here targets what your photos show you need most: lat width, upper chest, side delts, rear delts, posture. No wasted movements.</p>
+            </div>
+        </div>
+
+        <!-- SATURDAY -->
+        <div class="workout-day">
+            <div class="workout-day-header" onclick="toggleWorkout(this)">
+                <div>
+                    <span class="day-label">SATURDAY &mdash; CORE + POSTURE + CARDIO</span>
+                    <span class="day-focus">APT Correction + Abs + Fat Burn | LOW DAY</span>
+                </div>
+                <span class="tag tag-gold">~50 min</span>
+            </div>
+            <div class="workout-body">
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Notes</th></tr></thead>
+                        <tbody>
+                            <tr><td>Hanging Leg Raises</td><td>3</td><td>12&ndash;15</td><td>60s</td><td>Lower abs. Curl pelvis UP &mdash; don't just swing legs.</td></tr>
+                            <tr><td>Dead Bugs</td><td>3</td><td>10 each side</td><td>45s</td><td style="color: var(--accent);">APT CORRECTION. Teaches your core to posteriorly tilt the pelvis. Flatten lower back into floor HARD. This directly counteracts your belly protrusion.</td></tr>
+                            <tr><td>Cable Woodchops</td><td>3</td><td>12 each</td><td>60s</td><td>Obliques &mdash; creates the side lines when lean. Targets love handle area aesthetics.</td></tr>
+                            <tr><td>Glute Bridges (bodyweight, high rep)</td><td>2</td><td>20</td><td>45s</td><td style="color: var(--accent);">APT REINFORCEMENT. Squeeze glutes 3 sec at top. Keeps glute activation pattern strong between heavy Wed sessions.</td></tr>
+                            <tr><td>Farmer&rsquo;s Walks</td><td>3</td><td>40m</td><td>60s</td><td>Grip, traps, core bracing. Carry heavy.</td></tr>
+                            <tr><td>Incline Treadmill Walk</td><td>1</td><td>25 min</td><td>&mdash;</td><td>12% incline, 5.5 km/h. Primary fat burn session of the week.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 8px;">14 sets + 25 min cardio. Added dead bugs (APT correction) and glute bridges (reinforcement). Your side profile photo shows the belly pushes forward from pelvic tilt, not just fat. These exercises fix the root cause.</p>
+            </div>
+        </div>
+
+        <div class="card card-purple">
+            <div class="card-title">SUNDAY &mdash; ACTIVE REST + APT MOBILITY</div>
+            <ul class="info-list">
+                <li>NO gym. Muscles grow during rest.</li>
+                <li>35&ndash;45 min brisk walk (morning)</li>
+                <li><strong style="color: var(--accent);">Hip Flexor Stretch:</strong> Kneeling lunge, 90 sec each side. Your hip flexors are tight (visible in side photo). This directly reduces anterior pelvic tilt.</li>
+                <li><strong style="color: var(--accent);">Glute Bridge Hold:</strong> 3 &times; 30 sec squeeze at top. Reinforces glute activation.</li>
+                <li>Full body stretching: 15&ndash;20 minutes (cat-cow, child's pose, spinal twists)</li>
+                <li>Foam rolling: quads (especially hip flexors/TFL), hamstrings, upper back &mdash; 10 min</li>
+                <li>Target: 10,000+ steps through the day</li>
+            </ul>
+        </div>
+
+        <div class="card card-gold" style="margin-top: 8px;">
+            <div class="card-title">Deload Week: Every 4 Weeks (Not 5)</div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px;">
+                At this deficit with this volume, fatigue accumulates faster. Deload every 4 weeks strictly:
+            </p>
+            <ul class="info-list">
+                <li>Same exercises but at <strong>60% of your normal weight</strong></li>
+                <li>Same reps but only <strong>2 sets per exercise</strong> instead of 3&ndash;4</li>
+                <li>Sessions take ~25&ndash;30 min. Should feel easy. That's the point.</li>
+                <li>Calories stay the same during deload &mdash; do NOT eat more</li>
+                <li>Still do all cardio (walking) during deload &mdash; only weights are reduced</li>
+                <li>Strength typically rebounds +5&ndash;10% the week after deload. Trust it.</li>
+            </ul>
+        </div>
+
+        <div class="warning" style="margin-top: 12px;">
+            <div class="warning-title">About Your Belly (The Hard Truth From Your Side Photo)</div>
+            <p>Your belly protrudes significantly in the side view. About 60% of this is actual subcutaneous + visceral fat (fixed by the aggressive cut). But roughly 40% is your anterior pelvic tilt making it LOOK worse than it is. Your pelvis tilts forward, your lower back over-arches, and your gut gets pushed outward. The hip thrusts (Wed), dead bugs (Sat), glute bridges (Sat + Sun), and hip flexor stretches (Sun) attack this directly. Within 4&ndash;6 weeks of consistent APT work, your side profile will look noticeably flatter even before significant fat loss. Fix posture + lose fat = double impact.</p>
+        </div>
+    </section>
+
+    <!-- ===================== SECTION 5: CARDIO ===================== -->
+    <section class="section" id="cardio">
+        <div class="section-header">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Aggressive Cardio Protocol</h2>
+        </div>
+
+        <div class="card card-accent">
+            <div class="card-title">The Strategy: Double the NEAT, Not the HIIT</div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 12px;">
+                The extra deficit comes from two sources: ~360 kcal from food reduction + ~400 kcal from increased daily movement. This means cardio isn't optional &mdash; it's structural.
+            </p>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Activity</th><th>Frequency</th><th>Details</th><th>Est. Burn</th></tr>
+                    <tr><td><strong>Morning Fasted Walk</strong></td><td>6 days/week</td><td>30&ndash;40 min brisk (6&ndash;6.5 km/h). Before breakfast. Coffee OK.</td><td>200&ndash;250 kcal</td></tr>
+                    <tr><td><strong>Post-Workout Incline Walk</strong></td><td>4 days/week (Mon/Wed/Fri/Sat)</td><td>15 min, 12% incline, 5.5 km/h. Immediately after weights.</td><td>120&ndash;150 kcal</td></tr>
+                    <tr><td><strong>Daily Step Target</strong></td><td>Every day</td><td><strong>12,000&ndash;15,000 steps</strong>. Walk after meals. Take stairs. Walk during calls.</td><td>~500 kcal (NEAT)</td></tr>
+                    <tr><td><strong>Sunday Walk</strong></td><td>1 day/week</td><td>40&ndash;50 min outdoor brisk walk. Morning preferred.</td><td>250&ndash;300 kcal</td></tr>
+                    <tr><td><strong>Office Days Hack</strong></td><td>Tue/Wed/Thu</td><td>Walk during lunch (15 min). Take stairs always. Stand 30 min/hour.</td><td>~100 kcal extra</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="compare-grid" style="margin-top: 16px;">
+            <div class="compare-cell"><div class="cl">Original Steps</div><div class="cv" style="color: var(--text-muted);">10,000/day</div></div>
+            <div class="compare-cell"><div class="cl">New Steps</div><div class="cv" style="color: var(--accent);">12&ndash;15k/day</div></div>
+            <div class="compare-cell"><div class="cl">Original Morning Walk</div><div class="cv" style="color: var(--text-muted);">20&ndash;30 min</div></div>
+            <div class="compare-cell"><div class="cl">New Morning Walk</div><div class="cv" style="color: var(--accent);">30&ndash;40 min daily</div></div>
+            <div class="compare-cell"><div class="cl">Original Post-WO Cardio</div><div class="cv" style="color: var(--text-muted);">3x/week</div></div>
+            <div class="compare-cell"><div class="cl">New Post-WO Cardio</div><div class="cv" style="color: var(--accent);">4x/week (15 min)</div></div>
+        </div>
+
+        <div class="warning" style="margin-top: 16px;">
+            <div class="warning-title">No HIIT Until You're Under 70 kg</div>
+            <p>At 77 kg and an aggressive caloric deficit, adding HIIT will spike cortisol, destroy recovery, increase injury risk, and make you hate your life. Walking is the superior fat loss tool at your current stats. When you hit 70 kg and transition to Phase 2, you can add ONE 15-min HIIT session per week if you want. Not before.</p>
+        </div>
+    </section>
+
+    <!-- ===================== SECTION 6: REFEEDS ===================== -->
+    <section class="section" id="refeed">
+        <div class="section-header">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Structured Refeed Protocol</h2>
+        </div>
+
+        <div class="card card-green">
+            <div class="card-title">Why Refeeds Are Non-Negotiable At This Deficit</div>
+            <ul class="info-list">
+                <li><strong>Leptin:</strong> After 10&ndash;14 days in aggressive deficit, leptin (satiety hormone) drops 30&ndash;50%. You feel ravenously hungry. A high-carb refeed partially restores leptin levels within 24 hours.</li>
+                <li><strong>Thyroid (T3):</strong> Prolonged deficit downregulates T3 (metabolic rate hormone). Carb refeed stimulates T3 production. This prevents your metabolism from adapting to the low calories.</li>
+                <li><strong>Glycogen:</strong> After 10+ days of low carbs, your muscle glycogen is depleted. Training performance tanks. One refeed day replenishes glycogen and strength rebounds.</li>
+                <li><strong>Cortisol:</strong> Chronic deficit elevates cortisol (stress hormone that breaks down muscle). Refeed blunts cortisol response.</li>
+                <li><strong>Psychology:</strong> Having a scheduled refeed prevents unplanned binges. You have something to look forward to.</li>
+            </ul>
+        </div>
+
+        <div class="card card-gold">
+            <div class="card-title">Refeed Day Protocol</div>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Parameter</th><th>Details</th></tr>
+                    <tr><td><strong>Frequency</strong></td><td>Every 10&ndash;14 days. Phase 1: every 12&ndash;14 days. Phase 2: every 10 days.</td></tr>
+                    <tr><td><strong>Calories</strong></td><td><strong>2,400 kcal</strong> (approximately maintenance)</td></tr>
+                    <tr><td><strong>Protein</strong></td><td>185g (same as always)</td></tr>
+                    <tr><td><strong>Carbs</strong></td><td><strong>300g+</strong> (this is the KEY &mdash; high carbs drive leptin and glycogen)</td></tr>
+                    <tr><td><strong>Fat</strong></td><td>40g max (keep fat LOW &mdash; fat doesn't drive leptin, carbs do)</td></tr>
+                    <tr><td><strong>Best Day</strong></td><td>The day BEFORE your heaviest training session (e.g., Sunday refeed &rarr; Monday heavy push)</td></tr>
+                    <tr><td><strong>Food Sources</strong></td><td>Rice, oats, banana, roti, potato, sweet potato, fruit, idli/dosa, low-fat sweets. NOT fried food. NOT pizza/burgers.</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="card card-accent">
+            <div class="card-title">Sample Refeed Day Meals (2,400 kcal)</div>
+            <ul class="info-list">
+                <li><strong>Breakfast:</strong> 3 eggs + 4 whites + oats 60g + banana + toast (2 slices) &mdash; P:40g, C:85g, F:18g</li>
+                <li><strong>Lunch:</strong> Chicken 200g + white rice 250g cooked + dal + sabzi + curd &mdash; P:60g, C:90g, F:10g</li>
+                <li><strong>Snack:</strong> 2 bananas + whey scoop + 40g roasted chana &mdash; P:32g, C:65g, F:3g</li>
+                <li><strong>Dinner:</strong> Chicken 150g + 2 rotis + dal + salad &mdash; P:52g, C:60g, F:9g</li>
+            </ul>
+            <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 8px;">Total: ~P:184g, C:300g, F:40g, ~2,400 kcal. Notice: massive carbs, same protein, very low fat.</p>
+        </div>
+
+        <div class="warning">
+            <div class="warning-title">Refeed &ne; Cheat Day</div>
+            <p>A refeed is a STRATEGIC, MEASURED increase in carbohydrates. It is NOT "eat whatever you want." No biryani with extra oil. No pizza. No ice cream. No fried anything. Clean carb sources only. If you turn refeed into cheat day, you'll erase 3&ndash;4 days of deficit in one sitting.</p>
+        </div>
+    </section>
+
+    <!-- ===================== SECTION 7: SUPPLEMENTS ===================== -->
+    <section class="section" id="supplements">
+        <div class="section-header">
+            <span class="section-number">07</span>
+            <h2 class="section-title">Supplement Protocol (Adjusted for Aggressive Cut)</h2>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead><tr><th>Supplement</th><th>Dose</th><th>When</th><th>Why It's More Important Now</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Whey Protein Isolate</strong></td>
+                        <td>2 scoops/day (non-veg)<br>3 scoops/day (veg)</td>
+                        <td>Pre-WO + before bed + morning (veg)</td>
+                        <td>At 1,636 avg kcal, hitting 185g protein from food alone is impossible. Whey is calorie-efficient protein.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Creatine Monohydrate</strong></td>
+                        <td>5g daily (no cycling)</td>
+                        <td>Any time, with meal</td>
+                        <td>CRITICAL at aggressive deficit. Maintains strength, cell hydration, and performance when glycogen is low.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Omega-3 Fish Oil</strong></td>
+                        <td>2 capsules (1000mg EPA+DHA)</td>
+                        <td>With lunch or dinner</td>
+                        <td>Anti-inflammatory. At high deficit, systemic inflammation increases. Omega-3 counteracts this.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vitamin D3</strong></td>
+                        <td>4000 IU daily</td>
+                        <td>With fat-containing meal</td>
+                        <td>Supports testosterone and immune function. Both are suppressed by aggressive caloric restriction.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Magnesium Glycinate</strong></td>
+                        <td>400mg</td>
+                        <td>Before bed</td>
+                        <td>Sleep quality becomes 10x more important at high deficit. Magnesium improves deep sleep and reduces cramping.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Caffeine (Black Coffee)</strong></td>
+                        <td>200&ndash;300mg (2&ndash;3 cups)</td>
+                        <td>Morning + pre-workout</td>
+                        <td>Appetite suppressant + thermogenic + performance enhancer. Free and effective. Stop after 2 PM for sleep.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Electrolytes (optional)</strong></td>
+                        <td>1/4 tsp salt + lime in water</td>
+                        <td>Morning + during workout</td>
+                        <td>Low carb days deplete sodium. If you feel dizzy/lightheaded, electrolytes fix it instantly.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ===================== SECTION 8: WARNING SIGNS ===================== -->
+    <section class="section" id="warnings">
+        <div class="section-header">
+            <span class="section-number">08</span>
+            <h2 class="section-title">Red Flags &mdash; When to Pull Back</h2>
+        </div>
+
+        <div class="card card-accent">
+            <div class="card-title">Stop the Aggressive Cut If You See These Signs</div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Warning Sign</th><th>What It Means</th><th>Action</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Strength drops &gt;10% for 2+ weeks</strong></td><td>You're losing muscle, not just fat</td><td>Move to Phase 2 immediately. Add 200 kcal/day.</td></tr>
+                        <tr><td><strong>Constant cold hands/feet</strong></td><td>Metabolic adaptation &mdash; thyroid downregulation</td><td>Refeed immediately. Consider 1-week diet break at maintenance.</td></tr>
+                        <tr><td><strong>Insomnia / waking at 3&ndash;4 AM</strong></td><td>Cortisol dysregulation from chronic deficit</td><td>Add 100 kcal of carbs at dinner. Take magnesium. If persists, reduce deficit.</td></tr>
+                        <tr><td><strong>Complete loss of sex drive</strong></td><td>Testosterone suppression from excessive deficit + low fat</td><td>Increase fat to 55g/day. Schedule refeed within 2 days.</td></tr>
+                        <tr><td><strong>Hair falling out noticeably</strong></td><td>Severe nutritional stress (usually protein or micronutrient deficiency)</td><td>STOP aggressive cut. Return to 2,000 kcal. Get blood work done.</td></tr>
+                        <tr><td><strong>Binge episodes</strong></td><td>Psychological breaking point from restriction</td><td>Schedule refeeds more frequently (every 7 days). Consider moving to Phase 2.</td></tr>
+                        <tr><td><strong>Getting sick frequently</strong></td><td>Immune suppression from chronic deficit</td><td>Take a full diet break (maintenance calories for 1 week). Add Vitamin C, zinc.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tip">
+            <div class="tip-title">The Escape Hatch</div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem;">
+                If at any point this protocol feels unsustainable, you can ALWAYS fall back to the original plan (2,000 kcal, 0.43 kg/week). You'll still reach 65 kg &mdash; just later. There is no shame in slowing down. Losing 0.5 kg/week for 28 weeks is infinitely better than losing 1 kg/week for 4 weeks, burning out, and regaining everything. The best diet is the one you can actually follow.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===================== SECTION 9: TIMELINE ===================== -->
+    <section class="section" id="timeline">
+        <div class="section-header">
+            <span class="section-number">09</span>
+            <h2 class="section-title">Accelerated Timeline</h2>
+        </div>
+
+        <div class="card card-gold">
+            <div class="card-title">Projected Weight Loss Trajectory</div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Week</th><th>Date</th><th>Expected Weight</th><th>Rate</th><th>What You'll See</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>Apr 4</td><td>74&ndash;75 kg</td><td>2&ndash;3 kg</td><td>Water + glycogen dump. Scale drops fast. Don't get excited &mdash; this isn't all fat.</td></tr>
+                        <tr><td>2</td><td>Apr 11</td><td>73.5&ndash;74 kg</td><td>~1 kg</td><td>True fat loss begins. Slightly less bloated.</td></tr>
+                        <tr><td>4</td><td>Apr 25</td><td>72&ndash;73 kg</td><td>~0.9/wk</td><td>Face starts slimming. Clothes looser at waist. First refeed day.</td></tr>
+                        <tr><td>6</td><td>May 9</td><td>70.5&ndash;71.5 kg</td><td>~0.85/wk</td><td>Clear visual difference. Belt tightened. People may notice.</td></tr>
+                        <tr style="background: rgba(230,57,70,0.05);"><td><strong>8</strong></td><td><strong>May 22</strong></td><td><strong>69&ndash;70 kg</strong></td><td><strong>~0.85/wk</strong></td><td><strong>Phase 1 ends. ~7&ndash;8 kg lost. Transition to Phase 2.</strong></td></tr>
+                        <tr><td>10</td><td>Jun 5</td><td>67.5&ndash;68.5 kg</td><td>~0.65/wk</td><td>Shoulder definition visible. Arms look muscular. Jawline sharpening.</td></tr>
+                        <tr><td>12</td><td>Jun 19</td><td>66&ndash;67 kg</td><td>~0.6/wk</td><td>Upper abs faintly visible. V-taper emerging. Shirts fit differently.</td></tr>
+                        <tr style="background: rgba(46,196,182,0.05);"><td><strong>14</strong></td><td><strong>Jul 3</strong></td><td><strong>65&ndash;66 kg</strong></td><td><strong>~0.6/wk</strong></td><td><strong>Phase 2 ends. Goal weight reached. Begin reverse diet.</strong></td></tr>
+                        <tr><td>16</td><td>Jul 17</td><td>65 kg</td><td>Maintenance</td><td>Reverse diet: +100 kcal/week. Muscles filling out. Strength rebounding.</td></tr>
+                        <tr><td>18</td><td>Aug 1</td><td>65&ndash;66 kg</td><td>Maintenance</td><td>At maintenance calories (~2,300). New set point. Physique solidified.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="compare-grid" style="margin-top: 16px;">
+            <div class="compare-cell"><div class="cl">Original Goal Date</div><div class="cv" style="color: var(--text-muted);">September 30</div></div>
+            <div class="compare-cell"><div class="cl">New Goal Date</div><div class="cv" style="color: var(--green);">Early July</div></div>
+            <div class="compare-cell"><div class="cl">Time Saved</div><div class="cv" style="color: var(--accent);">~3 months</div></div>
+            <div class="compare-cell"><div class="cl">Fully Reverse-Dieted By</div><div class="cv" style="color: var(--green);">August 1</div></div>
+        </div>
+    </section>
+
+    <!-- ===================== SECTION 10: TRACKING ===================== -->
+    <section class="section" id="tracking">
+        <div class="section-header">
+            <span class="section-number">10</span>
+            <h2 class="section-title">Tracking + Daily Checklist</h2>
+        </div>
+
+        <div class="card card-green">
+            <div class="card-title">What to Track (More Rigorous Than Original)</div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Metric</th><th>Frequency</th><th>Why It's Critical At This Deficit</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Body Weight</strong></td><td>Daily (calculate weekly avg)</td><td>At 0.85 kg/week, daily fluctuations matter less. Only the weekly average tells truth.</td></tr>
+                        <tr><td><strong>Waist (at navel)</strong></td><td>Weekly (Sunday AM)</td><td>THE most reliable fat loss indicator. If waist shrinks but weight stalls, you're gaining muscle and losing fat.</td></tr>
+                        <tr><td><strong>Big Lift Numbers</strong></td><td>Every session</td><td>Bench, Squat, Row, OHP. If these hold steady or go up, you're keeping muscle. If they crash, red flag.</td></tr>
+                        <tr><td><strong>Daily Calories + Protein</strong></td><td>Daily (MyFitnessPal/HealthifyMe)</td><td>At this deficit, a 200 kcal daily error = 1,400 kcal/week error = almost 0.2 kg less fat lost per week.</td></tr>
+                        <tr><td><strong>Daily Steps</strong></td><td>Daily (fitness band/phone)</td><td>Steps are part of the deficit equation. 12k steps vs 8k steps = 200 kcal difference. It matters.</td></tr>
+                        <tr><td><strong>Sleep Hours</strong></td><td>Daily</td><td>Below 7 hours at this deficit = elevated cortisol = muscle loss. Track it. Fix it.</td></tr>
+                        <tr><td><strong>Progress Photos</strong></td><td>Every 2 weeks (Sunday AM)</td><td>Front relaxed, front flexed, side, back. Same lighting. Same location. No filters.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="quick-ref" style="margin-top: 20px;">
+            <h3>Weekly Check-In Template</h3>
+            <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: clamp(0.65rem, 2.5vw, 0.82rem); color: var(--text-secondary); line-height: 2; word-break: break-word;">
+                Week #: ____ | Phase: ____ | Refeed: Y/N<br>
+                Date: ____/____/2026<br>
+                Weight (7-day avg): ____ kg<br>
+                Waist: ____ inches<br>
+                Bench: ____ kg &times; ____ reps<br>
+                Squat: ____ kg &times; ____ reps<br>
+                Row: ____ kg &times; ____ reps<br>
+                OHP: ____ kg &times; ____ reps<br>
+                Avg daily calories: ____ kcal<br>
+                Avg daily protein: ____ g<br>
+                Meals on plan: ____/7 days<br>
+                Gym sessions: ____/6<br>
+                Avg steps: ____/day<br>
+                Avg sleep: ____ hrs<br>
+                Energy level (1&ndash;10): ____<br>
+                Hunger level (1&ndash;10): ____<br>
+                Red flags: ____
+            </div>
+        </div>
+
+        <div class="card card-accent" style="margin-top: 16px;">
+            <div class="card-title">Daily Checklist (Aggressive Protocol)</div>
+            <ul class="checklist">
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>Woke before 6:30 AM</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>500ml water upon waking</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>Morning fasted walk: 30&ndash;40 min</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>Ate all meals as planned (no deviations)</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>Hit protein target (185g+ non-veg / 155g+ veg)</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>Stayed within calorie target (&plusmn;50 kcal)</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>Logged all food in tracking app</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>Creatine 5g taken</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>Vitamin D + Omega-3 + Magnesium taken</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>Gym session completed (logged weights)</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>Post-workout incline walk done (if applicable)</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>Hit 12,000+ steps</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>4+ liters water consumed</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>Zero junk / fried / sugar / alcohol</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>Night stretch + foam roll done</li>
+                <li><span class="check" onclick="this.classList.toggle('done')"></span>In bed by 10:30 PM, phone away</li>
+            </ul>
+            <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 12px;">Target: 14/16 minimum. Below 12 = bad day. Two bad days in a row = you need to reassess what's going wrong.</p>
+        </div>
+    </section>
+
+</div>
+
+<!-- Back to Top -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" style="
+    position: fixed; bottom: 24px; right: 24px;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--accent); color: white; border: none;
+    font-size: 1.3rem; cursor: pointer; z-index: 200;
+    display: none; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(230,57,70,0.4);
+    -webkit-tap-highlight-color: transparent;
+">&#8593;</button>
+
+<div class="footer">
+    <p><strong>KUNAL KUMAR &mdash; AGGRESSIVE CUT PROTOCOL V2</strong></p>
+    <p style="margin-top: 4px;">Start: March 28, 2026 &nbsp;|&nbsp; Goal: July 3, 2026 &nbsp;|&nbsp; Reverse Diet Complete: August 1, 2026</p>
+    <p style="margin-top: 8px; font-size: 0.7rem; color: var(--text-muted);">Aggressive doesn&rsquo;t mean reckless. Every number here is calculated. Trust the math. Execute the plan.</p>
+    <p style="margin-top: 16px; font-size: 0.7rem; color: var(--text-muted);">
+        Disclaimer: This is a general fitness guide, not medical advice. This protocol involves an aggressive caloric deficit. Consult a doctor before starting, especially if you have any pre-existing conditions. Stop immediately if you experience any warning signs listed in Section 08.
+    </p>
+</div>
+
+<script>
+    function showDiet(type) {
+        document.querySelectorAll('.diet-day').forEach(d => d.classList.remove('active'));
+        document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById('diet-' + type).classList.add('active');
+        const tabs = document.querySelectorAll('.day-tab');
+        if (type === 'high') tabs[0].classList.add('active');
+        if (type === 'lowveg') tabs[1].classList.add('active');
+        if (type === 'lowsat') tabs[2].classList.add('active');
+        if (type === 'rest') tabs[3].classList.add('active');
+    }
+
+    function toggleWorkout(header) {
+        const body = header.nextElementSibling;
+        body.style.display = body.style.display === 'none' ? 'block' : 'none';
+    }
+
+    const backToTopBtn = document.getElementById('backToTop');
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(function() {
+            backToTopBtn.style.display = window.scrollY > 600 ? 'flex' : 'none';
+        }, 100);
+    }, { passive: true });
+
+    const sections = document.querySelectorAll('.section[id]');
+    const navLinks = document.querySelectorAll('.nav a');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.style.color = '';
+                    link.style.background = '';
+                    if (link.getAttribute('href') === '#' + entry.target.id) {
+                        link.style.color = 'var(--accent)';
+                        link.style.background = 'var(--bg-card)';
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '-60px 0px -60% 0px' });
+    sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
