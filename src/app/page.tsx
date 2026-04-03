@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "ToolPilot — Free Online Calculators & Developer Tools",
   description:
-    "ToolPilot offers 20+ free online calculators and developer tools: EMI, SIP, GST, age calculator, percentage calculator, JSON formatter, password generator, QR code generator, and more. No sign-up, mobile-friendly, runs in your browser.",
+    "ToolPilot offers 20+ free online calculators and developer tools: EMI, SIP, income tax, FD, RD, GST, CGPA to percentage, calorie, body fat, JSON formatter, Base64, UUID generator, and more. No sign-up, mobile-friendly, runs in your browser.",
   alternates: { canonical: "https://tool-pilot.in" },
   openGraph: {
     title: "ToolPilot — Free Online Calculators & Developer Tools",
@@ -110,7 +110,7 @@ const featured = [
 ];
 
 const stats = [
-  { label: "600+ Free Pages", Icon: Sparkles, detail: "Calculators, converters & more" },
+  { label: "1,400+ Free Pages", Icon: Sparkles, detail: "Calculators, converters & more" },
   { label: "No Sign-up", Icon: Lock, detail: "Use instantly, no account needed" },
   { label: "Lightning Fast", Icon: Zap, detail: "Runs 100% in your browser" },
   { label: "Mobile Friendly", Icon: Smartphone, detail: "Works on any device" },
@@ -119,13 +119,21 @@ const stats = [
 const allCalculators = [
   { name: "EMI", href: "/calculators/emi-calculator" },
   { name: "SIP", href: "/calculators/sip-calculator" },
+  { name: "Income Tax", href: "/calculators/income-tax-calculator" },
+  { name: "FD", href: "/calculators/fd-calculator" },
+  { name: "RD", href: "/calculators/rd-calculator" },
   { name: "GST", href: "/calculators/gst-calculator" },
+  { name: "Loan", href: "/calculators/loan-calculator" },
+  { name: "Discount", href: "/calculators/discount-calculator" },
   { name: "PPF", href: "/calculators/ppf-calculator" },
   { name: "HRA", href: "/calculators/hra-calculator" },
   { name: "Mortgage", href: "/calculators/mortgage-calculator" },
   { name: "BMI", href: "/calculators/bmi-calculator" },
-  { name: "Compound Interest", href: "/calculators/compound-interest-calculator" },
-  { name: "Tip", href: "/calculators/tip-calculator" },
+  { name: "Calorie", href: "/calculators/calorie-calculator" },
+  { name: "Body Fat", href: "/calculators/body-fat-calculator" },
+  { name: "CGPA to %", href: "/calculators/cgpa-to-percentage-calculator" },
+  { name: "Date", href: "/calculators/date-calculator" },
+  { name: "ROI", href: "/calculators/roi-calculator" },
   { name: "Salary", href: "/calculators/salary-calculator" },
   { name: "Age", href: "/calculators/age-calculator" },
   { name: "Percentage", href: "/calculators/percentage-calculator" },
@@ -133,9 +141,13 @@ const allCalculators = [
 
 const allTools = [
   { name: "JSON Formatter", href: "/tools/json-formatter" },
+  { name: "Base64 Encode/Decode", href: "/tools/base64-encoder-decoder" },
+  { name: "UUID Generator", href: "/tools/uuid-generator" },
+  { name: "Hash Generator", href: "/tools/hash-generator" },
+  { name: "Timestamp Converter", href: "/tools/timestamp-converter" },
+  { name: "Lorem Ipsum", href: "/tools/lorem-ipsum-generator" },
   { name: "Color Palette", href: "/tools/color-palette-generator" },
   { name: "Regex Tester", href: "/tools/regex-tester" },
-  { name: "Privacy Policy", href: "/tools/privacy-policy-generator" },
   { name: "Cron Builder", href: "/tools/cron-expression-builder" },
   { name: "Word Counter", href: "/tools/word-counter" },
   { name: "Password Generator", href: "/tools/password-generator" },
@@ -165,7 +177,7 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
               <Sparkles className="h-3.5 w-3.5" />
-              600+ free tools & converters — no sign-up required
+              1,400+ free tools & converters — no sign-up required
             </div>
 
             <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">

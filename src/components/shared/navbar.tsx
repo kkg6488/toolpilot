@@ -10,11 +10,21 @@ import { cn } from "@/lib/utils";
 const calculatorLinks = [
   { label: "EMI Calculator", href: "/calculators/emi-calculator" },
   { label: "SIP Calculator", href: "/calculators/sip-calculator" },
+  { label: "Income Tax Calculator", href: "/calculators/income-tax-calculator" },
+  { label: "FD Calculator", href: "/calculators/fd-calculator" },
+  { label: "RD Calculator", href: "/calculators/rd-calculator" },
   { label: "GST Calculator", href: "/calculators/gst-calculator" },
+  { label: "Loan Calculator", href: "/calculators/loan-calculator" },
+  { label: "Discount Calculator", href: "/calculators/discount-calculator" },
   { label: "PPF Calculator", href: "/calculators/ppf-calculator" },
   { label: "HRA Calculator", href: "/calculators/hra-calculator" },
   { label: "Mortgage Calculator", href: "/calculators/mortgage-calculator" },
   { label: "BMI Calculator", href: "/calculators/bmi-calculator" },
+  { label: "Calorie Calculator", href: "/calculators/calorie-calculator" },
+  { label: "Body Fat Calculator", href: "/calculators/body-fat-calculator" },
+  { label: "CGPA to Percentage", href: "/calculators/cgpa-to-percentage-calculator" },
+  { label: "Date Calculator", href: "/calculators/date-calculator" },
+  { label: "ROI Calculator", href: "/calculators/roi-calculator" },
   { label: "Compound Interest", href: "/calculators/compound-interest-calculator" },
   { label: "Tip Calculator", href: "/calculators/tip-calculator" },
   { label: "Salary Calculator", href: "/calculators/salary-calculator" },
@@ -24,6 +34,11 @@ const calculatorLinks = [
 
 const toolLinks = [
   { label: "JSON Formatter", href: "/tools/json-formatter" },
+  { label: "Base64 Encoder/Decoder", href: "/tools/base64-encoder-decoder" },
+  { label: "UUID Generator", href: "/tools/uuid-generator" },
+  { label: "Hash Generator", href: "/tools/hash-generator" },
+  { label: "Timestamp Converter", href: "/tools/timestamp-converter" },
+  { label: "Lorem Ipsum Generator", href: "/tools/lorem-ipsum-generator" },
   { label: "Color Palette Generator", href: "/tools/color-palette-generator" },
   { label: "Regex Tester", href: "/tools/regex-tester" },
   { label: "Privacy Policy Generator", href: "/tools/privacy-policy-generator" },
@@ -138,6 +153,12 @@ export function Navbar() {
             open={openDropdown === "tools"}
             onToggle={() => setOpenDropdown(openDropdown === "tools" ? null : "tools")}
           />
+          <Link
+            href="/blog"
+            className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+          >
+            Blog
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -191,6 +212,15 @@ export function Navbar() {
                   </li>
                 ))}
               </ul>
+            </div>
+            <div>
+              <Link
+                href="/blog"
+                className="block rounded-md px-2 py-2 text-sm font-medium hover:bg-accent"
+                onClick={() => setMobileOpen(false)}
+              >
+                Blog
+              </Link>
             </div>
           </div>
         </div>
