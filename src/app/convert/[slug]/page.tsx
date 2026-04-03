@@ -123,19 +123,43 @@ export default function ConversionPage({ params }: PageProps) {
   const breadcrumbLabel = conversionHeadline(value, pair);
   const faqs = faqAnswers(value, pair, result);
 
+  const url = `https://tool-pilot.in/convert/${params.slug}`;
+
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "ToolPilot — Unit converter",
-    url: `https://tool-pilot.in/convert/${params.slug}`,
-    description: buildDescription(value, pair, result),
-    applicationCategory: "UtilityApplication",
-    operatingSystem: "Any",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        name: "ToolPilot — Unit converter",
+        url,
+        description: buildDescription(value, pair, result),
+        applicationCategory: "UtilityApplication",
+        operatingSystem: "Any",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://tool-pilot.in" },
+          { "@type": "ListItem", position: 2, name: "Convert", item: "https://tool-pilot.in/convert" },
+          { "@type": "ListItem", position: 3, name: breadcrumbLabel, item: url },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${url}#faq`,
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      },
+    ],
   };
 
   return (

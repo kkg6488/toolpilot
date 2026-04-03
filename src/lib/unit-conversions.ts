@@ -221,6 +221,82 @@ export const conversionPairs: ConversionPair[] = [
     formula: "divide by 1024",
     explanation: "One terabyte equals 1024 gigabytes. Terabytes are used to measure hard drive and cloud storage capacity.",
   },
+
+  // Additional Weight
+  {
+    fromSlug: "kg", toSlug: "stone", fromUnit: "Kilogram", toUnit: "Stone",
+    fromSymbol: "kg", toSymbol: "st", category: "Weight",
+    convert: (v) => v * 0.157473,
+    formula: "multiply by 0.157473",
+    explanation: "One kilogram equals approximately 0.157 stone. Stone is commonly used for body weight in the UK and Ireland.",
+  },
+  {
+    fromSlug: "stone", toSlug: "kg", fromUnit: "Stone", toUnit: "Kilogram",
+    fromSymbol: "st", toSymbol: "kg", category: "Weight",
+    convert: (v) => v * 6.35029,
+    formula: "multiply by 6.35029",
+    explanation: "One stone equals approximately 6.35 kilograms. Stone is a traditional British unit of weight equal to 14 pounds.",
+  },
+
+  // Additional Length
+  {
+    fromSlug: "inches", toSlug: "feet", fromUnit: "Inch", toUnit: "Foot",
+    fromSymbol: "in", toSymbol: "ft", category: "Length",
+    convert: (v) => v / 12,
+    formula: "divide by 12",
+    explanation: "One foot equals exactly 12 inches. This is the standard US customary unit conversion for small lengths.",
+  },
+  {
+    fromSlug: "feet", toSlug: "inches", fromUnit: "Foot", toUnit: "Inch",
+    fromSymbol: "ft", toSymbol: "in", category: "Length",
+    convert: (v) => v * 12,
+    formula: "multiply by 12",
+    explanation: "One foot equals exactly 12 inches. Commonly used for height and room dimensions.",
+  },
+  {
+    fromSlug: "cm", toSlug: "mm", fromUnit: "Centimeter", toUnit: "Millimeter",
+    fromSymbol: "cm", toSymbol: "mm", category: "Length",
+    convert: (v) => v * 10,
+    formula: "multiply by 10",
+    explanation: "One centimeter equals exactly 10 millimeters. Both are metric units commonly used in everyday measurements.",
+  },
+  {
+    fromSlug: "mm", toSlug: "cm", fromUnit: "Millimeter", toUnit: "Centimeter",
+    fromSymbol: "mm", toSymbol: "cm", category: "Length",
+    convert: (v) => v / 10,
+    formula: "divide by 10",
+    explanation: "One centimeter equals 10 millimeters. Millimeters are used for precise measurements in engineering.",
+  },
+  {
+    fromSlug: "km", toSlug: "m", fromUnit: "Kilometer", toUnit: "Meter",
+    fromSymbol: "km", toSymbol: "m", category: "Length",
+    convert: (v) => v * 1000,
+    formula: "multiply by 1000",
+    explanation: "One kilometer equals exactly 1000 meters. Both are standard SI units of length.",
+  },
+  {
+    fromSlug: "m", toSlug: "km", fromUnit: "Meter", toUnit: "Kilometer",
+    fromSymbol: "m", toSymbol: "km", category: "Length",
+    convert: (v) => v / 1000,
+    formula: "divide by 1000",
+    explanation: "One kilometer equals 1000 meters. Kilometers are used for road distances in most countries.",
+  },
+
+  // Additional Volume
+  {
+    fromSlug: "oz-fl", toSlug: "ml", fromUnit: "Fluid Ounce", toUnit: "Milliliter",
+    fromSymbol: "fl oz", toSymbol: "mL", category: "Volume",
+    convert: (v) => v * 29.5735,
+    formula: "multiply by 29.5735",
+    explanation: "One US fluid ounce equals approximately 29.57 milliliters. This is essential for cooking and beverage measurements.",
+  },
+  {
+    fromSlug: "ml", toSlug: "oz-fl", fromUnit: "Milliliter", toUnit: "Fluid Ounce",
+    fromSymbol: "mL", toSymbol: "fl oz", category: "Volume",
+    convert: (v) => v * 0.033814,
+    formula: "multiply by 0.033814",
+    explanation: "One milliliter equals approximately 0.034 US fluid ounces. Useful for converting metric recipes to US measurements.",
+  },
 ];
 
 export const popularValues = [1, 2, 3, 5, 10, 15, 20, 25, 30, 50, 100, 200, 500, 1000];

@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  Binary,
   Braces,
+  CalendarClock,
   Clock3,
   FileText,
+  Fingerprint,
+  Hash,
   KeyRound,
   LetterText,
   Palette,
   QrCode,
   Regex,
+  TextQuote,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -80,6 +85,41 @@ const tools = [
     description:
       "Create QR codes for URLs, text, email, phone, and Wi-Fi. Download as PNG.",
     Icon: QrCode,
+  },
+  {
+    href: "/tools/base64-encoder-decoder",
+    name: "Base64 Encoder & Decoder",
+    description:
+      "Encode or decode Base64 with UTF-8-safe handling, copy output, and Base64 hints.",
+    Icon: Binary,
+  },
+  {
+    href: "/tools/uuid-generator",
+    name: "UUID Generator",
+    description:
+      "Generate v4 UUIDs in bulk with uppercase, lowercase, and hyphen options.",
+    Icon: Fingerprint,
+  },
+  {
+    href: "/tools/hash-generator",
+    name: "Hash Generator",
+    description:
+      "Compute MD5, SHA-1, SHA-256, and SHA-512 digests from text in the browser.",
+    Icon: Hash,
+  },
+  {
+    href: "/tools/lorem-ipsum-generator",
+    name: "Lorem Ipsum Generator",
+    description:
+      "Build placeholder paragraphs with adjustable length and a classic opening line.",
+    Icon: TextQuote,
+  },
+  {
+    href: "/tools/timestamp-converter",
+    name: "Timestamp Converter",
+    description:
+      "Convert Unix seconds or milliseconds, ISO strings, and readable dates with live clock.",
+    Icon: CalendarClock,
   },
 ];
 

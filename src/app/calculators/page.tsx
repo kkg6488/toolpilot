@@ -4,13 +4,22 @@ import Link from "next/link";
 import {
   Activity,
   Building2,
+  Calculator,
   Calendar,
+  CalendarDays,
   Coins,
+  Flame,
+  GraduationCap,
   Home,
   IndianRupee,
+  Landmark,
+  LineChart,
   Percent,
   PiggyBank,
   Receipt,
+  Repeat2,
+  Scale,
+  Tag,
   TrendingUp,
   Wallet,
 } from "lucide-react";
@@ -18,7 +27,7 @@ import {
 export const metadata: Metadata = {
   title: "Free Online Calculators | ToolPilot",
   description:
-    "Browse free online calculators for Indian finance—EMI, SIP, GST, PPF, HRA, salary—and global tools including mortgage, BMI, compound interest, and tip calculators. Fast, clear, no sign-up.",
+    "Browse 20+ free online calculators: EMI, SIP, GST, income tax, FD, RD, mortgage, BMI, calorie, body fat, ROI, discount, date, CGPA-to-percentage, and more. Fast, accurate, no sign-up.",
   alternates: { canonical: "https://tool-pilot.in/calculators" },
   openGraph: {
     title: "Free Online Calculators | ToolPilot",
@@ -56,6 +65,27 @@ const indianFinance = [
     description:
       "Estimate Public Provident Fund maturity with contributions and interest.",
     Icon: PiggyBank,
+  },
+  {
+    href: "/calculators/fd-calculator",
+    name: "FD Calculator",
+    description:
+      "Fixed deposit maturity, interest earned, and effective annual rate with flexible compounding.",
+    Icon: Landmark,
+  },
+  {
+    href: "/calculators/rd-calculator",
+    name: "RD Calculator",
+    description:
+      "Recurring deposit maturity using Indian bank-style quarterly compounding on monthly instalments.",
+    Icon: Repeat2,
+  },
+  {
+    href: "/calculators/income-tax-calculator",
+    name: "Income Tax Calculator",
+    description:
+      "Compare old and new tax regimes for FY 2025-26 with slab-wise breakdown and cess.",
+    Icon: Calculator,
   },
   {
     href: "/calculators/hra-calculator",
@@ -115,6 +145,55 @@ const globalCalculators = [
     description:
       "Calculate percentages, percentage increase/decrease, and ratios instantly.",
     Icon: Percent,
+  },
+  {
+    href: "/calculators/loan-calculator",
+    name: "Loan Calculator",
+    description:
+      "Monthly payment, total interest, and amortization for any fixed-rate loan.",
+    Icon: Landmark,
+  },
+  {
+    href: "/calculators/discount-calculator",
+    name: "Discount Calculator",
+    description:
+      "Calculate single or double discounts with optional tax on the final price.",
+    Icon: Tag,
+  },
+  {
+    href: "/calculators/date-calculator",
+    name: "Date Calculator",
+    description:
+      "Find days between two dates or add/subtract days from any date.",
+    Icon: CalendarDays,
+  },
+  {
+    href: "/calculators/cgpa-to-percentage-calculator",
+    name: "CGPA to Percentage",
+    description:
+      "Convert CGPA to percentage for CBSE, VTU, Mumbai, and Anna University scales.",
+    Icon: GraduationCap,
+  },
+  {
+    href: "/calculators/calorie-calculator",
+    name: "Calorie Calculator",
+    description:
+      "Calculate BMR, TDEE, and daily calorie targets for weight loss or gain.",
+    Icon: Flame,
+  },
+  {
+    href: "/calculators/body-fat-calculator",
+    name: "Body Fat Calculator",
+    description:
+      "Estimate body fat percentage using the US Navy method with category guidance.",
+    Icon: Scale,
+  },
+  {
+    href: "/calculators/roi-calculator",
+    name: "ROI Calculator",
+    description:
+      "Compute return on investment, annualized ROI, and net profit from any investment.",
+    Icon: LineChart,
   },
 ];
 

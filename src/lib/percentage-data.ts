@@ -1,5 +1,11 @@
-export const percentValues = [1, 2, 3, 5, 10, 15, 20, 25, 30, 33, 40, 50, 60, 70, 75, 80, 90, 100];
-export const ofValues = [50, 100, 200, 250, 300, 500, 750, 1000, 1500, 2000, 5000, 10000];
+export const percentValues = [
+  1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 18, 20, 22, 25, 28, 30, 33, 35, 40,
+  45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100,
+];
+export const ofValues = [
+  50, 100, 200, 250, 300, 400, 500, 600, 750, 800, 1000, 1200, 1500, 2000,
+  2500, 3000, 4000, 5000, 7500, 8000, 10000, 15000, 20000, 25000, 50000, 100000,
+];
 
 export function parsePercentageSlug(slug: string): { percent: number; of: number } | null {
   const match = slug.match(/^(\d+(?:\.\d+)?)-percent-of-(\d+(?:\.\d+)?)$/);

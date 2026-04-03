@@ -247,6 +247,46 @@ export default function ConvertPage() {
           </div>
         </section>
 
+        <section className="mt-12" aria-labelledby="all-conversions-heading">
+          <h2 id="all-conversions-heading" className="text-xl font-semibold text-foreground">
+            All conversions by category
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Browse every available conversion across all categories.
+          </p>
+          {CATEGORIES.map((cat) => {
+            const catPairs = conversionPairs.filter((p) => p.category === cat);
+            const seen = new Set<string>();
+            const uniquePairs = catPairs.filter((p) => {
+              const key = `${p.fromSlug}-${p.toSlug}`;
+              if (seen.has(key)) return false;
+              seen.add(key);
+              return true;
+            });
+            return (
+              <div key={cat} className="mt-6">
+                <h3 className="text-lg font-medium text-foreground">{cat}</h3>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                  {uniquePairs.flatMap((p) =>
+                    [1, 5, 10, 50, 100].map((v) => {
+                      const slug = `${v}-${p.fromSlug}-to-${p.toSlug}`;
+                      return (
+                        <Link
+                          key={slug}
+                          href={`/convert/${slug}`}
+                          className="rounded-md border border-border/60 bg-card px-3 py-2 text-sm text-foreground transition hover:border-primary/40 hover:text-primary"
+                        >
+                          {v} {p.fromSymbol} to {p.toSymbol}
+                        </Link>
+                      );
+                    })
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </section>
+
         {pair && (
           <section className="mt-12" aria-labelledby="quick-ref-heading">
             <h2 id="quick-ref-heading" className="text-xl font-semibold text-foreground">

@@ -2,14 +2,15 @@ import { MetadataRoute } from "next";
 import { generateAllConversionSlugs } from "@/lib/unit-conversions";
 import { generateAllPercentageSlugs } from "@/lib/percentage-data";
 
+const CONTENT_LAST_UPDATED = "2026-03-30T00:00:00.000Z";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://tool-pilot.in";
+  const stableDate = new Date(CONTENT_LAST_UPDATED);
 
-  const staticPages = [
-    "/calculators",
-    "/tools",
-    "/convert",
-    "/percentage",
+  const hubPages = ["/calculators", "/tools", "/convert", "/percentage"];
+
+  const calculatorPages = [
     "/calculators/emi-calculator",
     "/calculators/sip-calculator",
     "/calculators/gst-calculator",
@@ -22,6 +23,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/calculators/salary-calculator",
     "/calculators/age-calculator",
     "/calculators/percentage-calculator",
+    "/calculators/income-tax-calculator",
+    "/calculators/fd-calculator",
+    "/calculators/rd-calculator",
+    "/calculators/loan-calculator",
+    "/calculators/discount-calculator",
+    "/calculators/date-calculator",
+    "/calculators/cgpa-to-percentage-calculator",
+    "/calculators/calorie-calculator",
+    "/calculators/body-fat-calculator",
+    "/calculators/roi-calculator",
+  ];
+
+  const toolPages = [
     "/tools/json-formatter",
     "/tools/color-palette-generator",
     "/tools/regex-tester",
@@ -30,6 +44,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/tools/word-counter",
     "/tools/password-generator",
     "/tools/qr-code-generator",
+    "/tools/base64-encoder-decoder",
+    "/tools/uuid-generator",
+    "/tools/hash-generator",
+    "/tools/lorem-ipsum-generator",
+    "/tools/timestamp-converter",
   ];
 
   const conversionSlugs = generateAllConversionSlugs();
@@ -38,40 +57,61 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: stableDate,
       changeFrequency: "weekly",
       priority: 1,
     },
-    ...staticPages.map((path) => ({
+    ...hubPages.map((path) => ({
       url: `${baseUrl}${path}`,
-      lastModified: new Date(),
+      lastModified: stableDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    })),
+    ...[...calculatorPages, ...toolPages].map((path) => ({
+      url: `${baseUrl}${path}`,
+      lastModified: stableDate,
       changeFrequency: "monthly" as const,
-      priority:
-        path === "/calculators" || path === "/tools" || path === "/convert" || path === "/percentage"
-          ? 0.9
-          : 0.8,
+      priority: 0.8,
     })),
     ...conversionSlugs.map((slug) => ({
       url: `${baseUrl}/convert/${slug}`,
-      lastModified: new Date(),
+      lastModified: stableDate,
       changeFrequency: "yearly" as const,
       priority: 0.6,
     })),
     ...percentageSlugs.map((slug) => ({
       url: `${baseUrl}/percentage/${slug}`,
-      lastModified: new Date(),
+      lastModified: stableDate,
       changeFrequency: "yearly" as const,
       priority: 0.6,
     })),
     {
+      url: `${baseUrl}/blog`,
+      lastModified: stableDate,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    ...[
+      "how-to-calculate-emi",
+      "sip-vs-fd-which-is-better",
+      "income-tax-slabs-2025-26",
+      "how-to-calculate-percentage",
+      "best-free-developer-tools-2026",
+    ].map((slug) => ({
+      url: `${baseUrl}/blog/${slug}`,
+      lastModified: stableDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    {
       url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
+      lastModified: stableDate,
       changeFrequency: "yearly",
       priority: 0.2,
     },
     {
       url: `${baseUrl}/terms`,
-      lastModified: new Date(),
+      lastModified: stableDate,
       changeFrequency: "yearly",
       priority: 0.2,
     },

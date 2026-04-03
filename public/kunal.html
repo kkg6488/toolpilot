@@ -1619,14 +1619,42 @@
     <section class="section" id="workout">
         <div class="section-header">
             <span class="section-number">05</span>
-            <h2 class="section-title">Workout Program (Mon–Sat)</h2>
+            <h2 class="section-title">Workout Program (Mon&ndash;Sat)</h2>
         </div>
 
         <div class="card card-accent" style="margin-bottom: 20px;">
-            <div class="card-title">Split Overview: Push / Pull / Legs / Shoulders+Arms / Back+Chest / Core+Cardio</div>
-            <p style="color: var(--text-secondary); font-size: 0.85rem;">Designed for aesthetic V-taper at 5'4": heavy emphasis on side delts, upper back, and arm density. Gym sessions: 60–75 minutes max. No wasted time.</p>
+            <div class="card-title">Split: Push / Pull / Legs+Glutes / V-Taper / Upper Weak Points / Core+Posture+Cardio</div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem;">Hybrid program built for YOUR weak points: lateral delts (14 sets/wk), rear delts (10 sets/wk), APT correction (hip thrusts + dead bugs), and abs across 5 sessions. Biceps held to 5 sets/wk &mdash; they&rsquo;re already your strongest body part. Every exercise targets a specific muscle or sub-muscle. Zero wasted movements.</p>
             <div style="margin-top: 12px; font-size: 0.82rem; color: var(--text-muted);">
-                <strong style="color: var(--gold);">Progressive Overload Rule:</strong> Every week, add either 1 rep or 2.5 kg to your main lifts. If you hit the top of the rep range for all sets, increase weight next session. Log every session.
+                <strong style="color: var(--gold);">Progressive Overload:</strong> Add 2.5 kg every 2 weeks on compound lifts (bench, squat, row, OHP). If you fail a weight 2 sessions in a row, stay until all reps complete. Log every session in a notebook or app.
+            </div>
+        </div>
+
+        <div class="card card-blue" style="margin-bottom: 20px;">
+            <div class="card-title">Weekly Volume Breakdown (Photo-Optimized)</div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Muscle Group</th><th>Sets/Wk</th><th>Freq</th><th>Sub-Muscles Covered</th><th>Priority</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Lateral Delts</strong></td><td style="color: var(--accent); font-weight: 700;">14</td><td>3&times;</td><td>Medial deltoid head</td><td><span class="tag tag-red">CRITICAL</span></td></tr>
+                        <tr><td><strong>Rear Delts + Face Pulls</strong></td><td style="color: var(--accent); font-weight: 700;">10</td><td>3&times;</td><td>Posterior deltoid, infraspinatus, teres minor</td><td><span class="tag tag-red">CRITICAL</span></td></tr>
+                        <tr><td><strong>Back (total)</strong></td><td style="color: var(--gold); font-weight: 700;">20</td><td>2&times;</td><td>Lats, rhomboids, mid/lower traps, erectors, teres major</td><td><span class="tag tag-gold">HIGH</span></td></tr>
+                        <tr><td><strong>Chest (total)</strong></td><td style="color: var(--gold); font-weight: 700;">13</td><td>2&times;</td><td>Upper (clavicular), mid (sternal), inner pec, lower (dips)</td><td><span class="tag tag-gold">HIGH</span></td></tr>
+                        <tr><td><strong>Glutes (direct)</strong></td><td style="color: var(--gold); font-weight: 700;">8</td><td>3&times;</td><td>Glute max (hip thrusts), glute med/min (split squats, bridges)</td><td><span class="tag tag-gold">HIGH &mdash; APT</span></td></tr>
+                        <tr><td><strong>Core / Abs</strong></td><td style="color: var(--gold); font-weight: 700;">16</td><td>5&times;</td><td>Upper abs, lower abs, obliques (int+ext), transverse abs</td><td><span class="tag tag-gold">HIGH</span></td></tr>
+                        <tr><td><strong>Triceps</strong></td><td>12</td><td>2&times;</td><td>Long head, lateral head, medial head</td><td><span class="tag tag-blue">MEDIUM</span></td></tr>
+                        <tr><td><strong>Quads</strong></td><td>14</td><td>2&times;</td><td>Vastus lateralis, medialis, intermedius, rectus femoris</td><td><span class="tag tag-blue">MEDIUM</span></td></tr>
+                        <tr><td><strong>Hamstrings</strong></td><td>6</td><td>1&times;</td><td>Biceps femoris, semitendinosus, semimembranosus</td><td><span class="tag tag-blue">MEDIUM</span></td></tr>
+                        <tr><td><strong>Calves</strong></td><td>7</td><td>2&times;</td><td>Gastrocnemius (standing), soleus (seated)</td><td><span class="tag tag-blue">MEDIUM</span></td></tr>
+                        <tr><td><strong>Biceps</strong></td><td style="color: var(--green); font-weight: 700;">5</td><td>2&times;</td><td>Short head, long head (maintained via rows/pull-ups too)</td><td><span class="tag tag-green">MAINTENANCE</span></td></tr>
+                        <tr><td><strong>Traps</strong></td><td>3 + indirect</td><td>1&times;</td><td>Upper traps (shrugs), mid/lower traps (rows, face pulls)</td><td><span class="tag tag-green">MAINTENANCE</span></td></tr>
+                        <tr><td><strong>Forearms</strong></td><td>indirect</td><td>2&times;</td><td>Brachioradialis (hammer curls), grip (farmer&rsquo;s walks, rows)</td><td><span class="tag tag-green">MAINTENANCE</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tip" style="margin-top: 12px;">
+                <div class="tip-title">Why Biceps Are Only 5 Sets</div>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;">Your biceps are genetically your strongest body part. They also get indirect work from every rowing and pulling movement (~20 back sets/week). Training them 13 sets/week (like a typical bro split) wastes recovery capacity that should go to lateral delts and glutes &mdash; the muscles that will actually change how you look.</p>
             </div>
         </div>
 
@@ -1634,26 +1662,27 @@
         <div class="workout-day">
             <div class="workout-day-header" onclick="toggleWorkout(this)">
                 <div>
-                    <span class="day-label">MONDAY</span>
-                    <span class="day-focus"> — PUSH (Chest + Shoulders + Triceps)</span>
+                    <span class="day-label">MONDAY &mdash; PUSH</span>
+                    <span class="day-focus">Chest + Lateral Delts + Triceps + Abs</span>
                 </div>
                 <span class="tag tag-red">~65 min</span>
             </div>
             <div class="workout-body">
                 <div class="table-wrapper">
                     <table>
-                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Notes</th></tr></thead>
+                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Sub-Muscles Targeted</th></tr></thead>
                         <tbody>
-                            <tr><td>Flat Barbell Bench Press</td><td>4</td><td>6–8</td><td>2.5 min</td><td>Main strength lift. Go heavy.</td></tr>
-                            <tr><td>Incline Dumbbell Press (30°)</td><td>3</td><td>8–10</td><td>2 min</td><td>Upper chest focus</td></tr>
-                            <tr><td>Dumbbell Lateral Raises</td><td>4</td><td>12–15</td><td>60 sec</td><td>3-sec slow lowering. Width builder #1</td></tr>
-                            <tr><td>Cable Lateral Raises</td><td>3</td><td>15–20</td><td>45 sec</td><td>Constant tension, light weight</td></tr>
-                            <tr><td>Overhead Tricep Extension (cable rope)</td><td>3</td><td>10–12</td><td>60 sec</td><td>Long head — makes arms look bigger from side</td></tr>
-                            <tr><td>Tricep Pushdowns (V-bar)</td><td>3</td><td>12–15</td><td>45 sec</td><td>Squeeze and hold 1 sec at bottom</td></tr>
-                            <tr><td>Push-ups (burnout)</td><td>2</td><td>to failure</td><td>—</td><td>Finisher. No rest between sets.</td></tr>
+                            <tr><td>Flat Barbell Bench Press</td><td>4</td><td>6&ndash;8</td><td>2.5 min</td><td>Mid chest (sternal head), anterior delt, triceps. HEAVY anchor &mdash; track this lift weekly.</td></tr>
+                            <tr><td>Incline Dumbbell Press (30&deg;)</td><td>3</td><td>8&ndash;10</td><td>2 min</td><td>Upper chest (clavicular head). Fixes the sagging chest shape as fat comes off.</td></tr>
+                            <tr><td>Dumbbell Lateral Raises</td><td>4</td><td>12&ndash;15</td><td>60 sec</td><td>Medial deltoid. 3-sec slow lowering. Your #1 aesthetic exercise.</td></tr>
+                            <tr><td>Cable Lateral Raises</td><td>3</td><td>15&ndash;20</td><td>45 sec</td><td>Medial deltoid (constant tension). Different resistance curve than DBs.</td></tr>
+                            <tr><td>Overhead Tricep Extension (cable rope)</td><td>3</td><td>10&ndash;12</td><td>60 sec</td><td>Tricep long head. Makes arms look bigger from the side.</td></tr>
+                            <tr><td>Tricep Pushdowns (V-bar)</td><td>3</td><td>12&ndash;15</td><td>45 sec</td><td>Tricep lateral + medial head. Squeeze and hold 1 sec at bottom.</td></tr>
+                            <tr><td style="color: var(--gold);">Hanging Knee Raises</td><td>3</td><td>15</td><td>30 sec</td><td>Lower rectus abdominis + hip flexors. Curl pelvis up, don&rsquo;t just swing.</td></tr>
                         </tbody>
                     </table>
                 </div>
+                <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 8px;">23 working sets. + 15 min incline treadmill walk (10% incline, 5.5 km/h) post-workout.</p>
             </div>
         </div>
 
@@ -1661,29 +1690,29 @@
         <div class="workout-day">
             <div class="workout-day-header" onclick="toggleWorkout(this)">
                 <div>
-                    <span class="day-label">TUESDAY</span>
-                    <span class="day-focus"> — PULL (Back + Biceps + Rear Delts)</span>
+                    <span class="day-label">TUESDAY &mdash; PULL</span>
+                    <span class="day-focus">Back + Rear Delts + Traps + Biceps</span>
                 </div>
-                <span class="tag tag-green">~65 min | Office Day | Veg</span>
+                <span class="tag tag-green">~60 min | Office Day | Veg</span>
             </div>
             <div class="workout-body">
                 <div class="table-wrapper">
                     <table>
-                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Notes</th></tr></thead>
+                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Sub-Muscles Targeted</th></tr></thead>
                         <tbody>
-                            <tr><td>Barbell Rows (Overhand)</td><td>4</td><td>6–8</td><td>2.5 min</td><td>Main back thickness builder. Heavy.</td></tr>
-                            <tr><td>Lat Pulldowns (Wide Grip)</td><td>3</td><td>8–10</td><td>2 min</td><td>Squeeze lats at the bottom — width builder</td></tr>
-                            <tr><td>Seated Cable Rows (Close Grip)</td><td>3</td><td>10–12</td><td>90 sec</td><td>Pull to lower chest, squeeze shoulder blades</td></tr>
-                            <tr><td>Face Pulls (Rope)</td><td>4</td><td>15–20</td><td>45 sec</td><td>CRITICAL for posture + rear delt. Pull to forehead, hold 2 sec</td></tr>
-                            <tr><td>Barbell Curls</td><td>3</td><td>8–10</td><td>60 sec</td><td>No swinging. Strict form.</td></tr>
-                            <tr><td>Incline Dumbbell Curls</td><td>3</td><td>10–12</td><td>60 sec</td><td>Long head stretch — builds the peak</td></tr>
-                            <tr><td>Hammer Curls</td><td>2</td><td>12–15</td><td>45 sec</td><td>Forearm + brachialis</td></tr>
+                            <tr><td>Barbell Rows (Overhand)</td><td>4</td><td>6&ndash;8</td><td>2.5 min</td><td>Upper back thickness (rhomboids, mid traps), lats, rear delt, erectors. HEAVY anchor.</td></tr>
+                            <tr><td>Lat Pulldowns (Wide Grip)</td><td>3</td><td>8&ndash;10</td><td>2 min</td><td>Lat width (latissimus dorsi). Full stretch at top, squeeze lats at bottom.</td></tr>
+                            <tr><td>Seated Cable Rows (Close Grip)</td><td>3</td><td>10&ndash;12</td><td>90 sec</td><td>Mid-back (rhomboids, lower traps), teres major. Pull to lower chest, squeeze blades.</td></tr>
+                            <tr><td>Face Pulls (Rope)</td><td>4</td><td>15&ndash;20</td><td>45 sec</td><td>Posterior delt, infraspinatus, teres minor, mid/lower traps. POSTURE FIX. Pull to forehead, hold 2 sec.</td></tr>
+                            <tr><td>Dumbbell Shrugs (2-sec hold at top)</td><td>3</td><td>12&ndash;15</td><td>60 sec</td><td>Upper trapezius. Hold at peak contraction &mdash; don&rsquo;t just bounce.</td></tr>
+                            <tr><td>Barbell Curls</td><td>3</td><td>8&ndash;10</td><td>60 sec</td><td>Bicep short head + overall mass. Strict form &mdash; no swinging. Only bicep exercise today.</td></tr>
                         </tbody>
                     </table>
                 </div>
+                <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 8px;">20 working sets. + 15 min incline treadmill walk post-workout.</p>
                 <div class="tip">
-                    <div class="tip-title">Office Day Note</div>
-                    <p style="color: var(--text-secondary); font-size: 0.82rem;">You leave office at 8–8:30 PM. Train at 8:45 PM if gym is near office OR wake up at 6 AM and train fasted with pre-workout coffee. Your choice — but you MUST train. No excuses.</p>
+                    <div class="tip-title">Office Day Strategy</div>
+                    <p style="color: var(--text-secondary); font-size: 0.82rem;">You leave office at 8&ndash;8:30 PM. Train at 8:45 PM if gym is near office OR wake up at 6 AM and train fasted with pre-workout coffee. No excuses &mdash; you MUST train.</p>
                 </div>
             </div>
         </div>
@@ -1692,25 +1721,27 @@
         <div class="workout-day">
             <div class="workout-day-header" onclick="toggleWorkout(this)">
                 <div>
-                    <span class="day-label">WEDNESDAY</span>
-                    <span class="day-focus"> — LEGS (Quads + Hamstrings + Glutes + Calves)</span>
+                    <span class="day-label">WEDNESDAY &mdash; LEGS + GLUTES</span>
+                    <span class="day-focus">Quads + Hamstrings + Glutes (APT Fix) + Calves</span>
                 </div>
                 <span class="tag tag-gold">~70 min | Office Day</span>
             </div>
             <div class="workout-body">
                 <div class="table-wrapper">
                     <table>
-                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Notes</th></tr></thead>
+                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Sub-Muscles Targeted</th></tr></thead>
                         <tbody>
-                            <tr><td>Barbell Back Squats</td><td>4</td><td>6–8</td><td>3 min</td><td>THE king of exercises. Go to parallel minimum.</td></tr>
-                            <tr><td>Romanian Deadlifts (RDL)</td><td>3</td><td>8–10</td><td>2 min</td><td>Hamstring + glute focus. Slow eccentric.</td></tr>
-                            <tr><td>Leg Press</td><td>3</td><td>10–12</td><td>2 min</td><td>Feet high and wide for glutes, low for quads</td></tr>
-                            <tr><td>Walking Lunges</td><td>3</td><td>12 each leg</td><td>90 sec</td><td>Balance + unilateral strength</td></tr>
-                            <tr><td>Leg Curls (Machine)</td><td>3</td><td>12–15</td><td>60 sec</td><td>Squeeze hamstrings hard at top</td></tr>
-                            <tr><td>Standing Calf Raises</td><td>4</td><td>15–20</td><td>45 sec</td><td>Full stretch at bottom, 2-sec pause at top</td></tr>
+                            <tr><td>Barbell Back Squats</td><td>4</td><td>6&ndash;8</td><td>3 min</td><td>Quads (all 4 heads), glute max, adductors, core. THE anchor lift. Track weekly.</td></tr>
+                            <tr><td>Romanian Deadlifts (RDL)</td><td>3</td><td>8&ndash;10</td><td>2 min</td><td>Hamstrings (biceps femoris, semi-T, semi-M), glute max, erectors. Slow 3-sec lowering.</td></tr>
+                            <tr><td style="color: var(--accent);">Barbell Hip Thrusts</td><td>3</td><td>10&ndash;12</td><td>90 sec</td><td style="color: var(--accent);">Glute max &mdash; APT CORRECTION. Your glutes are weak, causing belly to push forward. Squeeze HARD at top for 2 sec. This single exercise will change your side profile within 4 weeks.</td></tr>
+                            <tr><td>Leg Press</td><td>3</td><td>10&ndash;12</td><td>2 min</td><td>Quads (rectus femoris, vastus lateralis). Feet high+wide for glute involvement.</td></tr>
+                            <tr><td>Leg Curls (Machine)</td><td>3</td><td>12&ndash;15</td><td>60 sec</td><td>Hamstrings isolation. Squeeze hard at top, slow 2-sec lowering.</td></tr>
+                            <tr><td>Standing Calf Raises</td><td>4</td><td>15&ndash;20</td><td>45 sec</td><td>Gastrocnemius (outer + inner head). Full stretch at bottom, 2-sec pause at top.</td></tr>
+                            <tr><td style="color: var(--gold);">Dead Bugs</td><td>2</td><td>10 each side</td><td>30 sec</td><td style="color: var(--accent);">Transverse abdominis &mdash; APT CORRECTION. Flatten lower back into floor HARD. Teaches your core to posteriorly tilt pelvis. Directly counteracts belly protrusion.</td></tr>
                         </tbody>
                     </table>
                 </div>
+                <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 8px;">22 working sets. + 15 min incline treadmill walk post-workout.</p>
             </div>
         </div>
 
@@ -1718,26 +1749,27 @@
         <div class="workout-day">
             <div class="workout-day-header" onclick="toggleWorkout(this)">
                 <div>
-                    <span class="day-label">THURSDAY</span>
-                    <span class="day-focus"> — SHOULDERS + ARMS (V-Taper Day)</span>
+                    <span class="day-label">THURSDAY &mdash; V-TAPER</span>
+                    <span class="day-focus">Shoulders + Rear Delts + Arms + Abs</span>
                 </div>
                 <span class="tag tag-purple">~60 min | Office Day | Veg</span>
             </div>
             <div class="workout-body">
                 <div class="table-wrapper">
                     <table>
-                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Notes</th></tr></thead>
+                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Sub-Muscles Targeted</th></tr></thead>
                         <tbody>
-                            <tr><td>Overhead Press (Barbell or DB)</td><td>4</td><td>6–8</td><td>2.5 min</td><td>Seated or standing. Strict press, no leg drive.</td></tr>
-                            <tr><td>Dumbbell Lateral Raises</td><td>4</td><td>12–15</td><td>60 sec</td><td>YES — lateral raises again. You need WIDE shoulders desperately.</td></tr>
-                            <tr><td>Reverse Pec Deck / Rear Delt Fly</td><td>3</td><td>15–20</td><td>45 sec</td><td>Rear delts + posture</td></tr>
-                            <tr><td>EZ-Bar Curls</td><td>3</td><td>10–12</td><td>60 sec</td><td>Overall bicep mass</td></tr>
-                            <tr><td>Tricep Dips (Bench or Parallel Bar)</td><td>3</td><td>8–12</td><td>90 sec</td><td>Lean forward slightly for chest engagement</td></tr>
-                            <tr><td>Cable Curls (Single Arm)</td><td>2</td><td>12–15</td><td>45 sec</td><td>Constant tension finish</td></tr>
-                            <tr><td>Diamond Push-ups</td><td>2</td><td>to failure</td><td>—</td><td>Tricep burnout finisher</td></tr>
+                            <tr><td>Overhead Press (Barbell or DB)</td><td>4</td><td>6&ndash;8</td><td>2.5 min</td><td>Anterior deltoid, medial deltoid, triceps. Strict press &mdash; no leg drive.</td></tr>
+                            <tr><td>Dumbbell Lateral Raises</td><td>4</td><td>12&ndash;15</td><td>60 sec</td><td>Medial deltoid. 3-sec negatives &mdash; feel EVERY rep in the side delt, NOT the traps.</td></tr>
+                            <tr><td>Reverse Pec Deck</td><td>3</td><td>15&ndash;20</td><td>45 sec</td><td>Posterior deltoid isolation. Squeeze 2 sec at peak contraction.</td></tr>
+                            <tr><td>Weighted Dips</td><td>3</td><td>8&ndash;12</td><td>90 sec</td><td>Tricep (all 3 heads) + lower chest (sternal). Upright = tricep focus, leaned forward = chest.</td></tr>
+                            <tr><td>Overhead Tricep Extension (DB)</td><td>3</td><td>10&ndash;12</td><td>60 sec</td><td>Tricep long head (stretched position). 2nd tricep long head hit this week.</td></tr>
+                            <tr><td>Hammer Curls</td><td>2</td><td>12&ndash;15</td><td>45 sec</td><td>Brachialis + brachioradialis (forearm). Builds arm thickness from front view.</td></tr>
+                            <tr><td style="color: var(--gold);">Cable Crunch</td><td>3</td><td>15</td><td>30 sec</td><td>Upper rectus abdominis. Contract fully &mdash; ribs toward pelvis.</td></tr>
                         </tbody>
                     </table>
                 </div>
+                <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 8px;">22 working sets. This is your MOST IMPORTANT aesthetic day. OHP + 4 lateral raises + 3 rear delt + arms. + 15 min incline treadmill walk post-workout.</p>
             </div>
         </div>
 
@@ -1745,25 +1777,28 @@
         <div class="workout-day">
             <div class="workout-day-header" onclick="toggleWorkout(this)">
                 <div>
-                    <span class="day-label">FRIDAY</span>
-                    <span class="day-focus"> — BACK + CHEST (Hypertrophy Focus)</span>
+                    <span class="day-label">FRIDAY &mdash; UPPER WEAK POINTS</span>
+                    <span class="day-focus">Back Width + Upper Chest + Lateral Delts + Posture</span>
                 </div>
                 <span class="tag tag-blue">~65 min</span>
             </div>
             <div class="workout-body">
                 <div class="table-wrapper">
                     <table>
-                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Notes</th></tr></thead>
+                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Sub-Muscles Targeted</th></tr></thead>
                         <tbody>
-                            <tr><td>Pull-ups / Assisted Pull-ups</td><td>4</td><td>6–10</td><td>2 min</td><td>Wide grip. THE best lat exercise. Work up to bodyweight.</td></tr>
-                            <tr><td>Incline Barbell Bench Press</td><td>4</td><td>8–10</td><td>2 min</td><td>Upper chest priority — fixes your chest shape</td></tr>
-                            <tr><td>Single-Arm Dumbbell Rows</td><td>3</td><td>10–12</td><td>90 sec</td><td>Back thickness + lat stretch</td></tr>
-                            <tr><td>Cable Chest Fly (Low-to-High)</td><td>3</td><td>12–15</td><td>60 sec</td><td>Upper chest squeeze and stretch</td></tr>
-                            <tr><td>Straight-Arm Pulldowns</td><td>3</td><td>12–15</td><td>60 sec</td><td>Lat isolation — builds the V from behind</td></tr>
-                            <tr><td>Face Pulls</td><td>3</td><td>15–20</td><td>45 sec</td><td>YES — face pulls again. 2x/week minimum for your posture.</td></tr>
+                            <tr><td>Pull-ups / Assisted Pull-ups (Wide Grip)</td><td>4</td><td>6&ndash;10</td><td>2 min</td><td>Lat width (latissimus dorsi), teres major, lower traps, bicep (indirect). THE best lat exercise. Work toward bodyweight reps.</td></tr>
+                            <tr><td>Incline Barbell Bench Press</td><td>3</td><td>8&ndash;10</td><td>2 min</td><td>Upper chest (clavicular head). 2nd chest session &mdash; fixes chest shape as fat leaves.</td></tr>
+                            <tr><td>Single-Arm Dumbbell Rows</td><td>3</td><td>10&ndash;12</td><td>90 sec</td><td>Lats (stretch), rhomboids, mid-traps + anti-rotation core engagement.</td></tr>
+                            <tr><td>Cable Chest Fly (Low-to-High)</td><td>3</td><td>12&ndash;15</td><td>60 sec</td><td>Upper chest (clavicular) + inner pec squeeze. Full stretch at bottom.</td></tr>
+                            <tr><td>Straight-Arm Pulldowns</td><td>3</td><td>12&ndash;15</td><td>60 sec</td><td>Lat isolation &mdash; builds the V-taper from behind. Keep arms nearly straight.</td></tr>
+                            <tr><td>Face Pulls (Rope)</td><td>3</td><td>15&ndash;20</td><td>45 sec</td><td>Posterior delt, external rotators, mid/lower traps. POSTURE FIX &mdash; 2nd session this week.</td></tr>
+                            <tr><td>Cable Lateral Raises (Behind-body, single arm)</td><td>3</td><td>15&ndash;20</td><td>45 sec</td><td>Medial deltoid (3rd frequency hit this week). Behind-body angle hits fibers differently than DBs.</td></tr>
+                            <tr><td style="color: var(--gold);">Plank + Side Plank</td><td>2</td><td>30s each</td><td>30 sec</td><td>Transverse abdominis (plank) + obliques (side plank). Core stability + anti-lateral flexion.</td></tr>
                         </tbody>
                     </table>
                 </div>
+                <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 8px;">24 working sets. Every exercise here targets what your photos show you need most: lat width, upper chest, side delts, rear delts, posture. + 15 min incline treadmill walk post-workout.</p>
             </div>
         </div>
 
@@ -1771,39 +1806,74 @@
         <div class="workout-day">
             <div class="workout-day-header" onclick="toggleWorkout(this)">
                 <div>
-                    <span class="day-label">SATURDAY</span>
-                    <span class="day-focus"> — LEGS (Light) + CORE + CARDIO</span>
+                    <span class="day-label">SATURDAY &mdash; CORE + POSTURE + CARDIO</span>
+                    <span class="day-focus">APT Correction + Full Abs + Light Legs + Fat Burn</span>
                 </div>
-                <span class="tag tag-gold">~55 min</span>
+                <span class="tag tag-gold">~60 min</span>
             </div>
             <div class="workout-body">
                 <div class="table-wrapper">
                     <table>
-                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Notes</th></tr></thead>
+                        <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th><th>Sub-Muscles Targeted</th></tr></thead>
                         <tbody>
-                            <tr><td>Goblet Squats</td><td>3</td><td>12–15</td><td>90 sec</td><td>Light leg pump, good form practice</td></tr>
-                            <tr><td>Bulgarian Split Squats</td><td>3</td><td>10 each leg</td><td>90 sec</td><td>Balance + glute activation</td></tr>
-                            <tr><td>Hanging Leg Raises</td><td>3</td><td>12–15</td><td>60 sec</td><td>Lower abs — the muscle UNDER your belly fat</td></tr>
-                            <tr><td>Cable Woodchops</td><td>3</td><td>12 each side</td><td>60 sec</td><td>Obliques — creates the side lines when lean</td></tr>
-                            <tr><td>Ab Wheel Rollouts / Plank</td><td>3</td><td>10 / 45 sec</td><td>60 sec</td><td>Core stability and anti-extension</td></tr>
-                            <tr><td>Farmer's Walks</td><td>3</td><td>40m</td><td>60 sec</td><td>Grip, traps, core, everything</td></tr>
-                            <tr><td>Incline Treadmill Walk</td><td>1</td><td>20 min</td><td>—</td><td>12% incline, 5.5 km/h. Steady fat burn.</td></tr>
+                            <tr><td>Bulgarian Split Squats</td><td>3</td><td>10 each leg</td><td>90 sec</td><td>Quads, glute med/min (stabilizers), hip mobility. Unilateral &mdash; fixes imbalances + APT.</td></tr>
+                            <tr><td>Walking Lunges</td><td>2</td><td>12 each leg</td><td>60 sec</td><td>Quads, glutes, hip flexor stretch under load. Balance + coordination.</td></tr>
+                            <tr><td>Seated Calf Raises</td><td>3</td><td>15&ndash;20</td><td>45 sec</td><td>Soleus (different from standing which targets gastrocnemius). Full ROM.</td></tr>
+                            <tr><td>Hanging Leg Raises</td><td>3</td><td>12&ndash;15</td><td>60 sec</td><td>Lower rectus abdominis. Curl pelvis UP &mdash; don&rsquo;t just swing legs.</td></tr>
+                            <tr><td>Cable Woodchops</td><td>3</td><td>12 each side</td><td>60 sec</td><td>Internal + external obliques. Creates the side waist lines when lean.</td></tr>
+                            <tr><td>Ab Wheel Rollouts / Plank</td><td>3</td><td>10 / 45 sec</td><td>60 sec</td><td>Entire rectus abdominis + transverse abdominis. Anti-extension core stability.</td></tr>
+                            <tr><td style="color: var(--accent);">Glute Bridges (bodyweight, high rep)</td><td>2</td><td>20</td><td>45 sec</td><td style="color: var(--accent);">Glute max + glute med &mdash; APT REINFORCEMENT. Squeeze glutes 3 sec at top. Keeps activation pattern strong between heavy Wed sessions.</td></tr>
+                            <tr><td>Farmer&rsquo;s Walks</td><td>3</td><td>40m</td><td>60 sec</td><td>Grip (forearm flexors), upper traps, core bracing (obliques + TVA), posture. Carry heavy.</td></tr>
+                            <tr><td>Incline Treadmill Walk</td><td>1</td><td>25 min</td><td>&mdash;</td><td>12% incline, 5.5 km/h. Primary fat burn session of the week. ~200 kcal.</td></tr>
                         </tbody>
                     </table>
                 </div>
+                <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 8px;">22 working sets + 25 min dedicated cardio. Abs hit from every angle: lower abs (leg raises), obliques (woodchops), deep core (ab wheel), APT correction (glute bridges).</p>
             </div>
         </div>
 
         <!-- SUNDAY -->
         <div class="card card-purple">
-            <div class="card-title">SUNDAY — ACTIVE REST</div>
+            <div class="card-title">SUNDAY &mdash; ACTIVE REST + APT MOBILITY</div>
             <ul class="info-list">
-                <li>NO gym. Your muscles GROW during rest, not during training.</li>
-                <li>30–45 min brisk walk (morning preferred)</li>
-                <li>Full body stretching routine: 15–20 minutes (see Home Routine section)</li>
-                <li>Foam rolling: quads, hamstrings, upper back, lats — 10 min</li>
-                <li>Target: 8,000+ steps naturally through the day</li>
+                <li>NO gym. Muscles grow during rest, not during training.</li>
+                <li>30&ndash;45 min brisk walk (morning preferred)</li>
+                <li><strong style="color: var(--accent);">Hip Flexor Stretch:</strong> Kneeling lunge, 90 sec each side. Your hip flexors are tight &mdash; this directly reduces anterior pelvic tilt.</li>
+                <li><strong style="color: var(--accent);">Glute Bridge Hold:</strong> 3 &times; 30 sec squeeze at top. Reinforces glute activation.</li>
+                <li>Full body stretching: 15&ndash;20 minutes (cat-cow, child&rsquo;s pose, spinal twists)</li>
+                <li>Foam rolling: quads (especially hip flexors/TFL), hamstrings, upper back &mdash; 10 min</li>
+                <li>Target: 10,000+ steps through the day</li>
             </ul>
+        </div>
+
+        <!-- DELOAD PROTOCOL -->
+        <div class="card card-gold" style="margin-top: 16px;">
+            <div class="card-title">Deload Week: Every 4 Weeks (Non-Negotiable)</div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px;">
+                On a caloric deficit, fatigue accumulates faster. Deload every 4 weeks strictly:
+            </p>
+            <ul class="info-list">
+                <li>Same exercises but at <strong>60% of your normal weight</strong></li>
+                <li>Same reps but only <strong>2 sets per exercise</strong> instead of 3&ndash;4</li>
+                <li>Sessions take ~25&ndash;30 min. Should feel easy. That&rsquo;s the point.</li>
+                <li>Calories stay the same during deload &mdash; do NOT eat more</li>
+                <li>Still do all cardio (walking) during deload &mdash; only weights are reduced</li>
+                <li>Strength typically rebounds +5&ndash;10% the week after deload. Trust the process.</li>
+            </ul>
+        </div>
+
+        <!-- MUSCLE COVERAGE CHECKLIST -->
+        <div class="warning" style="margin-top: 16px;">
+            <div class="warning-title">Complete Muscle &amp; Sub-Muscle Coverage</div>
+            <p>Every muscle and sub-muscle in your body is trained by this program:</p>
+            <p style="color: var(--text-secondary); font-size: 0.82rem; margin-top: 8px; line-height: 1.8;">
+                <strong>Chest:</strong> Upper/clavicular (incline press &times;2 + cable fly) &bull; Mid/sternal (flat bench) &bull; Lower (dips) &bull; Inner pec (fly squeeze)<br>
+                <strong>Back:</strong> Lat width (pull-ups + pulldowns + straight-arm) &bull; Upper back thickness (barbell rows + cable rows + DB rows) &bull; Lower traps (face pulls + rows) &bull; Erectors (RDL + rows indirect)<br>
+                <strong>Shoulders:</strong> Anterior delt (OHP + pressing) &bull; Medial delt (4 exercises, 14 sets/wk) &bull; Posterior delt (face pulls &times;2 + reverse pec deck)<br>
+                <strong>Arms:</strong> Bicep short head (barbell curls) &bull; Brachialis (hammer curls) &bull; Tricep long head (overhead ext &times;2) &bull; Tricep lateral (pushdowns + dips) &bull; Tricep medial (dips + pushdowns) &bull; Forearms (hammer curls + farmer&rsquo;s walks)<br>
+                <strong>Legs:</strong> Quads &mdash; all 4 heads (squats + leg press + lunges + split squats) &bull; Hamstrings (RDL + leg curls) &bull; Glutes max (hip thrusts + RDL + bridges) &bull; Glutes med/min (split squats + lunges) &bull; Adductors (squats wide + lunges) &bull; Calves &mdash; gastrocnemius (standing) + soleus (seated)<br>
+                <strong>Core:</strong> Upper abs (cable crunch) &bull; Lower abs (hanging raises &times;2) &bull; Obliques int+ext (woodchops + side plank) &bull; Transverse abs (dead bugs + ab wheel + plank) &bull; Erectors (RDL + rows)
+            </p>
         </div>
     </section>
 
