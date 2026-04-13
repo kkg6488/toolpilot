@@ -2,6 +2,10 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Check, Copy } from "lucide-react";
+import { AdSlot } from "@/components/shared/ad-slot";
+import { TrackPageView } from "@/components/shared/track-page-view";
+import { RelatedSection } from "@/components/shared/related-items";
+import { getRelatedTools } from "@/lib/related-items";
 import { cn } from "@/lib/utils";
 
 const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -177,6 +181,7 @@ export default function PasswordGeneratorPage() {
 
   return (
     <div className="mx-auto min-h-screen max-w-3xl bg-background px-4 py-12 sm:px-6 sm:py-16">
+      <TrackPageView name="Password Generator" type="tool" />
       <p className="text-sm font-medium text-primary">Tools</p>
       <h1 className="mt-2 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
         Password generator
@@ -328,6 +333,10 @@ export default function PasswordGeneratorPage() {
           </button>
         </section>
 
+        <div className="mt-8">
+          <AdSlot slot="tool-mid" format="horizontal" className="mx-auto" />
+        </div>
+
         <section className="rounded-xl border border-border/60 bg-card p-6 shadow-md">
           <h2 className="text-lg font-semibold text-foreground">What makes a password strong?</h2>
           <ul className="mt-4 list-inside list-disc space-y-2 text-sm text-muted-foreground">
@@ -401,6 +410,12 @@ export default function PasswordGeneratorPage() {
             </details>
           </div>
         </section>
+
+        <div className="mt-8">
+          <AdSlot slot="tool-bottom" format="rectangle" className="mx-auto" />
+        </div>
+
+        <RelatedSection items={getRelatedTools("password-generator")} />
       </div>
     </div>
   );

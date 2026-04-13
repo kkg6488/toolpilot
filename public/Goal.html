@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kunal — Complete Physique Transformation Blueprint</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --card: #141414;
+    --card2: #1a1a1a;
+    --border: #2a2a2a;
+    --accent: #e63946;
+    --accent2: #ff6b6b;
+    --green: #2ecc71;
+    --yellow: #f1c40f;
+    --orange: #e67e22;
+    --blue: #3498db;
+    --text: #e0e0e0;
+    --text2: #999;
+    --white: #fff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+  /* HEADER */
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .hero h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero .subtitle {
+    color: var(--text2);
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 24px;
+    text-align: center;
+    min-width: 110px;
+  }
+  .stat .val { font-size: 1.5rem; font-weight: 700; color: var(--white); }
+  .stat .label { font-size: 0.75rem; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* SECTIONS */
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    margin-bottom: 28px;
+  }
+  .section-num {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .section h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent2);
+    margin: 22px 0 10px;
+  }
+  .section h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--yellow);
+    margin: 16px 0 8px;
+  }
+  p { margin-bottom: 12px; color: var(--text); }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px;
+    font-size: 0.88rem;
+  }
+  thead th {
+    background: var(--card2);
+    color: var(--text2);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  tbody td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  .total-row td {
+    font-weight: 700;
+    color: var(--white);
+    background: rgba(230,57,70,0.08);
+    border-top: 2px solid var(--accent);
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .tag-red { background: rgba(230,57,70,0.15); color: var(--accent2); }
+  .tag-green { background: rgba(46,204,113,0.15); color: var(--green); }
+  .tag-yellow { background: rgba(241,196,15,0.15); color: var(--yellow); }
+  .tag-blue { background: rgba(52,152,219,0.15); color: var(--blue); }
+  .tag-orange { background: rgba(230,126,34,0.15); color: var(--orange); }
+
+  /* LISTS */
+  ul, ol { margin: 8px 0 16px 20px; }
+  li { margin-bottom: 6px; }
+
+  /* MACRO BAR */
+  .macro-bar {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+  .macro-item {
+    flex: 1;
+    min-width: 140px;
+    background: var(--card2);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .macro-item .num { font-size: 1.8rem; font-weight: 800; }
+  .macro-item .unit { font-size: 0.8rem; color: var(--text2); }
+  .macro-item .mlabel { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text2); margin-top: 4px; }
+  .macro-p .num { color: var(--accent2); }
+  .macro-c .num { color: var(--yellow); }
+  .macro-f .num { color: var(--blue); }
+  .macro-cal .num { color: var(--green); }
+
+  /* MEAL CARD */
+  .meal-card {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 14px 0;
+  }
+  .meal-card .meal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .meal-card .meal-title {
+    font-weight: 700;
+    color: var(--white);
+    font-size: 1rem;
+  }
+  .meal-card .meal-time {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .meal-card .meal-macros {
+    display: flex;
+    gap: 12px;
+    font-size: 0.75rem;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .meal-card .meal-macros span { color: var(--text2); }
+  .meal-card .meal-macros strong { color: var(--white); }
+
+  /* WORKOUT */
+  .workout-day {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 14px 0;
+  }
+  .workout-day .day-label {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white);
+    padding: 3px 14px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+  }
+  .workout-day .day-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+    margin: 16px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 18px;
+    padding: 12px 16px;
+    background: var(--card2);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+  .timeline-item .t-month { font-weight: 700; color: var(--accent2); font-size: 0.85rem; }
+  .timeline-item .t-weight { color: var(--text2); font-size: 0.85rem; }
+  .timeline-item .t-desc { color: var(--text); font-size: 0.9rem; margin-top: 4px; }
+
+  /* DAILY ROUTINE */
+  .routine-item {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .routine-item:last-child { border-bottom: none; }
+  .routine-time {
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 80px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .routine-desc { font-size: 0.9rem; }
+
+  /* CALLOUT */
+  .callout {
+    background: rgba(230,57,70,0.06);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 0.92rem;
+  }
+  .callout-green {
+    background: rgba(46,204,113,0.06);
+    border-left-color: var(--green);
+  }
+  .callout-yellow {
+    background: rgba(241,196,15,0.06);
+    border-left-color: var(--yellow);
+  }
+
+  /* RATING */
+  .rating-bar {
+    width: 100%;
+    height: 10px;
+    background: var(--card2);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 6px 0 4px;
+  }
+  .rating-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s;
+  }
+
+  /* STICKY NAV */
+  .nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+  }
+  .nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 8px;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-link {
+    display: inline-block;
+    padding: 12px 14px;
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    transition: color 0.2s, border-bottom 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-link:hover, .nav-link.active {
+    color: var(--accent2);
+    border-bottom: 2px solid var(--accent);
+  }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    padding: 10px 14px;
+    cursor: pointer;
+  }
+  .nav-brand {
+    font-weight: 800;
+    color: var(--white);
+    font-size: 0.85rem;
+    padding: 12px 14px 12px 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .nav-brand span { color: var(--accent); }
+
+  /* BACK TO TOP */
+  .back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(230,57,70,0.4);
+    z-index: 99;
+    transition: transform 0.2s;
+  }
+  .back-to-top:hover { transform: scale(1.1); }
+  .back-to-top.visible { display: flex; }
+
+  /* SCROLL MARGIN for anchor links */
+  .section[id] { scroll-margin-top: 56px; }
+  .hero { scroll-margin-top: 56px; }
+
+  /* TABLE WRAPPER for horizontal scroll on mobile */
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 14px 0 20px;
+  }
+  .table-wrap table { margin: 0; min-width: 500px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .container { padding: 10px; }
+    .section { padding: 18px 14px; border-radius: 10px; margin-bottom: 20px; }
+    .hero { padding: 40px 14px 28px; margin-bottom: 24px; }
+    .hero h1 { font-size: 1.5rem; }
+    .hero .subtitle { font-size: 0.85rem; margin-bottom: 12px; }
+    .stats-row { gap: 8px; }
+    .stat { min-width: 60px; padding: 10px 10px; border-radius: 8px; }
+    .stat .val { font-size: 1.1rem; }
+    .stat .label { font-size: 0.65rem; }
+    .section h2 { font-size: 1.2rem; margin-bottom: 14px; }
+    .section h3 { font-size: 0.95rem; margin: 16px 0 8px; }
+    .macro-bar { gap: 6px; }
+    .macro-item { min-width: 0; flex: 1 1 45%; padding: 12px 6px; }
+    .macro-item .num { font-size: 1.4rem; }
+    .macro-item .unit { font-size: 0.7rem; }
+    .macro-item .mlabel { font-size: 0.6rem; }
+    table { font-size: 0.75rem; }
+    thead th { padding: 7px 5px; font-size: 0.65rem; }
+    tbody td { padding: 6px 5px; }
+    .meal-card { padding: 14px 10px; margin: 10px 0; }
+    .meal-card .meal-title { font-size: 0.9rem; }
+    .meal-card .meal-time { font-size: 0.75rem; }
+    .workout-day { padding: 14px 10px; margin: 10px 0; }
+    .workout-day .day-title { font-size: 0.9rem; }
+    .callout { padding: 12px 14px; font-size: 0.85rem; }
+    .timeline { padding-left: 22px; }
+    .timeline-item { padding: 10px 12px; }
+    .timeline-item::before { left: -18px; width: 8px; height: 8px; }
+    .routine-item { gap: 10px; padding: 10px 0; }
+    .routine-time { min-width: 65px; font-size: 0.8rem; }
+    .routine-desc { font-size: 0.82rem; }
+    ul, ol { margin: 6px 0 12px 16px; }
+    li { margin-bottom: 4px; font-size: 0.88rem; }
+    .nav-link { padding: 10px 10px; font-size: 0.65rem; }
+    .nav-brand { font-size: 0.75rem; padding: 10px 8px 10px 4px; }
+  }
+
+  @media (max-width: 400px) {
+    .container { padding: 6px; }
+    .section { padding: 14px 10px; }
+    .hero h1 { font-size: 1.3rem; }
+    .stat { min-width: 55px; padding: 8px 6px; }
+    .stat .val { font-size: 1rem; }
+    .macro-item { flex: 1 1 42%; padding: 10px 4px; }
+    .macro-item .num { font-size: 1.2rem; }
+    table { font-size: 0.7rem; }
+    thead th { padding: 5px 3px; font-size: 0.6rem; }
+    tbody td { padding: 5px 3px; }
+    .nav-link { padding: 8px 7px; font-size: 0.6rem; }
+    .back-to-top { width: 38px; height: 38px; bottom: 16px; right: 16px; font-size: 1rem; }
+  }
+
+  /* PRINT */
+  @media print {
+    .nav-bar, .back-to-top { display: none !important; }
+    body { background: #fff; color: #111; }
+    .section { border: 1px solid #ddd; break-inside: avoid; }
+    .hero { border-bottom: 1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <div class="nav-brand">K<span>.</span></div>
+    <a href="#training" class="nav-link">Training</a>
+    <a href="#diet" class="nav-link">Diet</a>
+    <a href="#body" class="nav-link">Body</a>
+    <a href="#face" class="nav-link">Face</a>
+    <a href="#timeline" class="nav-link">Timeline</a>
+    <a href="#fatloss" class="nav-link">Fat Loss</a>
+    <a href="#height" class="nav-link">Height</a>
+    <a href="#aesthetics" class="nav-link">Aesthetics</a>
+    <a href="#truths" class="nav-link">Truths</a>
+    <a href="#protocol" class="nav-link">Protocol</a>
+  </div>
+</nav>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+<div class="container">
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <h1>Physique <span>Transformation</span> Blueprint</h1>
+  <p class="subtitle">Kunal Kumar &mdash; Complete Analysis & 8-Month Action Plan</p>
+  <p class="subtitle" style="font-size:0.8rem; color:#555;">Generated: 29 March 2026 &middot; Duration: 8&ndash;9 Months &middot; Goal: Lean Aesthetic Physique</p>
+  <div class="stats-row">
+    <div class="stat"><div class="val">25</div><div class="label">Age</div></div>
+    <div class="stat"><div class="val">5'4"</div><div class="label">Height</div></div>
+    <div class="stat"><div class="val">76 kg</div><div class="label">Weight</div></div>
+    <div class="stat"><div class="val">~27%</div><div class="label">Body Fat</div></div>
+    <div class="stat"><div class="val">3 mo</div><div class="label">Gym Exp</div></div>
+  </div>
+</div>
+
+<!-- ============ SECTION 1: TRAINING PLAN ============ -->
+<div class="section" id="training">
+  <div class="section-num">SECTION 1</div>
+  <h2>Training Plan — PPL + Upper/Lower (6 Days)</h2>
+
+  <p>Split designed around your weak points: Back (width), Chest (upper), Shoulders (side/rear), Core, Legs. Arms are a strength — maintained, not prioritized.</p>
+  <p><strong>Progression:</strong> Add 2.5 kg every 2 weeks on compound lifts. If you fail a weight 2 sessions in a row, stay at that weight until all sets/reps complete.</p>
+
+  <!-- DAY 1 -->
+  <div class="workout-day">
+    <span class="day-label">DAY 1</span>
+    <div class="day-title">PUSH — Chest + Shoulders + Triceps</div>
+    <table>
+      <thead><tr><th>Exercise</th><th>Sets × Reps</th><th>Rest</th></tr></thead>
+      <tbody>
+        <tr><td>Incline Dumbbell Press</td><td>4 × 8&ndash;10</td><td>90s</td></tr>
+        <tr><td>Flat Barbell Bench Press</td><td>3 × 8&ndash;10</td><td>90s</td></tr>
+        <tr><td>Dumbbell Lateral Raises</td><td>4 × 12&ndash;15</td><td>60s</td></tr>
+        <tr><td>Cable Lateral Raises</td><td>3 × 15&ndash;18</td><td>45s</td></tr>
+        <tr><td>Reverse Pec Deck (Rear Delt)</td><td>3 × 15&ndash;18</td><td>45s</td></tr>
+        <tr><td>Overhead Tricep Extension (Cable)</td><td>3 × 10&ndash;12</td><td>60s</td></tr>
+        <tr><td>Tricep Rope Pushdown</td><td>3 × 12&ndash;15</td><td>45s</td></tr>
+        <tr><td style="color:var(--yellow);">Hanging Knee Raises (abs finisher)</td><td>3 × 15</td><td>30s</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.8rem;color:var(--text2);">+ 20 min incline treadmill walk (10% incline, 5.5 km/h) post-workout</p>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="workout-day">
+    <span class="day-label">DAY 2</span>
+    <div class="day-title">PULL — Back + Biceps + Rear Delts</div>
+    <table>
+      <thead><tr><th>Exercise</th><th>Sets × Reps</th><th>Rest</th></tr></thead>
+      <tbody>
+        <tr><td>Lat Pulldown (wide grip)</td><td>4 × 8&ndash;10</td><td>90s</td></tr>
+        <tr><td>Barbell Row</td><td>4 × 8&ndash;10</td><td>90s</td></tr>
+        <tr><td>Seated Cable Row (close grip)</td><td>3 × 10&ndash;12</td><td>75s</td></tr>
+        <tr><td>Face Pulls</td><td>4 × 15&ndash;18</td><td>45s</td></tr>
+        <tr><td>Dumbbell Shrugs (2 sec hold at top)</td><td>3 × 12&ndash;15</td><td>60s</td></tr>
+        <tr><td>Barbell Curl</td><td>3 × 10&ndash;12</td><td>60s</td></tr>
+        <tr><td>Hammer Curls</td><td>2 × 12&ndash;15</td><td>60s</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.8rem;color:var(--text2);">+ 20 min incline treadmill walk post-workout</p>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="workout-day">
+    <span class="day-label">DAY 3</span>
+    <div class="day-title">LEGS</div>
+    <table>
+      <thead><tr><th>Exercise</th><th>Sets × Reps</th><th>Rest</th></tr></thead>
+      <tbody>
+        <tr><td>Barbell Squat</td><td>4 × 8&ndash;10</td><td>120s</td></tr>
+        <tr><td>Romanian Deadlift</td><td>3 × 10&ndash;12</td><td>90s</td></tr>
+        <tr><td>Leg Press</td><td>3 × 10&ndash;12</td><td>90s</td></tr>
+        <tr><td>Leg Curl</td><td>3 × 12&ndash;15</td><td>60s</td></tr>
+        <tr><td>Standing Calf Raises</td><td>4 × 15&ndash;20</td><td>45s</td></tr>
+        <tr><td>Walking Lunges</td><td>2 × 12 each leg</td><td>60s</td></tr>
+        <tr><td style="color:var(--yellow);">Cable Crunch (abs finisher)</td><td>3 × 15</td><td>30s</td></tr>
+        <tr><td style="color:var(--yellow);">Dead Bug</td><td>2 × 10 each side</td><td>30s</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.8rem;color:var(--text2);">+ 20 min incline treadmill walk post-workout</p>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="workout-day">
+    <span class="day-label">DAY 4</span>
+    <div class="day-title">UPPER — Weak Point Focus</div>
+    <table>
+      <thead><tr><th>Exercise</th><th>Sets × Reps</th><th>Rest</th></tr></thead>
+      <tbody>
+        <tr><td>Overhead Press (Barbell)</td><td>4 × 8&ndash;10</td><td>90s</td></tr>
+        <tr><td>Dips (weighted if possible)</td><td>3 × 8&ndash;12</td><td>90s</td></tr>
+        <tr><td>Incline Dumbbell Fly</td><td>3 × 12&ndash;15</td><td>60s</td></tr>
+        <tr><td>Chin-ups (assisted if needed)</td><td>4 × 6&ndash;10</td><td>90s</td></tr>
+        <tr><td>Single Arm Dumbbell Row</td><td>3 × 10&ndash;12</td><td>75s</td></tr>
+        <tr><td>Lateral Raises (drop set on last)</td><td>3 × 12, drop, ×10</td><td>60s</td></tr>
+        <tr><td>Face Pulls</td><td>3 × 15&ndash;18</td><td>45s</td></tr>
+        <tr><td style="color:var(--yellow);">Plank + Side Plank (abs finisher)</td><td>2 × 30s each side</td><td>30s</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.8rem;color:var(--text2);">+ 20 min incline treadmill walk post-workout</p>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="workout-day">
+    <span class="day-label">DAY 5</span>
+    <div class="day-title">LOWER + ABS</div>
+    <table>
+      <thead><tr><th>Exercise</th><th>Sets × Reps</th><th>Rest</th></tr></thead>
+      <tbody>
+        <tr><td>Front Squat or Goblet Squat</td><td>4 × 10&ndash;12</td><td>90s</td></tr>
+        <tr><td>Hip Thrust</td><td>3 × 10&ndash;12</td><td>75s</td></tr>
+        <tr><td>Bulgarian Split Squat</td><td>3 × 10 each leg</td><td>60s</td></tr>
+        <tr><td>Seated Calf Raises</td><td>4 × 15&ndash;20</td><td>45s</td></tr>
+        <tr><td>Hanging Leg Raises</td><td>3 × 12&ndash;15</td><td>60s</td></tr>
+        <tr><td>Cable Crunch</td><td>3 × 15</td><td>45s</td></tr>
+        <tr><td>Plank</td><td>2 × 45&ndash;60 sec</td><td>30s</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.8rem;color:var(--text2);">+ 20 min incline treadmill walk post-workout</p>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="workout-day">
+    <span class="day-label">DAY 6</span>
+    <div class="day-title">ACTIVE RECOVERY + CARDIO + ABS</div>
+    <table>
+      <thead><tr><th>Activity</th><th>Duration</th></tr></thead>
+      <tbody>
+        <tr><td>Incline treadmill walk (10&ndash;12% incline, 5.5 km/h)</td><td>40 min</td></tr>
+        <tr><td>Ab circuit: 3 rounds — 15 crunches + 15 leg raises + 30s plank + 15 bicycle crunches</td><td>~15 min</td></tr>
+        <tr><td>Full body stretching</td><td>15 min</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="workout-day">
+    <span class="day-label">DAY 7</span>
+    <div class="day-title">COMPLETE REST</div>
+    <p>No training. Walk 6,000+ steps. Stretch. Sleep well. Eat at maintenance or slight deficit.</p>
+  </div>
+
+  <h3>Cardio Summary</h3>
+  <table>
+    <thead><tr><th>Type</th><th>When</th><th>Duration</th><th>Frequency</th></tr></thead>
+    <tbody>
+      <tr><td>Incline treadmill walk (10%, 5.5 km/h)</td><td>Post-workout</td><td>20 min</td><td>5×/week (Days 1&ndash;5)</td></tr>
+      <tr><td>Dedicated cardio session</td><td>Day 6</td><td>40 min</td><td>1×/week</td></tr>
+      <tr><td>Fasted morning brisk walk</td><td>6:30&ndash;7:00 AM daily</td><td>20 min</td><td>7×/week</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Total weekly cardio: ~220 min</strong></p>
+
+  <h3>Optional Morning Home Workout (6:15 AM, before walk)</h3>
+  <p>10 minutes, 2 rounds:</p>
+  <ul>
+    <li>20 push-ups</li>
+    <li>20 bodyweight squats</li>
+    <li>30 sec plank</li>
+    <li>10 burpees</li>
+  </ul>
+</div>
+
+<!-- ============ SECTION 2: DIET PLAN ============ -->
+<div class="section" id="diet">
+  <div class="section-num">SECTION 2</div>
+  <h2>Diet Plan — 1,650 kcal Precise</h2>
+
+  <h3>Calorie Calculation</h3>
+  <table>
+    <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>BMR (Mifflin-St Jeor)</td><td>10×76 + 6.25×163 − 5×25 − 5 = <strong>1,653 kcal</strong></td></tr>
+      <tr><td>Activity Multiplier</td><td>×1.55 (6× training/week + cardio)</td></tr>
+      <tr><td>TDEE</td><td><strong>2,562 kcal</strong></td></tr>
+      <tr><td>Daily Target</td><td><strong>1,650 kcal</strong> (912 deficit ≈ 0.65 kg fat loss/week)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- NON-VEG DAY MACROS -->
+  <h3>Non-Veg Day Macros (Mon, Wed, Fri, Sat, Sun)</h3>
+  <div class="macro-bar">
+    <div class="macro-item macro-cal"><div class="num">1,650</div><div class="unit">kcal</div><div class="mlabel">Calories</div></div>
+    <div class="macro-item macro-p"><div class="num">150</div><div class="unit">g</div><div class="mlabel">Protein</div></div>
+    <div class="macro-item macro-c"><div class="num">158</div><div class="unit">g</div><div class="mlabel">Carbs</div></div>
+    <div class="macro-item macro-f"><div class="num">45</div><div class="unit">g</div><div class="mlabel">Fat</div></div>
+  </div>
+
+  <!-- MEAL 1 -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Meal 1 — Early Morning</span>
+      <span class="meal-time">6:30 AM</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Warm jeera water (cumin soaked overnight)</td><td>250 ml</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>Almonds, soaked overnight</td><td>7g (5 pieces)</td><td>41</td><td>1.5</td><td>1.0</td><td>3.6</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>41</strong></td><td><strong>1.5</strong></td><td><strong>1.0</strong></td><td><strong>3.6</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MEAL 2 -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Meal 2 — Breakfast</span>
+      <span class="meal-time">8:00 AM (post morning walk)</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Whole eggs, boiled</td><td>2 pcs (100g edible)</td><td>155</td><td>12.6</td><td>1.1</td><td>10.6</td></tr>
+        <tr><td>Egg whites, boiled</td><td>3 pcs (99g)</td><td>52</td><td>10.9</td><td>0.7</td><td>0.2</td></tr>
+        <tr><td>Rolled oats porridge (cooked in water, pinch salt)</td><td>30g dry weight</td><td>114</td><td>4.0</td><td>20.0</td><td>2.0</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>321</strong></td><td><strong>27.5</strong></td><td><strong>21.8</strong></td><td><strong>12.8</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MEAL 3 -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Meal 3 — Lunch</span>
+      <span class="meal-time">1:00 PM</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Chicken breast, grilled/tandoori (raw weight)</td><td>150g</td><td>165</td><td>31.0</td><td>0</td><td>3.6</td></tr>
+        <tr><td>Multigrain roti (atta weight)</td><td>35g (1 roti)</td><td>118</td><td>3.5</td><td>21.5</td><td>1.6</td></tr>
+        <tr><td>Lauki sabzi — lauki + mustard oil + hing + haldi</td><td>150g lauki + 5ml oil</td><td>68</td><td>1.0</td><td>5.0</td><td>5.0</td></tr>
+        <tr><td>Salad — cucumber + tomato + lemon juice</td><td>50g + 50g</td><td>18</td><td>0.8</td><td>3.5</td><td>0.2</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>369</strong></td><td><strong>36.3</strong></td><td><strong>30.0</strong></td><td><strong>10.4</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MEAL 4 -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Meal 4 — Pre-Workout</span>
+      <span class="meal-time">4:30 PM</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Banana, ripe</td><td>100g (1 medium)</td><td>89</td><td>1.1</td><td>23.0</td><td>0.3</td></tr>
+        <tr><td>Roasted chana (no oil)</td><td>20g</td><td>75</td><td>4.0</td><td>12.0</td><td>1.0</td></tr>
+        <tr><td>Black coffee — no sugar, no milk</td><td>1 cup</td><td>2</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>166</strong></td><td><strong>5.1</strong></td><td><strong>35.0</strong></td><td><strong>1.3</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MEAL 5 -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Meal 5 — Post-Workout</span>
+      <span class="meal-time">6:45 PM</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Whey protein isolate in water</td><td>1.5 scoops (45g powder)</td><td>180</td><td>36.0</td><td>4.5</td><td>2.3</td></tr>
+        <tr><td>Sweet potato, boiled</td><td>120g</td><td>103</td><td>1.3</td><td>24.0</td><td>0.1</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>283</strong></td><td><strong>37.3</strong></td><td><strong>28.5</strong></td><td><strong>2.4</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MEAL 6 -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Meal 6 — Dinner</span>
+      <span class="meal-time">9:00 PM</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Chicken breast, grilled (raw weight)</td><td>130g</td><td>143</td><td>27.0</td><td>0</td><td>3.1</td></tr>
+        <tr><td>Moong dal — pressure cooked, hing + ajwain</td><td>35g dry weight</td><td>125</td><td>8.4</td><td>21.0</td><td>0.4</td></tr>
+        <tr><td>Ghee (for dal tempering)</td><td>5g (1 tsp)</td><td>45</td><td>0</td><td>0</td><td>5.0</td></tr>
+        <tr><td>Palak sabzi — spinach + mustard oil</td><td>120g spinach + 5ml oil</td><td>68</td><td>3.5</td><td>4.5</td><td>5.0</td></tr>
+        <tr><td>Multigrain roti (small)</td><td>30g atta</td><td>101</td><td>3.0</td><td>18.5</td><td>1.3</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>482</strong></td><td><strong>41.9</strong></td><td><strong>44.0</strong></td><td><strong>14.8</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BEFORE BED -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Before Bed</span>
+      <span class="meal-time">10:00 PM</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Haldi water — warm water + ½ tsp turmeric + pinch black pepper</td><td>1 glass</td><td>5</td><td>0</td><td>1.0</td><td>0</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>5</strong></td><td><strong>0</strong></td><td><strong>1.0</strong></td><td><strong>0</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NON-VEG DAY GRAND TOTAL -->
+  <div style="background:rgba(230,57,70,0.08); border:2px solid var(--accent); border-radius:10px; padding:20px; margin:20px 0; text-align:center;">
+    <h3 style="margin:0 0 12px; color:var(--white);">Non-Veg Day Grand Total</h3>
+    <div class="macro-bar" style="justify-content:center;">
+      <div class="macro-item macro-cal"><div class="num">1,667</div><div class="unit">kcal</div><div class="mlabel">Calories</div></div>
+      <div class="macro-item macro-p"><div class="num">150</div><div class="unit">g</div><div class="mlabel">Protein</div></div>
+      <div class="macro-item macro-c"><div class="num">161</div><div class="unit">g</div><div class="mlabel">Carbs</div></div>
+      <div class="macro-item macro-f"><div class="num">45</div><div class="unit">g</div><div class="mlabel">Fat</div></div>
+    </div>
+  </div>
+
+  <!-- ===================== VEG DAY ===================== -->
+  <hr style="border:none; border-top:2px solid var(--border); margin:40px 0;">
+
+  <h3>Veg Day Macros (Tuesday, Thursday)</h3>
+  <p style="font-size:0.85rem; color:var(--text2);">Eggs included on veg days. No meat or fish. 2 scoops whey to compensate protein gap.</p>
+  <div class="macro-bar">
+    <div class="macro-item macro-cal"><div class="num">1,648</div><div class="unit">kcal</div><div class="mlabel">Calories</div></div>
+    <div class="macro-item macro-p"><div class="num">142</div><div class="unit">g</div><div class="mlabel">Protein</div></div>
+    <div class="macro-item macro-c"><div class="num">166</div><div class="unit">g</div><div class="mlabel">Carbs</div></div>
+    <div class="macro-item macro-f"><div class="num">46</div><div class="unit">g</div><div class="mlabel">Fat</div></div>
+  </div>
+
+  <!-- VEG MEAL 1 -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Meal 1 — Early Morning</span>
+      <span class="meal-time">6:30 AM</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Warm jeera water</td><td>250 ml</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>Almonds, soaked overnight</td><td>7g (5 pcs)</td><td>41</td><td>1.5</td><td>1.0</td><td>3.6</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>41</strong></td><td><strong>1.5</strong></td><td><strong>1.0</strong></td><td><strong>3.6</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VEG MEAL 2 -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Meal 2 — Breakfast</span>
+      <span class="meal-time">8:00 AM</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Whole eggs, boiled</td><td>2 pcs (100g)</td><td>155</td><td>12.6</td><td>1.1</td><td>10.6</td></tr>
+        <tr><td>Egg whites, boiled</td><td>3 pcs (99g)</td><td>52</td><td>10.9</td><td>0.7</td><td>0.2</td></tr>
+        <tr><td>Moong dal chilla — soaked moong ground, cooked in 3ml oil</td><td>30g dry moong dal</td><td>130</td><td>7.2</td><td>18.0</td><td>3.3</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>337</strong></td><td><strong>30.7</strong></td><td><strong>19.8</strong></td><td><strong>14.1</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VEG MEAL 3 -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Meal 3 — Lunch</span>
+      <span class="meal-time">1:00 PM</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Soy chunk curry — nutrela rehydrated, onion-tomato gravy, 5ml oil</td><td>50g dry weight</td><td>215</td><td>26.0</td><td>16.6</td><td>5.8</td></tr>
+        <tr><td>Multigrain roti</td><td>35g atta (1 roti)</td><td>118</td><td>3.5</td><td>21.5</td><td>1.6</td></tr>
+        <tr><td>Tori/lauki sabzi — 5ml oil + hing</td><td>150g tori + 5ml oil</td><td>68</td><td>1.0</td><td>5.0</td><td>5.0</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>401</strong></td><td><strong>30.5</strong></td><td><strong>43.1</strong></td><td><strong>12.4</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VEG MEAL 4 -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Meal 4 — Pre-Workout</span>
+      <span class="meal-time">4:30 PM</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Banana, ripe</td><td>100g (1 medium)</td><td>89</td><td>1.1</td><td>23.0</td><td>0.3</td></tr>
+        <tr><td>Roasted chana</td><td>20g</td><td>75</td><td>4.0</td><td>12.0</td><td>1.0</td></tr>
+        <tr><td>Black coffee (no sugar)</td><td>1 cup</td><td>2</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>166</strong></td><td><strong>5.1</strong></td><td><strong>35.0</strong></td><td><strong>1.3</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VEG MEAL 5 -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Meal 5 — Post-Workout</span>
+      <span class="meal-time">6:45 PM</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Whey protein isolate in water</td><td>2 scoops (60g powder)</td><td>240</td><td>48.0</td><td>6.0</td><td>3.0</td></tr>
+        <tr><td>Sweet potato, boiled</td><td>80g</td><td>69</td><td>0.9</td><td>16.0</td><td>0.1</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>309</strong></td><td><strong>48.9</strong></td><td><strong>22.0</strong></td><td><strong>3.1</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VEG MEAL 6 -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Meal 6 — Dinner</span>
+      <span class="meal-time">9:00 PM</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Firm tofu stir-fry — tofu + bell pepper + onion + 5ml oil</td><td>150g tofu + 80g veggies</td><td>168</td><td>13.2</td><td>5.9</td><td>9.9</td></tr>
+        <tr><td>Masoor dal — pressure cooked with hing + ajwain</td><td>35g dry weight</td><td>120</td><td>8.8</td><td>20.0</td><td>0.3</td></tr>
+        <tr><td>Multigrain roti (small)</td><td>30g atta</td><td>101</td><td>3.0</td><td>18.5</td><td>1.3</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>389</strong></td><td><strong>25.0</strong></td><td><strong>44.4</strong></td><td><strong>11.5</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BEFORE BED -->
+  <div class="meal-card">
+    <div class="meal-header">
+      <span class="meal-title">Before Bed</span>
+      <span class="meal-time">10:00 PM</span>
+    </div>
+    <table>
+      <thead><tr><th>Food</th><th>Quantity</th><th>Kcal</th><th>P(g)</th><th>C(g)</th><th>F(g)</th></tr></thead>
+      <tbody>
+        <tr><td>Haldi water — warm water + turmeric + black pepper</td><td>1 glass</td><td>5</td><td>0</td><td>1.0</td><td>0</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>Meal Total</strong></td><td><strong>5</strong></td><td><strong>0</strong></td><td><strong>1.0</strong></td><td><strong>0</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VEG DAY GRAND TOTAL -->
+  <div style="background:rgba(46,204,113,0.08); border:2px solid var(--green); border-radius:10px; padding:20px; margin:20px 0; text-align:center;">
+    <h3 style="margin:0 0 12px; color:var(--white);">Veg Day Grand Total</h3>
+    <div class="macro-bar" style="justify-content:center;">
+      <div class="macro-item macro-cal"><div class="num">1,648</div><div class="unit">kcal</div><div class="mlabel">Calories</div></div>
+      <div class="macro-item macro-p"><div class="num">142</div><div class="unit">g</div><div class="mlabel">Protein</div></div>
+      <div class="macro-item macro-c"><div class="num">166</div><div class="unit">g</div><div class="mlabel">Carbs</div></div>
+      <div class="macro-item macro-f"><div class="num">46</div><div class="unit">g</div><div class="mlabel">Fat</div></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Weekly Average:</strong> Protein = (150×5 + 142×2) ÷ 7 = <strong>147.7g/day</strong> = 1.94g/kg — optimal for muscle preservation during cut.
+  </div>
+
+  <!-- ANTI-BLOATING RULES -->
+  <h3>Anti-Bloating Protocol</h3>
+  <ul>
+    <li>Add <strong>ajwain (carom seeds)</strong> and <strong>hing (asafoetida)</strong> to every dal and sabzi</li>
+    <li>Soak all dals for minimum <strong>6 hours</strong> before cooking</li>
+    <li>Cook vegetables well — do NOT eat raw cruciferous veggies (cauliflower, cabbage)</li>
+    <li>No dairy milk — use whey in water only</li>
+    <li>Chew every bite <strong>20&ndash;25 times</strong></li>
+    <li>No carbonated drinks or chewing gum (except mastic gum for jaw)</li>
+    <li>Last meal <strong>3 hours before sleep</strong></li>
+    <li>Drink <strong>jeera water</strong> every morning empty stomach</li>
+    <li>No raw onion in salads (use cucumber + tomato + lemon only)</li>
+  </ul>
+
+  <!-- FOODS TO AVOID -->
+  <h3>Completely Avoid</h3>
+  <table>
+    <thead><tr><th>Category</th><th>Items</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag tag-red">Sugar</span></td><td>Sugar in chai, mithai, biscuits, flavored yogurt, fruit juice, chocolate</td></tr>
+      <tr><td><span class="tag tag-red">Fried</span></td><td>Samosa, pakora, puri, paratha (oil-fried), French fries, chips</td></tr>
+      <tr><td><span class="tag tag-red">Refined Carbs</span></td><td>White rice (large qty), maida products, bread (white), naan</td></tr>
+      <tr><td><span class="tag tag-red">Drinks</span></td><td>Alcohol (completely), soft drinks, packaged juice, flavored milk</td></tr>
+      <tr><td><span class="tag tag-red">Processed</span></td><td>Maggi, instant noodles, namkeen, packaged snacks</td></tr>
+      <tr><td><span class="tag tag-red">Extras</span></td><td>Extra ghee/butter on roti, excess oil in cooking (&gt;5ml per meal)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ SECTION 3: BODY ANALYSIS ============ -->
+<div class="section" id="body">
+  <div class="section-num">SECTION 3</div>
+  <h2>Body Analysis — Brutal Truth</h2>
+
+  <h3>Estimated Body Fat: 25&ndash;28%</h3>
+  <p>Significant subcutaneous fat around midsection, lower back, chest, and face. Zero abdominal definition. Love handles clearly visible from back. Belly protrudes noticeably in side profile.</p>
+
+  <h3>Weak Points Assessment</h3>
+  <table>
+    <thead>
+      <tr><th>Body Part</th><th>Rating</th><th>Assessment</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Core / Abs</strong></td>
+        <td>
+          <div class="rating-bar"><div class="rating-fill" style="width:10%;background:var(--accent);"></div></div>
+          1/10
+        </td>
+        <td>Completely buried under fat. Undertrained. No visible definition.</td>
+      </tr>
+      <tr>
+        <td><strong>Chest</strong></td>
+        <td>
+          <div class="rating-bar"><div class="rating-fill" style="width:25%;background:var(--orange);"></div></div>
+          2.5/10
+        </td>
+        <td>Soft, fatty pseudo-gynecomastia appearance. Upper chest underdeveloped. Sags instead of shelf-like.</td>
+      </tr>
+      <tr>
+        <td><strong>Back</strong></td>
+        <td>
+          <div class="rating-bar"><div class="rating-fill" style="width:20%;background:var(--orange);"></div></div>
+          2/10
+        </td>
+        <td>Lats are narrow. No V-taper. Lower back holds excess fat. Rear delts non-existent.</td>
+      </tr>
+      <tr>
+        <td><strong>Legs</strong></td>
+        <td>
+          <div class="rating-bar"><div class="rating-fill" style="width:30%;background:var(--yellow);"></div></div>
+          3/10
+        </td>
+        <td>Calves small relative to frame. Quads have some mass but fat-covered. Hamstrings and glutes undertrained.</td>
+      </tr>
+      <tr>
+        <td><strong>Shoulders</strong></td>
+        <td>
+          <div class="rating-bar"><div class="rating-fill" style="width:35%;background:var(--yellow);"></div></div>
+          3.5/10
+        </td>
+        <td>Natural width present but anterior delts overpower side/rear. No capped look. Potential is there.</td>
+      </tr>
+      <tr>
+        <td><strong>Arms</strong></td>
+        <td>
+          <div class="rating-bar"><div class="rating-fill" style="width:55%;background:var(--green);"></div></div>
+          5.5/10
+        </td>
+        <td>Best body part. Biceps show decent size even at high body fat. Genetic advantage. Triceps need more work.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Fat Storage Pattern</h3>
+  <p><span class="tag tag-red">Android Pattern</span> — Belly, love handles, chest, lower back, face. Most common male pattern. Belly/love handle fat will be the <strong>last to go</strong>. Arms and shoulders will lean out first.</p>
+
+  <h3>Current Physique Rating: 3.5 / 10</h3>
+  <p>Foundation of muscle exists from 3 months of training with decent genetic arm development. But 25&ndash;28% body fat hides everything. No aesthetic lines visible anywhere. Currently looks like someone who lifts but overeats.</p>
+
+  <h3>Genetics</h3>
+  <table>
+    <thead><tr><th>Genetically Good</th><th>Genetically Challenging</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>
+          <ul style="margin:0 0 0 16px;">
+            <li>Arm thickness & bicep insertions</li>
+            <li>Decent shoulder width for frame</li>
+            <li>Thick wrists & forearms</li>
+            <li>Good beard growth potential</li>
+          </ul>
+        </td>
+        <td>
+          <ul style="margin:0 0 0 16px;">
+            <li>Short height (5'4") — fat more concentrated</li>
+            <li>Android fat storage — stubborn belly</li>
+            <li>Chest fat pattern — slow to clear</li>
+            <li>Wide waist-to-shoulder ratio currently</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ SECTION 4: FACE ANALYSIS ============ -->
+<div class="section" id="face">
+  <div class="section-num">SECTION 4</div>
+  <h2>Face Analysis</h2>
+
+  <table>
+    <thead><tr><th>Parameter</th><th>Current Status</th></tr></thead>
+    <tbody>
+      <tr><td>Face Fat Level</td><td><span class="tag tag-red">High</span> — Jawline completely hidden under submental + buccal fat</td></tr>
+      <tr><td>Jawline Visibility</td><td><strong>1/10</strong> — Not visible. Buried under fat.</td></tr>
+      <tr><td>Cheeks</td><td>Puffy, round face shape. No cheekbone definition.</td></tr>
+      <tr><td>Skin Condition</td><td><span class="tag tag-green">Normal</span> — No major acne or scarring. Slightly oily.</td></tr>
+      <tr><td>Bone Structure</td><td>Decent from side profile. No recessed chin. Jawline IS there — just buried.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>What Improves Automatically With Fat Loss</h3>
+  <ul>
+    <li>Jawline sharpens significantly (biggest visible change)</li>
+    <li>Cheekbones become more prominent</li>
+    <li>Under-chin fat reduces</li>
+    <li>Face appears angular and masculine</li>
+    <li>Neck looks longer and more defined</li>
+  </ul>
+
+  <h3>What Needs Extra Effort</h3>
+  <ul>
+    <li>Buccal fat (cheeks) can be stubborn in Indian genetics — assess at 12&ndash;13% BF</li>
+    <li>Masseter muscle development — chew mastic gum 20 min/day for jaw definition</li>
+    <li>Sodium control — excess salt = puffy face</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Jawline Timeline:</strong> At 15% BF → starts showing. At 12&ndash;13% BF → sharp and defined. Your bone structure supports it — the jawline is there, just hidden.
+  </div>
+</div>
+
+<!-- ============ SECTION 5: REALISTIC TIMELINE ============ -->
+<div class="section" id="timeline">
+  <div class="section-num">SECTION 5</div>
+  <h2>Realistic Timeline</h2>
+
+  <table>
+    <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Starting Weight</td><td>76 kg @ ~27% BF</td></tr>
+      <tr><td>Lean Mass (estimated)</td><td>~55.5 kg</td></tr>
+      <tr><td>Fat Mass (estimated)</td><td>~20.5 kg</td></tr>
+      <tr><td>Target Body Fat</td><td>12&ndash;13%</td></tr>
+      <tr><td>Target Weight</td><td>63&ndash;65 kg</td></tr>
+      <tr><td>Total Fat to Lose</td><td>~11&ndash;13 kg</td></tr>
+      <tr><td>Weekly Fat Loss Rate</td><td>0.5&ndash;0.7 kg</td></tr>
+      <tr><td><strong>Minimum Duration</strong></td><td><strong>8&ndash;9 months (strict adherence)</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Month-by-Month Projection</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="t-month">Month 1&ndash;2</span>
+      <span class="t-weight">→ 72&ndash;74 kg | ~22&ndash;24% BF</span>
+      <div class="t-desc">Water weight drops. Clothes feel looser. Face starts leaning out slightly. Energy improves.</div>
+    </div>
+    <div class="timeline-item">
+      <span class="t-month">Month 3&ndash;4</span>
+      <span class="t-weight">→ 68&ndash;70 kg | ~18&ndash;20% BF</span>
+      <div class="t-desc">Arms look muscular. Face noticeably leaner. V-taper begins to emerge. Jawline starts showing.</div>
+    </div>
+    <div class="timeline-item">
+      <span class="t-month">Month 5&ndash;6</span>
+      <span class="t-weight">→ 65&ndash;67 kg | ~15&ndash;17% BF</span>
+      <div class="t-desc">Upper abs faintly visible. Chest flattens. Shoulders pop. Jawline clearly visible. Face looks different.</div>
+    </div>
+    <div class="timeline-item">
+      <span class="t-month">Month 7&ndash;8</span>
+      <span class="t-weight">→ 63&ndash;64 kg | ~12&ndash;13% BF</span>
+      <div class="t-desc">Full aesthetic look. Abs visible. Veins in arms. Face angular and sharp. Jawline defined.</div>
+    </div>
+  </div>
+
+  <div class="callout-yellow callout">
+    <strong>Reality Check:</strong> The aesthetic reference physique you shared is someone with 3&ndash;5 years of training at 10&ndash;12% BF. You CAN get lean in 8 months, but that level of muscle density/fullness takes 2&ndash;3 years total. The jawline and lean look — 100% achievable in 8&ndash;9 months.
+  </div>
+</div>
+
+<!-- ============ SECTION 6: FAT LOSS STRATEGY ============ -->
+<div class="section" id="fatloss">
+  <div class="section-num">SECTION 6</div>
+  <h2>Fat Loss + Muscle Strategy</h2>
+
+  <h3>Verdict: Aggressive Cut</h3>
+  <p>At 25&ndash;28% body fat, insulin sensitivity is poor. Excess calories store as fat, not muscle. You MUST cut first. Since you're only 3 months into training, you WILL build muscle even in a deficit (newbie gains). This window lasts approximately 3&ndash;4 months.</p>
+
+  <table>
+    <thead><tr><th>Month</th><th>Weight</th><th>Body Fat %</th><th>Fat Loss</th></tr></thead>
+    <tbody>
+      <tr><td>Month 1</td><td>74 kg</td><td>~24%</td><td>~2 kg (includes water)</td></tr>
+      <tr><td>Month 2</td><td>72 kg</td><td>~22%</td><td>~2 kg</td></tr>
+      <tr><td>Month 3</td><td>70 kg</td><td>~20%</td><td>~2 kg</td></tr>
+      <tr><td>Month 4</td><td>68 kg</td><td>~18%</td><td>~2 kg</td></tr>
+      <tr><td>Month 5</td><td>66.5 kg</td><td>~16%</td><td>~1.5 kg</td></tr>
+      <tr><td>Month 6</td><td>65 kg</td><td>~15%</td><td>~1.5 kg</td></tr>
+      <tr><td>Month 7</td><td>64 kg</td><td>~13.5%</td><td>~1 kg</td></tr>
+      <tr><td>Month 8</td><td>63 kg</td><td>~12.5%</td><td>~1 kg</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Mistakes to Avoid</h3>
+  <ol>
+    <li><strong>Weekend binge eating</strong> — one cheat day erases 4&ndash;5 days of deficit</li>
+    <li><strong>Cutting calories below 1,500</strong> — you'll lose muscle and crash metabolically</li>
+    <li><strong>Skipping protein</strong> — missing 150g even a few days/week = muscle loss</li>
+    <li><strong>Excessive cardio</strong> (1+ hr daily) instead of weight training</li>
+    <li><strong>Poor sleep</strong> (under 7 hours) — tanks growth hormone and testosterone</li>
+    <li><strong>Daily weigh-ins</strong> and panicking — weigh weekly, same conditions</li>
+    <li><strong>Program hopping</strong> — stick to this plan for minimum 12 weeks before changing</li>
+    <li><strong>Ignoring back and legs</strong> because you can't see them in the mirror</li>
+  </ol>
+
+  <h3>Calorie Adjustment Protocol</h3>
+  <div class="callout-green callout">
+    <strong>Every 4 weeks, assess:</strong><br>
+    &bull; If weight loss stalls 2 weeks straight → reduce calories by 100 (cut 25g carbs)<br>
+    &bull; If strength drops significantly → add 100 kcal back (add 25g carbs)<br>
+    &bull; Add 5 min to post-workout walks BEFORE dropping calories<br>
+    &bull; <strong>Never go below 1,500 kcal</strong> — if you stall at 1,500, it's a NEAT/cardio problem
+  </div>
+</div>
+
+<!-- ============ SECTION 7: HEIGHT OPTIMIZATION ============ -->
+<div class="section" id="height">
+  <div class="section-num">SECTION 7</div>
+  <h2>Height Optimization</h2>
+
+  <p>At 25, growth plates are fused. You cannot gain skeletal height. However, you CAN gain 1&ndash;2 cm of <strong>functional/postural height</strong>:</p>
+
+  <table>
+    <thead><tr><th>Method</th><th>What to Do</th><th>Gain</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Fix Posture</strong></td>
+        <td>
+          Photos show forward head posture + rounded shoulders. Fix with:<br>
+          &bull; Dead hangs: 3 × 30 sec daily<br>
+          &bull; Face pulls: already in training program<br>
+          &bull; Wall angels: 2 × 15 reps every morning<br>
+          &bull; Stop looking down at phone constantly
+        </td>
+        <td>+1 to 1.5 cm</td>
+      </tr>
+      <tr>
+        <td><strong>Spinal Decompression</strong></td>
+        <td>Hang from pull-up bar 60 sec total every morning</td>
+        <td>+0.5 cm</td>
+      </tr>
+      <tr>
+        <td><strong>Fix Anterior Pelvic Tilt</strong></td>
+        <td>Strengthen core (abs program in plan). Weak core causes belly out + butt out = shorter appearance.</td>
+        <td>+0.5 cm visual</td>
+      </tr>
+      <tr>
+        <td><strong>Footwear</strong></td>
+        <td>2&ndash;3 cm subtle elevator insoles in normal shoes. Not platforms.</td>
+        <td>+2&ndash;3 cm</td>
+      </tr>
+      <tr>
+        <td><strong>Visual Illusion (when lean)</strong></td>
+        <td>
+          V-taper (wide shoulders, narrow waist) = taller appearance<br>
+          Vertical stripe clothing, well-fitted clothes, higher-rise pants
+        </td>
+        <td>Significant visual effect</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>Net result:</strong> You won't grow taller, but you can look <strong>5'5"&ndash;5'6"</strong> with posture correction + shoes + being lean + V-taper.
+  </div>
+</div>
+
+<!-- ============ SECTION 8: FACE & AESTHETICS ============ -->
+<div class="section" id="aesthetics">
+  <div class="section-num">SECTION 8</div>
+  <h2>Face & Aesthetics Upgrade</h2>
+
+  <h3>Reducing Face Fat</h3>
+  <ol>
+    <li><strong>Overall body fat reduction</strong> — this is 90% of the solution. No spot reduction exists.</li>
+    <li><strong>Reduce sodium</strong> — limit to 2,000 mg/day. Cut packaged foods, extra salt.</li>
+    <li><strong>Drink 3.5&ndash;4 liters water daily</strong> — paradoxically, high water intake reduces water retention.</li>
+    <li><strong>Sleep on your back, slightly elevated</strong> — reduces morning facial puffiness.</li>
+    <li><strong>Zero alcohol</strong> — causes facial bloating for 2&ndash;3 days after drinking.</li>
+    <li><strong>Chew mastic gum</strong> 20 min/day — strengthens masseter, adds jaw definition.</li>
+  </ol>
+
+  <h3>Jawline Timeline</h3>
+  <table>
+    <thead><tr><th>Month</th><th>Jawline Status</th></tr></thead>
+    <tbody>
+      <tr><td>Month 1&ndash;2</td><td>No visible change yet</td></tr>
+      <tr><td>Month 3</td><td>Slight improvement — face less round</td></tr>
+      <tr><td>Month 5</td><td>Noticeably sharper — jaw emerging</td></tr>
+      <tr><td>Month 7&ndash;8</td><td>Sharp and defined at 12&ndash;13% BF</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Beard Strategy</h3>
+  <table>
+    <thead><tr><th>Phase</th><th>Style</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="tag tag-yellow">Now (Month 1&ndash;5)</span></td>
+        <td>Medium stubble to short beard (trimmer #3&ndash;4 guard). Always keep neckline clean — shave below jawline to create jaw illusion.</td>
+        <td>Hides soft jawline. Looks clean.</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-green">After (Month 5+)</span></td>
+        <td>Heavy stubble (5&ndash;7 day growth). Clean cheek lines. Sharp neckline.</td>
+        <td>Scientifically rated most attractive facial hair length. Shows off jawline.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Hairstyle</h3>
+  <table>
+    <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Wolf cut now?</strong></td>
+        <td><span class="tag tag-red">NO</span> — Face is round. Wolf cut adds side volume → makes round face rounder.</td>
+      </tr>
+      <tr>
+        <td><strong>Wolf cut after fat loss?</strong></td>
+        <td><span class="tag tag-yellow">Maybe (Month 6+)</span> — Modified version: heavy layers on top, tighter sides. Only if face is angular enough.</td>
+      </tr>
+      <tr>
+        <td><strong>Best haircut NOW</strong></td>
+        <td><strong>Textured crop / French crop</strong> — skin fade or low fade on sides (#1&ndash;2), textured messy top (3&ndash;4 inches). Elongates face, makes it look slimmer and you look taller.</td>
+      </tr>
+      <tr>
+        <td><strong>Alternative NOW</strong></td>
+        <td><strong>Side part with fade</strong> — clean, mature, works with your hair texture.</td>
+      </tr>
+      <tr>
+        <td><strong>After fat loss (Month 6+)</strong></td>
+        <td>Textured fringe with mid fade, or Korean-style middle part if face is angular enough.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Grooming Essentials</h3>
+  <ul>
+    <li>Skincare: face wash (AM+PM) + SPF 30 moisturizer (AM) + niacinamide serum (PM)</li>
+    <li>Eyebrows: clean between brows only — do not over-shape</li>
+    <li>Nose/ear hair: trim weekly</li>
+    <li>Nails: trimmed and clean always</li>
+    <li>Fragrance: one subtle daily fragrance (not deodorant — actual perfume)</li>
+    <li>Styling product: matte clay or matte paste for hair (not gel — gel looks dated)</li>
+  </ul>
+</div>
+
+<!-- ============ SECTION 9: HARD TRUTHS ============ -->
+<div class="section" id="truths">
+  <div class="section-num">SECTION 9</div>
+  <h2>Hard Truths</h2>
+
+  <ol>
+    <li><strong>You are overfat, not "big."</strong> Arms look good in a tank top, but shirtless the belly and chest fat tell the real story. Stop seeing pump selfies as progress.</li>
+
+    <li><strong>3 months of gym is nothing.</strong> You are a complete beginner. Most of what looks like "size" is fat + glycogen + pump. Accept this. Commit to the long game.</li>
+
+    <li><strong>At 5'4" and 76 kg, you are clinically overweight (BMI 28.7).</strong> This affects insulin sensitivity, testosterone, and cardiovascular health at 25.</li>
+
+    <li><strong>Your diet is almost certainly the problem.</strong> Indian diets tend to be carb-heavy (rice, roti, paratha) and fat-heavy (ghee, oil, fried snacks). You likely eat 2,500&ndash;3,000+ kcal without realizing it.</li>
+
+    <li><strong>Weekend and social eating will destroy progress.</strong> One wedding or party = 3,000&ndash;4,000 kcal. Strategy: eat before going, stick to tandoori items, skip sweets entirely.</li>
+
+    <li><strong>What most people lie about:</strong>
+      <ul>
+        <li>"You can easily build muscle and lose fat simultaneously" — only true for beginners for a limited window</li>
+        <li>"Abs are made in the kitchen" — partially. You also need to TRAIN abs directly.</li>
+        <li>"You need supplements to get results" — you need whey + creatine. Everything else is unnecessary.</li>
+        <li>"More gym time = more results" — recovery matters more than extra sets</li>
+        <li>Instagram physiques = lighting + pump + angles + often PEDs</li>
+      </ul>
+    </li>
+
+    <li><strong>Your reference physique is someone with 3&ndash;5 years of training.</strong> You can get lean in 8 months but the muscle density takes 2&ndash;3 years total.</li>
+  </ol>
+</div>
+
+<!-- ============ SECTION 10: MAX EFFORT PROTOCOL ============ -->
+<div class="section" id="protocol">
+  <div class="section-num">SECTION 10</div>
+  <h2>Max Effort Protocol — Daily Routine</h2>
+
+  <h3>Daily Schedule (Monday &ndash; Saturday)</h3>
+
+  <div class="routine-item">
+    <span class="routine-time">5:45 AM</span>
+    <span class="routine-desc">Wake up. No snooze. Drink 500ml warm water + jeera water. 5 soaked almonds.</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">6:00 AM</span>
+    <span class="routine-desc">Bathroom, brush, face wash. 10 min home workout (push-ups, squats, plank, burpees × 2 rounds). Dead hang: 3×20 sec. Wall angels: 2×15 reps.</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">6:30 AM</span>
+    <span class="routine-desc">20 min brisk morning walk (fasted, outdoors). Not running.</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">7:15 AM</span>
+    <span class="routine-desc">Shower.</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">8:00 AM</span>
+    <span class="routine-desc">Breakfast — Meal 2 from diet plan.</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">8:30 AM &ndash; 4:00 PM</span>
+    <span class="routine-desc">Work/College. Meal 3 (lunch at 1:00 PM). Stay hydrated — finish 2L water by 4 PM.</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">4:30 PM</span>
+    <span class="routine-desc">Pre-workout snack — banana + roasted chana + black coffee.</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">5:00 PM</span>
+    <span class="routine-desc">Reach gym.</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">5:15 &ndash; 6:30 PM</span>
+    <span class="routine-desc">Weight training (as per split).</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">6:30 &ndash; 6:50 PM</span>
+    <span class="routine-desc">Post-workout incline treadmill walk (20 min).</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">7:00 PM</span>
+    <span class="routine-desc">Post-workout shake — whey protein + sweet potato (at home).</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">7:30 PM</span>
+    <span class="routine-desc">Chew mastic gum for jawline (15&ndash;20 min).</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">9:00 PM</span>
+    <span class="routine-desc">Dinner — Meal 6 from diet plan. Finish 1L water remaining.</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">9:45 PM</span>
+    <span class="routine-desc">No screens. Skincare routine (face wash + moisturizer). Prepare jeera water for morning. Light stretching or reading.</span>
+  </div>
+  <div class="routine-item">
+    <span class="routine-time">10:15 PM</span>
+    <span class="routine-desc">Sleep. Non-negotiable. 7.5&ndash;8 hours minimum.</span>
+  </div>
+
+  <h3>Supplements (Only What You Need)</h3>
+  <table>
+    <thead><tr><th>Supplement</th><th>Dose</th><th>When</th></tr></thead>
+    <tbody>
+      <tr><td>Whey Protein Isolate</td><td>1.5 scoops (non-veg days) / 2 scoops (veg days)</td><td>Post-workout</td></tr>
+      <tr><td>Creatine Monohydrate</td><td>5g daily (no cycling needed)</td><td>With any meal</td></tr>
+      <tr><td>Fish Oil (EPA+DHA)</td><td>1,000 mg combined</td><td>With dinner</td></tr>
+      <tr><td>Vitamin D3</td><td>2,000 IU</td><td>With breakfast</td></tr>
+      <tr><td>Multivitamin</td><td>1 tablet</td><td>With breakfast</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Non-Negotiables</h3>
+  <ol>
+    <li><strong>Never miss protein target</strong> — 142&ndash;150g daily, no exceptions</li>
+    <li><strong>Never miss a training session</strong> — sick or tired, still go. Reduce intensity if needed.</li>
+    <li><strong>Sleep 7.5+ hours</strong> every single night</li>
+    <li><strong>No sugar, no fried food, no alcohol</strong> for the entire 8 months</li>
+    <li><strong>Weekly weigh-in</strong> — every Sunday morning, empty stomach, after bathroom, before food. Track in a notes app.</li>
+    <li><strong>Progress photos every 2 weeks</strong> — same lighting, angles, time. Front relaxed, front flexed, side, back.</li>
+    <li><strong>3.5&ndash;4 liters water daily</strong></li>
+    <li><strong>8,000+ steps daily</strong> (outside gym cardio)</li>
+  </ol>
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center; padding:30px 0 50px; color:var(--text2); font-size:0.8rem;">
+  <p style="margin-bottom:4px;">This plan is designed for <strong style="color:var(--white);">Kunal Kumar</strong> — 25 years, 5'4", 76 kg, ~27% BF</p>
+  <p style="margin-bottom:4px;">Target: 63 kg @ 12&ndash;13% BF in 8&ndash;9 months</p>
+  <p style="margin-bottom:4px;">Weekly Calorie Avg: ~1,650 kcal | Protein: ~148g/day | Deficit: ~900 kcal/day</p>
+  <p>Execute daily. No excuses. No shortcuts. The results are on the other side of consistency.</p>
+</div>
+
+</div>
+
+<script>
+(function() {
+  var btn = document.getElementById('backToTop');
+  var navLinks = document.querySelectorAll('.nav-link');
+  var sections = [];
+  navLinks.forEach(function(link) {
+    var id = link.getAttribute('href').replace('#', '');
+    var el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el, link: link });
+  });
+
+  window.addEventListener('scroll', function() {
+    var y = window.scrollY;
+    if (y > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    var current = '';
+    for (var i = 0; i < sections.length; i++) {
+      var rect = sections[i].el.getBoundingClientRect();
+      if (rect.top <= 80) current = sections[i].id;
+    }
+    navLinks.forEach(function(l) { l.classList.remove('active'); });
+    if (current) {
+      var activeLink = document.querySelector('.nav-link[href="#' + current + '"]');
+      if (activeLink) {
+        activeLink.classList.add('active');
+        var nav = document.querySelector('.nav-inner');
+        var linkLeft = activeLink.offsetLeft - nav.offsetLeft;
+        var navScroll = linkLeft - nav.clientWidth / 2 + activeLink.clientWidth / 2;
+        nav.scrollTo({ left: navScroll, behavior: 'smooth' });
+      }
+    }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

@@ -33,18 +33,51 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "ToolPilot JSON Formatter & Validator",
-  applicationCategory: "DeveloperApplication",
-  operatingSystem: "Any",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-  description:
-    "Format, minify, and validate JSON online with syntax highlighting and configurable indentation.",
-  url: `${siteUrl}${pagePath}`,
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      name: "ToolPilot JSON Formatter & Validator",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Any",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      description:
+        "Format, minify, and validate JSON online with syntax highlighting and configurable indentation.",
+      url: `${siteUrl}${pagePath}`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Is my JSON data sent to a server?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. All formatting and validation happens in your browser. Nothing is uploaded to ToolPilot servers.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What indent sizes are supported?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "You can choose between 2-space and 4-space indentation for pretty-printing, or minify to remove all whitespace.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can this tool fix invalid JSON?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The tool validates and shows error locations (line and column) for invalid JSON, but it does not auto-fix syntax errors. You need to correct them manually.",
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default function JsonFormatterLayout({

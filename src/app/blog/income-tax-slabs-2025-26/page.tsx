@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AdSlot } from "@/components/shared/ad-slot";
 
 const canonical = "https://tool-pilot.in/blog/income-tax-slabs-2025-26";
 const title = "Income Tax Slabs 2025-26: Complete Guide for India | ToolPilot";
@@ -247,6 +248,10 @@ export default function IncomeTaxSlabsPost() {
             rebates, and filing procedures on the official Income Tax India
             portal or with a qualified professional.
           </p>
+        </div>
+
+        <div className="mt-8">
+          <AdSlot slot="blog-bottom" format="horizontal" className="mx-auto" />
         </div>
 
         <section

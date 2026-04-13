@@ -2,6 +2,11 @@
 
 import { useMemo, useState } from "react";
 
+import { TrackPageView } from "@/components/shared/track-page-view";
+import { RelatedSection } from "@/components/shared/related-items";
+import { getRelatedCalculators } from "@/lib/related-items";
+import { AdSlot } from "@/components/shared/ad-slot";
+
 function toLocalDate(dateStr: string): Date | null {
   if (!dateStr) return null;
   const [y, m, d] = dateStr.split("-").map(Number);
@@ -81,6 +86,7 @@ export default function DateCalculatorPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <TrackPageView name="Date Calculator" type="calculator" />
       <div className="mx-auto max-w-3xl px-4 py-8 sm:py-12">
         <p className="text-sm font-medium text-primary">ToolPilot</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -260,6 +266,10 @@ export default function DateCalculatorPage() {
           </div>
         )}
 
+        <div className="mt-8">
+          <AdSlot slot="calc-mid" format="horizontal" className="mx-auto" />
+        </div>
+
         <section className="mt-10">
           <h2 className="text-xl font-semibold text-foreground">
             How it works
@@ -316,6 +326,12 @@ export default function DateCalculatorPage() {
             </details>
           </div>
         </section>
+
+        <div className="mt-8">
+          <AdSlot slot="calc-bottom" format="rectangle" className="mx-auto" />
+        </div>
+
+        <RelatedSection items={getRelatedCalculators("date-calculator")} />
       </div>
     </div>
   );

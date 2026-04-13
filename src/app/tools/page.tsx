@@ -16,6 +16,8 @@ import {
   TextQuote,
 } from "lucide-react";
 
+import { AdSlot } from "@/components/shared/ad-slot";
+
 export const metadata: Metadata = {
   title: "Free Online Developer Tools | ToolPilot",
   description:
@@ -158,6 +160,10 @@ export default function ToolsIndexPage() {
           </li>
         ))}
       </ul>
+
+      <div className="mt-10">
+        <AdSlot slot="tools-hub" format="horizontal" className="mx-auto" />
+      </div>
 
       <p className="mt-14 text-center text-sm text-muted-foreground">
         Need EMI, SIP, or GST calculators?{" "}

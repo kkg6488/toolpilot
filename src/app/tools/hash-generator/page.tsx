@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AdSlot } from "@/components/shared/ad-slot";
+import { TrackPageView } from "@/components/shared/track-page-view";
+import { RelatedSection } from "@/components/shared/related-items";
+import { getRelatedTools } from "@/lib/related-items";
 
 const inputClass =
   "w-full rounded-lg border border-input bg-background px-3 py-2.5 text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/20";
@@ -163,6 +167,7 @@ export default function HashGeneratorPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <TrackPageView name="Hash Generator" type="tool" />
       <div className="mx-auto max-w-3xl px-4 py-8 sm:py-12">
         <p className="text-sm font-medium text-primary">Tools</p>
         <h1 className="mt-2 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -200,6 +205,10 @@ export default function HashGeneratorPage() {
           <HashRow label="SHA-512" value={sha512} onCopy={() => copy(sha512)} />
         </div>
 
+        <div className="mt-8">
+          <AdSlot slot="tool-mid" format="horizontal" className="mx-auto" />
+        </div>
+
         <section className="mt-10">
           <h2 className="text-lg font-semibold text-foreground">FAQ</h2>
           <div className="mt-4 space-y-3">
@@ -225,6 +234,12 @@ export default function HashGeneratorPage() {
             </details>
           </div>
         </section>
+
+        <div className="mt-8">
+          <AdSlot slot="tool-bottom" format="rectangle" className="mx-auto" />
+        </div>
+
+        <RelatedSection items={getRelatedTools("hash-generator")} />
       </div>
     </div>
   );

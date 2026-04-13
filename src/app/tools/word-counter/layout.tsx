@@ -18,14 +18,47 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "ToolPilot Word Counter",
-  applicationCategory: "UtilityApplication",
-  operatingSystem: "Any",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  description:
-    "Count words, characters, sentences, paragraphs, and reading time instantly.",
-  url: `${siteUrl}${pagePath}`,
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      name: "ToolPilot Word Counter",
+      applicationCategory: "UtilityApplication",
+      operatingSystem: "Any",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      description:
+        "Count words, characters, sentences, paragraphs, and reading time instantly.",
+      url: `${siteUrl}${pagePath}`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "How is reading time calculated?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Reading time is estimated at approximately 200–250 words per minute, the average adult reading speed for non-technical content.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does this count HTML tags as words?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. Paste plain text for accurate counts. HTML tags would be counted as words if included in the input.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is there a character limit?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "There is no hard limit. The tool processes text in the browser, so very large documents may slow down depending on your device.",
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default function WordCounterLayout({

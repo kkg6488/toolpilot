@@ -18,18 +18,51 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "ToolPilot Compound Interest Calculator",
-  applicationCategory: "FinanceApplication",
-  operatingSystem: "Any",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-  description:
-    "Calculate future value with periodic compounding and regular contributions using standard compound growth formulas.",
-  url: `${siteUrl}${pagePath}`,
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      name: "ToolPilot Compound Interest Calculator",
+      applicationCategory: "FinanceApplication",
+      operatingSystem: "Any",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      description:
+        "Calculate future value with periodic compounding and regular contributions using standard compound growth formulas.",
+      url: `${siteUrl}${pagePath}`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Is daily compounding exactly how my bank works?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Institutions differ on day-count, posting dates, and tiers. This is a standard mathematical model for planning—not a specific product quote.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Why convert monthly deposits for quarterly compounding?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The closed-form formula needs one payment per compounding period. We use 3× your monthly amount per quarter as a simple aggregation; some accounts instead compound monthly on a running balance.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does this include taxes or inflation?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. Reported future value is nominal. After-tax returns and real purchasing power can be lower.",
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default function CompoundInterestCalculatorLayout({

@@ -32,18 +32,51 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "ToolPilot Privacy Policy Generator",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Any",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-  description:
-    "Create customizable privacy policy text for websites, apps, and SaaS with compliance-oriented sections.",
-  url: `${siteUrl}${pagePath}`,
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      name: "ToolPilot Privacy Policy Generator",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Any",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      description:
+        "Create customizable privacy policy text for websites, apps, and SaaS with compliance-oriented sections.",
+      url: `${siteUrl}${pagePath}`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Is the generated privacy policy legally binding?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The generator creates a template based on common practices. You should review it with a legal professional to ensure compliance with applicable laws like GDPR or CCPA.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I customise the generated policy?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. The output is a fully editable template. Modify it to match your specific data practices, jurisdiction, and business requirements.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does this tool store my information?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. All generation happens in your browser. Your inputs are not stored or transmitted to any server.",
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default function PrivacyPolicyGeneratorLayout({

@@ -2,6 +2,11 @@
 
 import { useMemo, useState } from "react";
 
+import { TrackPageView } from "@/components/shared/track-page-view";
+import { RelatedSection } from "@/components/shared/related-items";
+import { getRelatedCalculators } from "@/lib/related-items";
+import { AdSlot } from "@/components/shared/ad-slot";
+
 const inr = new Intl.NumberFormat("en-IN", {
   style: "currency",
   currency: "INR",
@@ -50,6 +55,7 @@ export default function SipCalculatorPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <TrackPageView name="SIP Calculator" type="calculator" />
       <div className="mx-auto max-w-3xl px-4 py-8 sm:py-12">
         <p className="text-sm font-medium text-primary">ToolPilot</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -126,6 +132,10 @@ export default function SipCalculatorPage() {
               <dd className="mt-1 text-2xl font-bold text-foreground">{inr.format(fv)}</dd>
             </div>
           </dl>
+        </div>
+
+        <div className="mt-8">
+          <AdSlot slot="calc-mid" format="horizontal" className="mx-auto" />
         </div>
 
         <div className="mt-8 rounded-xl border border-border bg-muted/80 p-6 sm:p-8">
@@ -212,6 +222,12 @@ export default function SipCalculatorPage() {
             </details>
           </div>
         </section>
+
+        <div className="mt-8">
+          <AdSlot slot="calc-bottom" format="rectangle" className="mx-auto" />
+        </div>
+
+        <RelatedSection items={getRelatedCalculators("sip-calculator")} />
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { generateAllConversionSlugs } from "@/lib/unit-conversions";
 import { generateAllPercentageSlugs } from "@/lib/percentage-data";
 
-const CONTENT_LAST_UPDATED = "2026-03-30T00:00:00.000Z";
+const CONTENT_LAST_UPDATED = "2026-04-12T00:00:00.000Z";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://tool-pilot.in";
@@ -97,6 +97,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "income-tax-slabs-2025-26",
       "how-to-calculate-percentage",
       "best-free-developer-tools-2026",
+      "how-to-calculate-compound-interest",
+      "fd-vs-rd-which-is-better",
+      "gst-calculation-guide-india",
+      "how-ppf-interest-is-calculated",
+      "mortgage-vs-rent-calculator-comparison",
+      "what-is-bmi-and-how-to-calculate",
+      "calorie-deficit-explained",
+      "how-to-calculate-roi",
+      "json-formatting-best-practices",
+      "how-to-use-regex-beginners-guide",
+      "password-security-tips-2026",
+      "unit-conversion-guide",
+      "cron-expressions-explained",
+      "how-to-calculate-body-fat-percentage",
+      "qr-code-uses-and-how-to-create",
     ].map((slug) => ({
       url: `${baseUrl}/blog/${slug}`,
       lastModified: stableDate,

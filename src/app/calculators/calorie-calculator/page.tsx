@@ -2,6 +2,11 @@
 
 import { useMemo, useState } from "react";
 
+import { TrackPageView } from "@/components/shared/track-page-view";
+import { RelatedSection } from "@/components/shared/related-items";
+import { getRelatedCalculators } from "@/lib/related-items";
+import { AdSlot } from "@/components/shared/ad-slot";
+
 type Gender = "male" | "female";
 type MassUnit = "kg" | "lbs";
 type HeightUnit = "cm" | "ftin";
@@ -82,6 +87,7 @@ export default function CalorieCalculatorPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <TrackPageView name="Calorie Calculator" type="calculator" />
       <div className="mx-auto max-w-3xl px-4 py-8 sm:py-12">
         <p className="text-sm font-medium text-primary">ToolPilot</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -323,6 +329,10 @@ export default function CalorieCalculatorPage() {
           )}
         </div>
 
+        <div className="mt-8">
+          <AdSlot slot="calc-mid" format="horizontal" className="mx-auto" />
+        </div>
+
         <section className="mt-10">
           <h2 className="text-xl font-semibold text-foreground">How it works</h2>
           <p className="mt-2 text-muted-foreground">
@@ -383,6 +393,12 @@ export default function CalorieCalculatorPage() {
             </details>
           </div>
         </section>
+
+        <div className="mt-8">
+          <AdSlot slot="calc-bottom" format="rectangle" className="mx-auto" />
+        </div>
+
+        <RelatedSection items={getRelatedCalculators("calorie-calculator")} />
       </div>
     </div>
   );

@@ -2,6 +2,11 @@
 
 import { useMemo, useState } from "react";
 
+import { TrackPageView } from "@/components/shared/track-page-view";
+import { RelatedSection } from "@/components/shared/related-items";
+import { getRelatedCalculators } from "@/lib/related-items";
+import { AdSlot } from "@/components/shared/ad-slot";
+
 const usd = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
@@ -73,6 +78,7 @@ export default function RoiCalculatorPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <TrackPageView name="ROI Calculator" type="calculator" />
       <div className="mx-auto max-w-3xl px-4 py-8 sm:py-12">
         <p className="text-sm font-medium text-primary">ToolPilot</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -171,6 +177,10 @@ export default function RoiCalculatorPage() {
               <dd className="mt-1 text-xs text-muted-foreground">Final − Initial</dd>
             </div>
           </dl>
+        </div>
+
+        <div className="mt-8">
+          <AdSlot slot="calc-mid" format="horizontal" className="mx-auto" />
         </div>
 
         <div className="mt-8 rounded-xl border border-border bg-muted/80 p-6 sm:p-8">
@@ -324,6 +334,12 @@ export default function RoiCalculatorPage() {
             </details>
           </div>
         </section>
+
+        <div className="mt-8">
+          <AdSlot slot="calc-bottom" format="rectangle" className="mx-auto" />
+        </div>
+
+        <RelatedSection items={getRelatedCalculators("roi-calculator")} />
       </div>
     </div>
   );

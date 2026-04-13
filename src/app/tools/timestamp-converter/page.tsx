@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { AdSlot } from "@/components/shared/ad-slot";
+import { TrackPageView } from "@/components/shared/track-page-view";
+import { RelatedSection } from "@/components/shared/related-items";
+import { getRelatedTools } from "@/lib/related-items";
 
 const inputClass =
   "w-full rounded-lg border border-input bg-background px-3 py-2.5 text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/20";
@@ -85,6 +89,7 @@ export default function TimestampConverterPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <TrackPageView name="Timestamp Converter" type="tool" />
       <div className="mx-auto max-w-3xl px-4 py-8 sm:py-12">
         <p className="text-sm font-medium text-primary">Tools</p>
         <h1 className="mt-2 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -146,6 +151,10 @@ export default function TimestampConverterPage() {
           </section>
         )}
 
+        <div className="mt-8">
+          <AdSlot slot="tool-mid" format="horizontal" className="mx-auto" />
+        </div>
+
         <section className="mt-10">
           <h2 className="text-lg font-semibold text-foreground">FAQ</h2>
           <div className="mt-4 space-y-3">
@@ -176,6 +185,12 @@ export default function TimestampConverterPage() {
             </details>
           </div>
         </section>
+
+        <div className="mt-8">
+          <AdSlot slot="tool-bottom" format="rectangle" className="mx-auto" />
+        </div>
+
+        <RelatedSection items={getRelatedTools("timestamp-converter")} />
       </div>
     </div>
   );

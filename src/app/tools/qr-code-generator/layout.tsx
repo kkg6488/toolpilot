@@ -17,13 +17,46 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "ToolPilot QR Code Generator",
-  applicationCategory: "UtilityApplication",
-  operatingSystem: "Any",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  description: "Generate QR codes for URLs, text, email, phone numbers, and Wi-Fi networks.",
-  url: `${siteUrl}${pagePath}`,
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      name: "ToolPilot QR Code Generator",
+      applicationCategory: "UtilityApplication",
+      operatingSystem: "Any",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      description: "Generate QR codes for URLs, text, email, phone numbers, and Wi-Fi networks.",
+      url: `${siteUrl}${pagePath}`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What can I encode in a QR code?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "You can encode URLs, plain text, email addresses, phone numbers, and Wi-Fi network credentials.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I download the QR code?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. Generated QR codes can be downloaded as PNG images for use in print or digital materials.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is there a limit on QR code content?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "QR codes can hold up to about 4,296 alphanumeric characters, but shorter content produces cleaner, more scannable codes.",
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default function QrCodeGeneratorLayout({ children }: { children: React.ReactNode }) {

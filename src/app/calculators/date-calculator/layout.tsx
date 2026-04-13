@@ -18,14 +18,47 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "ToolPilot Date Calculator",
-  applicationCategory: "UtilityApplication",
-  operatingSystem: "Any",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  description:
-    "Calculate days between two dates with years, months, and days breakdown, or add and subtract days from a given date.",
-  url: `${siteUrl}${pagePath}`,
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      name: "ToolPilot Date Calculator",
+      applicationCategory: "UtilityApplication",
+      operatingSystem: "Any",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      description:
+        "Calculate days between two dates with years, months, and days breakdown, or add and subtract days from a given date.",
+      url: `${siteUrl}${pagePath}`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Does this account for leap years?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. The calculator uses JavaScript's built-in Date object which correctly handles leap years and varying month lengths.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What timezone does this use?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "All calculations use your local timezone. Dates are treated as midnight in your local time, so there are no timezone offset issues.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I subtract days?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: 'Yes. In the "Add / subtract days" mode, enter a negative number to go back in time.',
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default function DateCalculatorLayout({

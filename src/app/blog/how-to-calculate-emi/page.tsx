@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AdSlot } from "@/components/shared/ad-slot";
 
 const canonical = "https://tool-pilot.in/blog/how-to-calculate-emi";
 const title = "How to Calculate EMI Manually — Formula, Examples & Tips | ToolPilot";
@@ -220,6 +221,10 @@ export default function HowToCalculateEmiPost() {
             applies the same reducing-balance logic instantly so you can focus
             on decisions rather than arithmetic.
           </p>
+        </div>
+
+        <div className="mt-8">
+          <AdSlot slot="blog-bottom" format="horizontal" className="mx-auto" />
         </div>
 
         <section

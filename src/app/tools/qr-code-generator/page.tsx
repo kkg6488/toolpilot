@@ -2,6 +2,10 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import QRCode from "qrcode";
+import { AdSlot } from "@/components/shared/ad-slot";
+import { TrackPageView } from "@/components/shared/track-page-view";
+import { RelatedSection } from "@/components/shared/related-items";
+import { getRelatedTools } from "@/lib/related-items";
 import { cn } from "@/lib/utils";
 
 type InputType = "url" | "text" | "email" | "phone" | "wifi";
@@ -191,6 +195,7 @@ export default function QrCodeGeneratorPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <TrackPageView name="QR Code Generator" type="tool" />
       <div className="mx-auto max-w-5xl px-4 py-8 sm:py-12">
         <p className="text-sm font-medium text-primary">ToolPilot</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -393,6 +398,10 @@ export default function QrCodeGeneratorPage() {
           </div>
         </div>
 
+        <div className="mt-8">
+          <AdSlot slot="tool-mid" format="horizontal" className="mx-auto" />
+        </div>
+
         <section className="mt-14 space-y-4">
           <h2 className="text-xl font-semibold text-foreground">How it works</h2>
           <ol className="list-decimal space-y-2 pl-5 text-muted-foreground">
@@ -460,6 +469,12 @@ export default function QrCodeGeneratorPage() {
             </details>
           </div>
         </section>
+
+        <div className="mt-8">
+          <AdSlot slot="tool-bottom" format="rectangle" className="mx-auto" />
+        </div>
+
+        <RelatedSection items={getRelatedTools("qr-code-generator")} />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AdSlot } from "@/components/shared/ad-slot";
 
 const canonical = "https://tool-pilot.in/blog/sip-vs-fd-which-is-better";
 const title = "SIP vs FD: Which Investment is Better in 2026? | ToolPilot";
@@ -178,6 +179,10 @@ export default function SipVsFdPost() {
             one variable at a time shows how sensitive each choice is to your
             inputs — a useful habit before locking money away.
           </p>
+        </div>
+
+        <div className="mt-8">
+          <AdSlot slot="blog-bottom" format="horizontal" className="mx-auto" />
         </div>
 
         <section

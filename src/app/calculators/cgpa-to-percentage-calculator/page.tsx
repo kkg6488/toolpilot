@@ -2,6 +2,11 @@
 
 import { useMemo, useState } from "react";
 
+import { TrackPageView } from "@/components/shared/track-page-view";
+import { RelatedSection } from "@/components/shared/related-items";
+import { getRelatedCalculators } from "@/lib/related-items";
+import { AdSlot } from "@/components/shared/ad-slot";
+
 type PresetId = "cbse" | "vtu" | "mumbai" | "anna" | "custom";
 
 type Preset = {
@@ -123,6 +128,7 @@ export default function CgpaToPercentageCalculatorPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <TrackPageView name="CGPA to Percentage Calculator" type="calculator" />
       <div className="mx-auto max-w-3xl px-4 py-8 sm:py-12">
         <p className="text-sm font-medium text-primary">ToolPilot</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -241,6 +247,10 @@ export default function CgpaToPercentageCalculatorPage() {
           )}
         </div>
 
+        <div className="mt-8">
+          <AdSlot slot="calc-mid" format="horizontal" className="mx-auto" />
+        </div>
+
         <div className="mt-8 rounded-xl border border-border/60 bg-card p-6 shadow-md sm:p-8">
           <h2 className="text-lg font-semibold text-foreground">Reference table</h2>
           <p className="mt-1 text-sm text-muted-foreground">
@@ -332,6 +342,12 @@ export default function CgpaToPercentageCalculatorPage() {
             </details>
           </div>
         </section>
+
+        <div className="mt-8">
+          <AdSlot slot="calc-bottom" format="rectangle" className="mx-auto" />
+        </div>
+
+        <RelatedSection items={getRelatedCalculators("cgpa-to-percentage-calculator")} />
       </div>
     </div>
   );

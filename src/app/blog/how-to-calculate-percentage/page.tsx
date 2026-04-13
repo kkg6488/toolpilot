@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AdSlot } from "@/components/shared/ad-slot";
 
 const canonical = "https://tool-pilot.in/blog/how-to-calculate-percentage";
 const title = "How to Calculate Percentage: 5 Methods Explained | ToolPilot";
@@ -152,6 +153,10 @@ export default function HowToCalculatePercentagePost() {
             plus hundreds of pre-built percentage conversions on the percentage
             hub for common “X% of Y” and related queries.
           </p>
+        </div>
+
+        <div className="mt-8">
+          <AdSlot slot="blog-bottom" format="horizontal" className="mx-auto" />
         </div>
 
         <section

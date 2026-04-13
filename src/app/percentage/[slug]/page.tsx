@@ -10,6 +10,8 @@ import {
   getRelatedPercentages,
   getPercentageTable,
 } from "@/lib/percentage-data";
+import { TrackPageView } from "@/components/shared/track-page-view";
+import { AdSlot } from "@/components/shared/ad-slot";
 
 const SITE = "https://tool-pilot.in";
 
@@ -131,6 +133,7 @@ export default function PercentageSlugPage({ params }: { params: { slug: string 
 
   return (
     <div className="min-h-screen bg-background">
+      <TrackPageView name={`${percent}% of ${formatNumber(of)}`} type="conversion" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -278,6 +281,10 @@ export default function PercentageSlugPage({ params }: { params: { slug: string 
             ))}
           </ul>
         </section>
+
+        <div className="mt-10">
+          <AdSlot slot="percentage-bottom" format="horizontal" className="mx-auto" />
+        </div>
       </div>
     </div>
   );

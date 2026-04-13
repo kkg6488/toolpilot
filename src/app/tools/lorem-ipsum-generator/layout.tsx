@@ -20,13 +20,46 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "ToolPilot Lorem Ipsum Generator",
-  applicationCategory: "DeveloperApplication",
-  operatingSystem: "Any",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  description,
-  url: `${siteUrl}${pagePath}`,
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      name: "ToolPilot Lorem Ipsum Generator",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Any",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      description,
+      url: `${siteUrl}${pagePath}`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is Lorem Ipsum?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Lorem Ipsum is placeholder text used in design and typesetting since the 1500s. It helps visualise layouts without the distraction of meaningful content.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I control the length of generated text?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. You can adjust the number of paragraphs and the approximate length of each paragraph.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does this use real Latin text?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The text is based on sections from Cicero's De Finibus Bonorum et Malorum, with some modifications from the traditional Lorem Ipsum corpus.",
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default function LoremIpsumGeneratorLayout({ children }: { children: React.ReactNode }) {

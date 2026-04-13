@@ -9,6 +9,8 @@ import {
   parseConversionSlug,
   type ConversionPair,
 } from "@/lib/unit-conversions";
+import { TrackPageView } from "@/components/shared/track-page-view";
+import { AdSlot } from "@/components/shared/ad-slot";
 
 type PageProps = {
   params: { slug: string };
@@ -164,6 +166,7 @@ export default function ConversionPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-background">
+      <TrackPageView name={`Convert ${pair.fromSymbol} to ${pair.toSymbol}`} type="conversion" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -276,6 +279,10 @@ export default function ConversionPage({ params }: PageProps) {
             ))}
           </div>
         </section>
+
+        <div className="mt-10">
+          <AdSlot slot="conversion-bottom" format="horizontal" className="mx-auto" />
+        </div>
       </div>
     </div>
   );

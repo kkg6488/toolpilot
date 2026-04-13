@@ -2,6 +2,11 @@
 
 import { useMemo, useState } from "react";
 
+import { TrackPageView } from "@/components/shared/track-page-view";
+import { RelatedSection } from "@/components/shared/related-items";
+import { getRelatedCalculators } from "@/lib/related-items";
+import { AdSlot } from "@/components/shared/ad-slot";
+
 const usd = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
@@ -28,6 +33,7 @@ export default function TipCalculatorPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <TrackPageView name="Tip Calculator" type="calculator" />
       <div className="mx-auto max-w-lg px-4 py-8 sm:py-12">
         <p className="text-sm font-medium text-primary">ToolPilot</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -132,6 +138,10 @@ export default function TipCalculatorPage() {
           </dl>
         </div>
 
+        <div className="mt-8">
+          <AdSlot slot="calc-mid" format="horizontal" className="mx-auto" />
+        </div>
+
         <section className="mt-10">
           <h2 className="text-xl font-semibold text-foreground">How it works</h2>
           <p className="mt-2 text-muted-foreground">
@@ -171,6 +181,12 @@ export default function TipCalculatorPage() {
             </details>
           </div>
         </section>
+
+        <div className="mt-8">
+          <AdSlot slot="calc-bottom" format="rectangle" className="mx-auto" />
+        </div>
+
+        <RelatedSection items={getRelatedCalculators("tip-calculator")} />
       </div>
     </div>
   );

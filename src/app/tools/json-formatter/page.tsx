@@ -18,6 +18,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { AdSlot } from "@/components/shared/ad-slot";
+import { TrackPageView } from "@/components/shared/track-page-view";
+import { RelatedSection } from "@/components/shared/related-items";
+import { getRelatedTools } from "@/lib/related-items";
 import { cn } from "@/lib/utils";
 
 const mono =
@@ -229,6 +233,7 @@ export default function JsonFormatterPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <TrackPageView name="JSON Formatter" type="tool" />
       <div className="mx-auto max-w-6xl px-4 py-8 sm:py-12">
         <p className="text-sm font-medium text-primary">ToolPilot</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -358,6 +363,16 @@ export default function JsonFormatterPage() {
             )}
           </CardContent>
         </Card>
+
+        <div className="mt-8">
+          <AdSlot slot="tool-mid" format="horizontal" className="mx-auto" />
+        </div>
+
+        <div className="mt-8">
+          <AdSlot slot="tool-bottom" format="rectangle" className="mx-auto" />
+        </div>
+
+        <RelatedSection items={getRelatedTools("json-formatter")} />
       </div>
     </div>
   );

@@ -20,13 +20,46 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "ToolPilot UUID Generator",
-  applicationCategory: "DeveloperApplication",
-  operatingSystem: "Any",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  description,
-  url: `${siteUrl}${pagePath}`,
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      name: "ToolPilot UUID Generator",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Any",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      description,
+      url: `${siteUrl}${pagePath}`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What UUID version does this generate?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "This tool generates version 4 UUIDs, which are randomly generated and suitable for most use cases requiring unique identifiers.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Are generated UUIDs truly unique?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "v4 UUIDs use 122 random bits, making collisions astronomically unlikely. They are safe for database keys, session IDs, and distributed systems.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I generate UUIDs in bulk?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. You can generate multiple UUIDs at once with options for uppercase, lowercase, and with or without hyphens.",
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default function UuidGeneratorLayout({ children }: { children: React.ReactNode }) {

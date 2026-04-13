@@ -20,13 +20,46 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "ToolPilot Hash Generator",
-  applicationCategory: "DeveloperApplication",
-  operatingSystem: "Any",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  description,
-  url: `${siteUrl}${pagePath}`,
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      name: "ToolPilot Hash Generator",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Any",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      description,
+      url: `${siteUrl}${pagePath}`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What hash algorithms are supported?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The tool supports MD5, SHA-1, SHA-256, and SHA-512 digests computed entirely in the browser.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is hashing the same as encryption?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. Hashing is a one-way function — you cannot reverse a hash to get the original input. Encryption is reversible with the correct key.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Which hash algorithm should I use?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "SHA-256 is recommended for most purposes. MD5 and SHA-1 are considered weak for security but are still used for checksums and non-security contexts.",
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default function HashGeneratorLayout({ children }: { children: React.ReactNode }) {

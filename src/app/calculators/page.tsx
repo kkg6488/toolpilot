@@ -24,6 +24,8 @@ import {
   Wallet,
 } from "lucide-react";
 
+import { AdSlot } from "@/components/shared/ad-slot";
+
 export const metadata: Metadata = {
   title: "Free Online Calculators | ToolPilot",
   description:
@@ -258,6 +260,10 @@ export default function CalculatorsIndexPage() {
           <CalculatorGrid items={indianFinance} />
         </div>
       </section>
+
+      <div className="mt-10">
+        <AdSlot slot="calc-hub" format="horizontal" className="mx-auto" />
+      </div>
 
       <section className="mt-16">
         <h2 className="text-xl font-semibold tracking-tight text-foreground">

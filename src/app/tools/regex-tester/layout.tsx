@@ -32,18 +32,51 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "ToolPilot Regex Tester",
-  applicationCategory: "DeveloperApplication",
-  operatingSystem: "Any",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-  description:
-    "Test and debug regular expressions with live highlighting, match details, and replacement output.",
-  url: `${siteUrl}${pagePath}`,
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      name: "ToolPilot Regex Tester",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Any",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      description:
+        "Test and debug regular expressions with live highlighting, match details, and replacement output.",
+      url: `${siteUrl}${pagePath}`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What regex flavour does this tester use?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "It uses JavaScript's built-in RegExp engine, which supports most common patterns including lookahead, lookbehind, and named groups.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I use flags like global and case-insensitive?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. You can toggle flags including global (g), case-insensitive (i), multiline (m), and dotAll (s).",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is my regex pattern stored anywhere?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. Everything runs in your browser. No patterns or test strings are sent to any server.",
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default function RegexTesterLayout({
